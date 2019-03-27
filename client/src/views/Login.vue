@@ -1,25 +1,26 @@
 <template>
-    <section class="login mt-5">
-        <div class="row">
-            <div class="col-md-6 mx-md-auto">
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title text-left">Вхід</h5>
-                        <hr>
-                        <form>
-                            <div class="form-group d-flex flex-column align-items-start">
-                                <label class="text-left" for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
-                            </div>
-                            <div class="form-group d-flex flex-column align-items-start">
-                                <label class="text-left" for="password">Пароль</label>
-                                <input type="password" class="form-control" id="password" placeholder="*******">
-                            </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <v-content>
+        <v-container fluid fill-height>
+        <v-layout align-center justify-center>
+            <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+                <v-toolbar dark color="primary">
+                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-spacer></v-spacer>
+                </v-toolbar>
+                <v-card-text>
+                <v-form>
+                    <v-text-field prepend-icon="person" name="login" label="Email" type="email"></v-text-field>
+                    <v-text-field id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                </v-form>
+                </v-card-text>
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary">Login</v-btn>
+                </v-card-actions>
+            </v-card>
+            </v-flex>
+        </v-layout>
+        </v-container>
+    </v-content>
 </template>

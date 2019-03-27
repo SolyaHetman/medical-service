@@ -1,14 +1,11 @@
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import jQuery from 'jquery'
-import bootstrap from 'bootstrap'
-
-import 'bootstrap/dist/css/bootstrap.css'
-global.jQuery = jQuery
-global.$ = jQuery
-
+Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 new Vue({
