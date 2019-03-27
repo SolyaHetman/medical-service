@@ -16,8 +16,8 @@ npm run server
 ```
 ---------------------------
 ### TO DO LIST
-- [ ] Genetare Vue.js project
-- [ ] Connect Bootstrap 4
+- [*] Genetare Vue.js project
+- [*] Connect Bootstrap 4
 - [ ] Create Basic Routes
 - [ ] Create Basic Views
 - [ ] Create Basic Components
