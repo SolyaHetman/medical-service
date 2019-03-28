@@ -5,6 +5,7 @@
       <v-btn flat to="/login">Login</v-btn>
       <v-btn flat>Register</v-btn>
       <v-btn flat to="/dashboard">Dashboard</v-btn>
+      <v-btn flat to="/newpatient">Add New Patient</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
