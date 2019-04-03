@@ -15,16 +15,41 @@
           >
           {{ n.title }}
           </v-tab>
-          <v-tab-item
-            v-for="n in tabs"
-            :key="n"
-          >
+          <!-- Start Tab1 -->
+          <v-tab-item>
             <v-card flat>
-              <v-card-text>
-                {{ n.body }}
-              </v-card-text>
+              <Tab1 />
             </v-card>
           </v-tab-item>
+          <!-- End Tab1 -->
+          <!-- Start Tab2 -->
+          <v-tab-item>
+            <v-card flat>
+              <Tab2 />
+            </v-card>
+          </v-tab-item>
+          <!-- End Tab2 -->
+          <!-- Start Tab3 -->
+          <v-tab-item>
+            <v-card flat>
+              <Tab3 />
+            </v-card>
+          </v-tab-item>
+          <!-- End Tab3 -->
+          <!-- Start Tab4 -->
+          <v-tab-item>
+            <v-card flat>
+              <Tab4 />
+            </v-card>
+          </v-tab-item>
+          <!-- End Tab4 -->
+          <!-- Start Tab5 -->
+          <v-tab-item>
+            <v-card flat>
+              <Tab5 />
+            </v-card>
+          </v-tab-item>
+          <!-- End Tab5 -->
         </v-tabs>
       </v-flex>
     </v-layout>
@@ -32,27 +57,39 @@
 </template>
 
 <script>
+import Tab1 from "@/components/Doctor/AddPatient/Tabs/Tab1.vue"
+import Tab2 from "@/components/Doctor/AddPatient/Tabs/Tab2.vue"
+import Tab3 from "@/components/Doctor/AddPatient/Tabs/Tab3.vue"
+import Tab4 from "@/components/Doctor/AddPatient/Tabs/Tab4.vue"
+import Tab5 from "@/components/Doctor/AddPatient/Tabs/Tab5.vue"
+
   export default {
     name: 'GeneralData',
+    components: {
+      Tab1,
+      Tab2,
+      Tab3,
+      Tab4,
+      Tab5
+    },
     data() {
       return {
         tabs: [
           {
             title:'Загальні дані',
-            body: "some lorem text1"
+          },
+          {
+            title:'Шлях до діагнозу',
           },
           {
             title:'Діагноз первинного імунодефіциту',
-            body: "some lorem text2"
           },
           {
             title:'Стовбурові клітини',
-            body: "some lorem text3"
           },
           {
             title:'Замісна імуноглобулінотерапія',
-            body: "some lorem text4"
-          }
+          },
         ]
       }
     }

@@ -12,7 +12,7 @@ npm i
 ```
 Get started with following command:
 ```
-npm run server
+npm run serve
 ```
 ---------------------------
 ### TO DO LIST
