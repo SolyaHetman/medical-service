@@ -42,7 +42,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-btn @click="submit" :class="{blue: valid }">submit</v-btn>
+    <v-btn @click="submit" :class="{blue: valid }">підтвердити</v-btn>
   </v-form>
 </template>
 
