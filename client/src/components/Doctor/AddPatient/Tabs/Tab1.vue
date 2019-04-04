@@ -42,10 +42,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-<<<<<<< Updated upstream
     <v-btn @click="submit" :class="{blue: valid }">підтвердити</v-btn>
-=======
-
     <v-container>
       <v-layout>
         <v-flex
@@ -65,7 +62,6 @@
     </v-container>
 
     <v-btn @click="submit" :class="{blue: valid }">submit</v-btn>
->>>>>>> Stashed changes
   </v-form>
 </template>
 
