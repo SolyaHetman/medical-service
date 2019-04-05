@@ -10,7 +10,7 @@
         >
           <v-tab
             v-for="n in tabs"
-            :key="n"
+            :key="n.title"
             ripple
           >
           {{ n.title }}
@@ -74,6 +74,7 @@ import Tab5 from "@/components/Doctor/AddPatient/Tabs/Tab5.vue"
     },
     data() {
       return {
+        active: '',
         tabs: [
           {
             title:'Загальні дані',
