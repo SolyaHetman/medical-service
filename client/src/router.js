@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Dashboard from './views/Doctor/Dashboard.vue'
 import NewPatient from './views/Doctor/NewPatient.vue'
+import PatientInfo from './views/Doctor/PatientInfo.vue'
+
 
 Vue.use(Router)
 
@@ -27,6 +29,11 @@ export default new Router({
             path: '/newpatient',
             name: 'newpatient',
             component: NewPatient
+        },
+        {
+            path: '/patientinfo',
+            name: 'patientinfo',
+            component: PatientInfo
         }
     ]
 })
