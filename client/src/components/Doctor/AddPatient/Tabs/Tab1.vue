@@ -5,7 +5,7 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="lastname"
+            v-model="generalData.lastname"
             :rules="nameRules"
             :counter="20"
             label="Прізвище"
@@ -15,7 +15,7 @@
 
         <v-flex xs12 md4>
           <v-text-field
-            v-model="firstname"
+            v-model="generalData.firstname"
             :rules="nameRules"
             :counter="20"
             label="Ім'я"
@@ -25,7 +25,7 @@
 
         <v-flex xs12 md4>
           <v-text-field
-            v-model="middlename"
+            v-model="generalData.middlename"
             :rules="nameRules"
             :counter="20"
             label="Побатькові"
@@ -93,7 +93,7 @@
       <v-layout row wrap>
         <v-flex xs12 md4>
           <p>Стать</p>
-          <v-radio-group v-model="radioSex" :mandatory="false">
+          <v-radio-group v-model="generalData.radioSex" :mandatory="false">
             <v-radio label="жіноча" value="female"></v-radio>
             <v-radio label="чоловіча" value="male"></v-radio>
           </v-radio-group>
@@ -101,7 +101,7 @@
 
         <v-flex xs12 md4>
           <p>Згода пацієнта на використання особистої інформації</p>   
-          <v-radio-group v-model="radiosAgreement" :mandatory="false">
+          <v-radio-group v-model="generalData.radiosAgreement" :mandatory="false">
             <v-radio label="цілковита" value="complete"></v-radio>
             <v-radio label="згода лише на науковий аналіз" value="onlyresearch"></v-radio>
             <v-radio label="не застосовується" value="notallow"></v-radio>
@@ -110,7 +110,7 @@
 
         <v-flex xs12 md4>
           <p>Родинні зв'язки ПІД</p>   
-          <v-radio-group v-model="radiosFamilyTies" :mandatory="false">
+          <v-radio-group v-model="generalData.radiosFamilyTies" :mandatory="false">
             <v-radio label="По чоловічій лінії" value="yes2"></v-radio>
             <v-radio label="По жіночій лінії" value="no2"></v-radio>
             <v-radio label="невідомо" value="unknown2"></v-radio>
@@ -119,7 +119,7 @@
 
         <v-flex xs12 md4>
           <p>Спорідненість пацієнта</p>   
-          <v-radio-group v-model="radiosAffinity" :mandatory="false">
+          <v-radio-group v-model="generalData.radiosAffinity" :mandatory="false">
             <v-radio label="так" value="yes1"></v-radio>
             <v-radio label="ні" value="no1"></v-radio>
             <v-radio label="невідомо" value="unknown1"></v-radio>
@@ -129,16 +129,16 @@
 
         <v-flex xs12 md4>
           <p>Генетично ускладнений сімейний анамнез первинних імунодифецитів</p>   
-          <v-radio-group v-model="radioYesNo" :mandatory="false">
+          <v-radio-group v-model="generalData.radioYesNo" :mandatory="false">
             <v-radio label="так" value="yes"></v-radio>
             <v-radio label="ні" value="no"></v-radio>
             <v-radio label="невідомо" value="unknown"></v-radio>
           </v-radio-group>
         </v-flex>
 
-        <v-flex md4 v-if="radioYesNo == 'yes'">
+        <v-flex md4 v-if="generalData.radioYesNo == 'yes'">
           <v-text-field
-            v-model="numberESID"
+            v-model= generalData.numberESID
             label="Номер ESID"
           ></v-text-field>
         </v-flex>
@@ -156,23 +156,24 @@
     data () {
       return {
         valid: false,
-        firstname: '',
-        lastname: '',
-        middlename: '',
+        menu: null,
+        date: null,
         nameRules: [
           (v) => !!v || 'Name is required',
           (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         ],
-        //radios: 'radio-1',
         items: ['Львів', 'Київ', 'Вінниця', 'Рівне'],
-        menu: '',
-        date: '',
-        radioSex: '',
-        radioYesNo: '',
-        radiosAgreement:'',
-        radiosFamilyTies:'',
-        radiosAffinity:'',
-        numberESID:'',
+        generalData: {
+          firstname: null,
+          lastname: null,
+          middlename: null,
+          radioSex: null,
+          radioYesNo: null,
+          radiosAgreement: null,
+          radiosFamilyTies:null,
+          radiosAffinity: null,
+          numberESID:null,
+        } 
       }
     },
     methods: {
@@ -181,7 +182,7 @@
       },
       save (date) {
         this.$refs.menu.save(date)
-      }
+      },
     },
     watch: {
         menu (val) {
