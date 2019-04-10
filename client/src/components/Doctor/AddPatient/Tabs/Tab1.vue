@@ -94,45 +94,45 @@
         <v-flex xs12 md4>
           <p>Стать</p>
           <v-radio-group v-model="generalData.radioSex" :mandatory="false">
-            <v-radio label="жіноча" value="female"></v-radio>
-            <v-radio label="чоловіча" value="male"></v-radio>
+            <v-radio color="#1976d2" label="жіноча" value="female"></v-radio>
+            <v-radio color="#1976d2" label="чоловіча" value="male"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Згода пацієнта на використання особистої інформації</p>   
           <v-radio-group v-model="generalData.radiosAgreement" :mandatory="false">
-            <v-radio label="цілковита" value="complete"></v-radio>
-            <v-radio label="згода лише на науковий аналіз" value="onlyresearch"></v-radio>
-            <v-radio label="не застосовується" value="notallow"></v-radio>
+            <v-radio color="#1976d2" label="цілковита" value="complete"></v-radio>
+            <v-radio color="#1976d2" label="згода лише на науковий аналіз" value="onlyresearch"></v-radio>
+            <v-radio color="#1976d2" label="не застосовується" value="notallow"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Родинні зв'язки ПІД</p>   
           <v-radio-group v-model="generalData.radiosFamilyTies" :mandatory="false">
-            <v-radio label="По чоловічій лінії" value="yes2"></v-radio>
-            <v-radio label="По жіночій лінії" value="no2"></v-radio>
-            <v-radio label="невідомо" value="unknown2"></v-radio>
+            <v-radio color="#1976d2" label="По чоловічій лінії" value="yes2"></v-radio>
+            <v-radio color="#1976d2" label="По жіночій лінії" value="no2"></v-radio>
+            <v-radio color="#1976d2" label="невідомо" value="unknown2"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Спорідненість пацієнта</p>   
           <v-radio-group v-model="generalData.radiosAffinity" :mandatory="false">
-            <v-radio label="так" value="yes1"></v-radio>
-            <v-radio label="ні" value="no1"></v-radio>
-            <v-radio label="невідомо" value="unknown1"></v-radio>
-            <v-radio label="можливо" value="maybe"></v-radio>
+            <v-radio color="#1976d2" label="так" value="yes1"></v-radio>
+            <v-radio color="#1976d2" label="ні" value="no1"></v-radio>
+            <v-radio color="#1976d2" label="невідомо" value="unknown1"></v-radio>
+            <v-radio color="#1976d2" label="можливо" value="maybe"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Генетично ускладнений сімейний анамнез первинних імунодифецитів</p>   
           <v-radio-group v-model="generalData.radioYesNo" :mandatory="false">
-            <v-radio label="так" value="yes"></v-radio>
-            <v-radio label="ні" value="no"></v-radio>
-            <v-radio label="невідомо" value="unknown"></v-radio>
+            <v-radio color="#1976d2" label="так" value="yes"></v-radio>
+            <v-radio color="#1976d2" label="ні" value="no"></v-radio>
+            <v-radio color="#1976d2" label="невідомо" value="unknown"></v-radio>
           </v-radio-group>
         </v-flex>
 
