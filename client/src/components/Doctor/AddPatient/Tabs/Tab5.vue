@@ -50,7 +50,7 @@
           </v-radio-group>
           </v-flex>
           <v-flex md4>
-          <p>Актуальний шлях введення імуноглобуліну:</p>   
+          <p>Актуальне місце введення імуноглобуліну:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.actual_injection_location" :mandatory="false">
             <v-radio color="#1976d2" label="Вдома" value="at_home"></v-radio>
             <v-radio color="#1976d2" label="В лікарні" value="at_hospital"></v-radio>
