@@ -11,6 +11,7 @@
             <v-radio color="#1976d2" label="є лише генетичний анамнез" value="anamnesis"></v-radio>
             <v-text-field v-if="pathDagnosis.first_diagnostic_pid_data == 'yes'"
                 v-model= pathDagnosis.first_diagnostic_pid_data_time
+                :rules="dataRules"
                 label="Введіть дату"
             ></v-text-field>
           </v-radio-group>
@@ -40,7 +41,7 @@
           <p>Початок симтомів</p>   
             <v-text-field 
                 v-model= pathDagnosis.symptoms_start_data
-                label="Введіть дату"
+                label="Введіть дату РР-ММ"
             ></v-text-field>
         </v-flex>
 
@@ -147,8 +148,10 @@ export default {
                 IgG: null,
                 IgA: null,
                 IgM: null,
-
             },
+            dataRules: [
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                ],
             items: ['Лімфопенія', 'Нейтропенія', 'Тромбоцитопенія', 'Анемія','Монцитопенія','Підвищений рівень IgE','Гіпогамаглобулінемія','Інше'],
  
         }

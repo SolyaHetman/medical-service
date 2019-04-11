@@ -18,6 +18,7 @@
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
             <v-text-field v-if="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'known'"
                 v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes
+                :rules="dataRules"
                 label="Введіть дані"
             ></v-text-field>
           </v-radio-group>
@@ -144,7 +145,10 @@ export default {
                 recorded_phenomenal_select_enter: null,
             },
            items: ['1','2','3','4'], 
-           others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Інше,вказати'], 
+           others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Інше,вказати'],
+           dataRules: [
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                ], 
         }
     },
     methods: {

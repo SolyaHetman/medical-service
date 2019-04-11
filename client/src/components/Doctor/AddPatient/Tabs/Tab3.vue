@@ -24,6 +24,7 @@
             <v-radio color="#1976d2" label="Відомо" value="yes_data"></v-radio>
             <v-text-field v-if="pidDiagnosis.genetic_research_data == 'yes_data'"
                 v-model= pidDiagnosis.genetic_research_data_input
+                :rules="dataRules"
                 label="Введіть дані"
             ></v-text-field>
           </v-radio-group>
@@ -89,6 +90,9 @@ export default {
                 
             },
             items: ['1', '2', '3'],
+            dataRules: [
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                ],
         }
     },
     methods: {

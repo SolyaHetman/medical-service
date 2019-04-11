@@ -25,6 +25,7 @@
             <v-text-field v-if="stemCellsGeneticTheraty.transplantation_data == 'known'"
                 v-model= stemCellsGeneticTheraty.transplantation_data_yes
                 label="Введіть дані"
+                :rules= "dataRules"
             ></v-text-field>
           </v-radio-group>
         </v-flex>
@@ -43,15 +44,15 @@
     <v-container>
       <v-layout>
         <v-flex xs12 md4>
-              <p>Дана трансплантації</p>   
+              <p>Генна терапія</p>   
               <v-radio-group v-model=" stemCellsGeneticTheraty.genetic_therapy" :mandatory="false">
                 <v-radio color="#1976d2" label="Так" value="yes"></v-radio>
                 <v-radio color="#1976d2" label="Ні" value="no"></v-radio>
                 <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
                 <v-text-field v-if="stemCellsGeneticTheraty.genetic_therapy == 'yes'"
                     v-model= stemCellsGeneticTheraty.genetic_therapy_yes
+                    :rules= "dataRules"
                     label="Введіть дані"
-                    type=data
                 ></v-text-field>
               </v-radio-group>
             </v-flex>
@@ -75,10 +76,11 @@ export default {
                 transplantation_data: null,
                 transplantation_data_yes: null,
                 CB14_soure: null,
-                genetic_therapy: null,
-                
+                genetic_therapy: null,              
             },
-            
+            dataRules: [
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                ],          
         }
     },
     methods: {

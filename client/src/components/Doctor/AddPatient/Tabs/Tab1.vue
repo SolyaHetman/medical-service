@@ -39,34 +39,11 @@
     <v-container>
       <v-layout>
         <v-flex md4>
-          <v-menu
-          ref="menu"
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-right="40"
-          lazy
-          transition="scale-transition"
-          offset-y
-          full-width
-          min-width="290px"
-          >
-          <template v-slot:activator="{ on }">
             <v-text-field
               v-model="date"
               label="Дата народження"
-              prepend-icon="event"
-              readonly
-              v-on="on"
+              :rules="dataRules"
             ></v-text-field>
-          </template>
-          <v-date-picker
-            ref="picker"
-            v-model="date"
-            :max="new Date().toISOString().substr(0, 10)"
-            min="1950-01-01"
-            @change="save"
-          ></v-date-picker>
-        </v-menu>
         </v-flex>
 
         <v-flex md4>
@@ -164,6 +141,9 @@
           (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
           (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
         ],
+        dataRules: [
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                ],
         items: ['Львів', 'Київ', 'Вінниця', 'Рівне'],
         generalData: {
           firstname: null,
@@ -186,11 +166,6 @@
         this.$refs.menu.save(date)
       },
     },
-    watch: {
-        menu (val) {
-          val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
-        }
-     }
   }
 </script>
 
