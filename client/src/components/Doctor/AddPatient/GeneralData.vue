@@ -86,7 +86,7 @@ import Tab5 from "@/components/Doctor/AddPatient/Tabs/Tab5.vue"
             title:'Діагноз первинного імунодефіциту',
           },
           {
-            title:'Стовбурові клітини',
+            title:'Стовбурові клітини/генна терапія',
           },
           {
             title:'Замісна імуноглобулінотерапія',
