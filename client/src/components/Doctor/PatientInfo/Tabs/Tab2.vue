@@ -72,11 +72,6 @@
     data () {
       return {
         valid: false,
-        date: null,
-        nameRules: [
-          (v) => !!v || 'Name is required',
-          (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
-        ],
         pathDiagnosis: {
           first_diagnostic_pid_dat: "15-03-2005",
           pid_lab_only: "Так, встановлено лімфопенію",
