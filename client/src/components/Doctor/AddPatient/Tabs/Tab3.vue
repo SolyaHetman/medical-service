@@ -13,6 +13,7 @@
             <v-text-field v-if="pidDiagnosis.damage_genes == 'additional_genes'"
                 v-model= pidDiagnosis.additional_genes
                 label="Введіть дані"
+                clearable
             ></v-text-field>
           </v-radio-group>
         </v-flex>

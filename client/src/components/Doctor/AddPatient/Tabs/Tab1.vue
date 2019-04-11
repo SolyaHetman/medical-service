@@ -140,6 +140,7 @@
           <v-text-field
             v-model= generalData.numberESID
             label="Номер ESID"
+            clearable
           ></v-text-field>
         </v-flex>
 

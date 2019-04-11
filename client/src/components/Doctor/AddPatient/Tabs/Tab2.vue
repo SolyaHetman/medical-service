@@ -31,6 +31,7 @@
             <v-text-field v-if="(pathDagnosis.pid_select == 'Інше') & (pathDagnosis.pid_lab_only == 'yes')"
                 v-model= pathDagnosis.pid_select_enter
                 label="Введіть інформацію"
+                clearable
             ></v-text-field>
           </v-radio-group>
         </v-flex>
