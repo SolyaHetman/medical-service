@@ -4,7 +4,7 @@
       <v-layout>
 
         <v-flex md4>
-          <p><font color="#808080">Чи будь-що з нижче наведеного було застосоване в даного пацієнта</font></p>
+          <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
             v-model="stemCellsGeneticTheraty.stem_cells_transplantation"
           ></v-text-field>
@@ -45,7 +45,7 @@ export default {
     data(){
         return{
             stemCellsGeneticTheraty:{
-                stem_cells_transplantation: null,
+                stem_cells_transplantation: "Так",
                 transplantation_data: "19-03-2007",
                 CD14_soure: "Кістковий мозок",
                 genetic_therapy: "Так",              
