@@ -43,6 +43,7 @@
               v-model="date"
               label="Дата народження"
               :rules="dataRules"
+              prepend-icon ="event"
             ></v-text-field>
         </v-flex>
 
