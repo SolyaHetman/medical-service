@@ -64,6 +64,7 @@
       </v-layout>
     </v-container>
     <v-btn @click="submit">Зберегти</v-btn>
+    <v-btn @click="cancel" to="/dashboard">Скасувати</v-btn>
  </v-form>
 </template>
 
