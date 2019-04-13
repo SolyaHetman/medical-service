@@ -24,7 +24,7 @@
             readonly
           ></v-text-field>
         </v-flex>
-        <v-flex md2>
+        <v-flex md3>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
             v-model="stemCellsGeneticTheraty.CD14_soure"

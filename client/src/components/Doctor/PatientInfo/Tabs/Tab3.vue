@@ -3,7 +3,7 @@
     <v-container>
       <v-layout>
 
-        <v-flex md4>
+        <v-flex md6>
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
             v-model="pidDiagnosis.damage_genes"
@@ -12,7 +12,7 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 >
+        <v-flex md3>
           <p>
             <font color="#808080">
               Дата генетичного дослідження
@@ -38,7 +38,7 @@
 
     <v-container>
       <v-layout>
-        <v-flex md2>
+        <v-flex md3>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
             v-model="pidDiagnosis.research_lab"
@@ -49,7 +49,7 @@
         <v-flex md2>
           <p>
             <font color="#808080">
-             <br/> Причина генетичного дослідження
+              Причина генетичного дослідження
             </font>
           </p>
           <v-text-field
