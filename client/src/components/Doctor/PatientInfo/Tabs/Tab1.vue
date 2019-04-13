@@ -8,6 +8,7 @@
           <v-text-field
             v-model="generalData.lastname"
             :rules="nameRules"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -16,6 +17,7 @@
           <v-text-field
             v-model="generalData.firstname"
             :rules="nameRules"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -24,6 +26,7 @@
           <v-text-field
             v-model="generalData.middlename"
             :rules="nameRules"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -32,6 +35,7 @@
           <v-text-field
             v-model="generalData.birthdate"
             prepend-icon ="event"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -39,6 +43,7 @@
           <p><font color="#808080">Стать</font></p>
           <v-text-field
             v-model="generalData.Sex"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -51,13 +56,17 @@
           <p><font color="#808080">Країна народження</font></p>
           <v-text-field
             v-model="generalData.Country"
+            disabled
+            prepend-icon ="place"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
+        <v-flex md3>
           <p><font color="#808080">Країна теперішнього проживання</font></p>
           <v-text-field
             v-model="generalData.CountryN"
+            disabled
+            prepend-icon ="place"
           ></v-text-field>
         </v-flex>
       </v-layout>
@@ -65,17 +74,12 @@
 
     <v-container>
       <v-layout>
-      <v-flex md3>
-          <p><font color="#808080">Згода пацієнта на використання особистої інформації</font></p>
-          <v-text-field
-            v-model="generalData.Agreement"
-          ></v-text-field>
-        </v-flex>
-
+      
         <v-flex md2>
           <p><font color="#808080">Родинні зв'язки ПІД</font></p>
           <v-text-field
             v-model="generalData.FamilyTies"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -83,6 +87,15 @@
           <p><font color="#808080">Спорідненість пацієнта</font></p>
           <v-text-field
             v-model="generalData.Affinity"
+            disabled
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex md6>
+          <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
+          <v-text-field
+            v-model="generalData.numberESID"
+            disabled
           ></v-text-field>
         </v-flex>
 
@@ -91,16 +104,17 @@
 
     <v-container>
       <v-layout>
-        <v-flex md4>
-          <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
+        <v-flex md3>
+          <p><font color="#808080">Згода пацієнта на використання особистої інформації</font></p>
           <v-text-field
-            v-model="generalData.numberESID"
+            v-model="generalData.Agreement"
+            disabled
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
     <v-btn @click="submit">Зберегти</v-btn>
-    <v-btn @click="cancel" to="/dashboard">Скасувати</v-btn>
+    <v-btn @click="edit">Редагувати</v-btn>
  </v-form>
 </template>
 
@@ -136,7 +150,10 @@
       save (date) {
         this.$refs.menu.save(date)
       },
-    },
+      edit(){
+        this.generalData.push(this.edit);
+      }
+    }
   }
 </script>
 

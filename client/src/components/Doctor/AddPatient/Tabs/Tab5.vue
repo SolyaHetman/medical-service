@@ -20,6 +20,7 @@
                 v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes
                 :rules="dataRules"
                 label="Введіть дані"
+                prepend-icon ="event"
             ></v-text-field>
           </v-radio-group>
         </v-flex>

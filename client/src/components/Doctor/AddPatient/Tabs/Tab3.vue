@@ -13,6 +13,7 @@
             <v-text-field v-if="pidDiagnosis.damage_genes == 'additional_genes'"
                 v-model= pidDiagnosis.additional_genes
                 label="Введіть дані"
+                prepend-icon ="edit"
                 clearable
             ></v-text-field>
           </v-radio-group>
@@ -25,6 +26,7 @@
             <v-text-field v-if="pidDiagnosis.genetic_research_data == 'yes_data'"
                 v-model= pidDiagnosis.genetic_research_data_input
                 :rules="dataRules"
+                prepend-icon ="event"
                 label="Введіть дані"
             ></v-text-field>
           </v-radio-group>

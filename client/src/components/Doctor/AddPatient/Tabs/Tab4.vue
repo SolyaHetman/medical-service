@@ -12,6 +12,7 @@
             <v-text-field v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'yes'"
                 v-model= stemCellsGeneticTheraty.stem_cells_transplantation_yes
                 label="Введіть дані"
+                prepend-icon ="edit"
             ></v-text-field>
           </v-radio-group>
         </v-flex>
@@ -24,6 +25,7 @@
                 v-model= stemCellsGeneticTheraty.transplantation_data_yes
                 label="Введіть дані"
                 :rules= "dataRules"
+                prepend-icon ="event"
             ></v-text-field>
           </v-radio-group>
         </v-flex>
