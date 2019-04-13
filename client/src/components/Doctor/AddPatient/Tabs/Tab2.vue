@@ -12,6 +12,7 @@
             <v-text-field v-if="pathDagnosis.first_diagnostic_pid_data == 'yes'"
                 v-model= pathDagnosis.first_diagnostic_pid_data_time
                 :rules="dataRules"
+                prepend-icon ="event"
                 label="Введіть дату"
             ></v-text-field>
           </v-radio-group>
@@ -37,10 +38,11 @@
           </v-radio-group>
         </v-flex>
 
-        <v-flex  md2>
+        <v-flex  md3>
           <p>Початок симтомів</p>   
             <v-text-field 
                 v-model= pathDagnosis.symptoms_start_data
+                prepend-icon ="event"
                 label="Введіть дату РР-ММ"
             ></v-text-field>
         </v-flex>

@@ -50,6 +50,13 @@
             </v-card>
           </v-tab-item>
           <!-- End Tab5 -->
+          <!-- Start reviewTab1 -->
+          <v-tab-item>
+            <v-card flat>
+              <reviewTab1 />
+            </v-card>
+          </v-tab-item>
+          <!-- End reviewTab1 -->
         </v-tabs>
       </v-flex>
     </v-layout>
@@ -62,6 +69,7 @@ import Tab2 from "@/components/Doctor/PatientInfo/Tabs/Tab2.vue"
 import Tab3 from "@/components/Doctor/PatientInfo/Tabs/Tab3.vue"
 import Tab4 from "@/components/Doctor/PatientInfo/Tabs/Tab4.vue"
 import Tab5 from "@/components/Doctor/PatientInfo/Tabs/Tab5.vue"
+
 
   export default {
     name: 'GeneralData',

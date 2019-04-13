@@ -52,6 +52,7 @@
             :items="items"
             attach
             label="Країна народження"
+            prepend-icon ="place"
           ></v-select>
         </v-flex>
 
@@ -60,6 +61,7 @@
             :items="items"
             attach
             label="Країна теперішнього проживання"
+            prepend-icon ="place"
           ></v-select>
         </v-flex>
 
@@ -117,6 +119,7 @@
         <v-flex md4 v-if="generalData.radioYesNo == 'yes'">
           <v-text-field
             v-model= generalData.numberESID
+            prepend-icon ="edit"
             label="Номер ESID"
             clearable
           ></v-text-field>
