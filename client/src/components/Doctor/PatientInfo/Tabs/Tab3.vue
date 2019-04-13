@@ -7,6 +7,8 @@
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
             v-model="pidDiagnosis.damage_genes"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -18,12 +20,16 @@
           </p>
           <v-text-field
             v-model="pidDiagnosis.genetic_research_data"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
         <v-flex md3>
           <p><font color="#808080">Метод секвенціонування</font></p>
           <v-text-field
             v-model="pidDiagnosis.sequencing_method"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -36,6 +42,8 @@
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
             v-model="pidDiagnosis.research_lab"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
         <v-flex md2>
@@ -46,13 +54,14 @@
           </p>
           <v-text-field
             v-model="pidDiagnosis.genetic_research_reason"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
       </v-layout>
     </v-container>
-    <v-btn @click="submit">Зберегти</v-btn>
-    <v-btn @click="cancel" to="/dashboard">Скасувати</v-btn>
+    <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
@@ -69,14 +78,6 @@
           genetic_research_reason: "Невідомо",
         } 
       }
-    },
-    methods: {
-      submit () {
-        this.$refs.form.validate()
-      },
-      save (date) {
-        this.$refs.menu.save(date)
-      },
     },
   }
 </script>

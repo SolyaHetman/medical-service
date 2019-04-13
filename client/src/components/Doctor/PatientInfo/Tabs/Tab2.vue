@@ -42,7 +42,6 @@
           <v-text-field
             v-model="pathDiagnosis.symptoms_start_data"
             solo
-            outline
             readonly            
           ></v-text-field>
         </v-flex>
@@ -75,8 +74,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-btn @click="submit">Зберегти</v-btn>
-    <v-btn @click="cancel" to="/dashboard">Скасувати</v-btn>
+    <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
@@ -95,14 +93,6 @@
           IgM: "1.4 г/л",
         } 
       }
-    },
-    methods: {
-      submit () {
-        this.$refs.form.validate()
-      },
-      save (date) {
-        this.$refs.menu.save(date)
-      },
     },
   }
 </script>

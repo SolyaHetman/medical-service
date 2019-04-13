@@ -7,12 +7,16 @@
           <p><font color="#808080">Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.rit_till_today"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
         <v-flex md2>
           <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт:</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -24,7 +28,8 @@
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data"
-            :rules="dataRules"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -32,6 +37,8 @@
           <p><font color="#808080"><br/>Актуальний шлях введення імуноглобуліну:</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.actual_injection_way"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -49,6 +56,8 @@
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.actual_injection_location"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -56,12 +65,16 @@
           <p><font color="#808080">Доза:</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.dosa"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
         <v-flex md2>
           <p><font color="#808080">Інтервал між введенями</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.injection_interval"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -69,6 +82,8 @@
           <p><font color="#808080">Зафіксовані небажані явища</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.recorded_phenomenal"
+            solo
+            readonly
           ></v-text-field>
          </v-flex>
 
@@ -80,12 +95,13 @@
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.patient_weight"
+            solo
+            readonly
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
-	<v-btn @click="submit">Зберегти</v-btn>
-  <v-btn @click="cancel" to="/dashboard">Скасувати</v-btn>
+	<v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
@@ -104,16 +120,7 @@ export default {
                 patient_weight: "80 кг",  
                 recorded_phenomenal: "Так, анафілаксія",  
             },
-           dataRules: [
-                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
-                ], 
         }
     },
-    methods: {
-      submit () {
-        this.$refs.form()
-      },
-    }
-    
 }
 </script>
