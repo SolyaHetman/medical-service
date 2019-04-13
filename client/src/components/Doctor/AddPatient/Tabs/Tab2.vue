@@ -132,7 +132,9 @@
 </template>
 
 <style scoped>
-
+.v-input--selection-controls {
+    margin-top: -9px;
+}
 
 </style>
 

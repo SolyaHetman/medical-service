@@ -61,7 +61,7 @@
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex md3>
+        <v-flex md1>
           <p>Доза:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.dosa" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
@@ -122,7 +122,11 @@
   </v-form>
 </template>
 
-
+<style scoped>
+.v-input--selection-controls {
+    margin-top: -9px;
+}
+</style>
 
 
 <script>

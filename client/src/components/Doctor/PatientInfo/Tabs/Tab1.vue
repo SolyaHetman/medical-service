@@ -8,7 +8,7 @@
           <v-text-field
             v-model="generalData.lastname"
             :rules="nameRules"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -17,7 +17,7 @@
           <v-text-field
             v-model="generalData.firstname"
             :rules="nameRules"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -26,7 +26,7 @@
           <v-text-field
             v-model="generalData.middlename"
             :rules="nameRules"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -35,7 +35,7 @@
           <v-text-field
             v-model="generalData.birthdate"
             prepend-icon ="event"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -43,7 +43,7 @@
           <p><font color="#808080">Стать</font></p>
           <v-text-field
             v-model="generalData.Sex"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -56,7 +56,7 @@
           <p><font color="#808080">Країна народження</font></p>
           <v-text-field
             v-model="generalData.Country"
-            disabled
+            readonly
             prepend-icon ="place"
           ></v-text-field>
         </v-flex>
@@ -65,7 +65,7 @@
           <p><font color="#808080">Країна теперішнього проживання</font></p>
           <v-text-field
             v-model="generalData.CountryN"
-            disabled
+            readonly
             prepend-icon ="place"
           ></v-text-field>
         </v-flex>
@@ -79,7 +79,7 @@
           <p><font color="#808080">Родинні зв'язки ПІД</font></p>
           <v-text-field
             v-model="generalData.FamilyTies"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -87,7 +87,7 @@
           <p><font color="#808080">Спорідненість пацієнта</font></p>
           <v-text-field
             v-model="generalData.Affinity"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -95,7 +95,7 @@
           <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
           <v-text-field
             v-model="generalData.numberESID"
-            disabled
+            readonly
           ></v-text-field>
         </v-flex>
 
@@ -108,15 +108,26 @@
           <p><font color="#808080">Згода пацієнта на використання особистої інформації</font></p>
           <v-text-field
             v-model="generalData.Agreement"
-            disabled
+            readonly
+            solo
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
+
     <v-btn @click="submit">Зберегти</v-btn>
     <v-btn @click="edit">Редагувати</v-btn>
+
  </v-form>
 </template>
+
+<style scoped>
+  .v-form>.container>.layout:only-child {
+    margin: -20px;
+}
+
+</style>
+
 
 <script>
   export default {

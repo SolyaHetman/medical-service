@@ -16,7 +16,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md3>
+        <v-flex md4>
           <p>Дата трансплантації</p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.transplantation_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
@@ -38,12 +38,7 @@
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
           </v-radio-group>
         </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container>
-      <v-layout>
-        <v-flex xs12 md4>
+        <v-flex  md4>
               <p>Генна терапія</p>   
               <v-radio-group v-model=" stemCellsGeneticTheraty.genetic_therapy" :mandatory="false">
                 <v-radio color="#1976d2" label="Так" value="yes"></v-radio>
@@ -56,7 +51,7 @@
                 ></v-text-field>
               </v-radio-group>
             </v-flex>
-    </v-layout>
+      </v-layout>
     </v-container>        
 
     <v-btn @click="submit">Зберегти</v-btn>
@@ -64,6 +59,14 @@
 </template>
 
 
+<style scoped>
+  .v-form>.container>.layout:only-child {
+    margin: -20px;
+}
+.v-input--selection-controls {
+    margin-top: -9px;
+}
+</style>
 
 
 <script>
