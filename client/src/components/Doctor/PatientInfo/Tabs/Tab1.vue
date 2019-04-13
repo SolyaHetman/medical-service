@@ -31,7 +31,6 @@
           <p><font color="#808080">Дата народження</font></p>
           <v-text-field
             v-model="generalData.birthdate"
-            prepend-icon ="event"
           ></v-text-field>
         </v-flex>
 
