@@ -26,7 +26,7 @@
                     <td class="text-center">
                         <v-btn flat icon color="#1976d2" to="/patientinfo">
                             <v-icon >
-                                edit
+                                assignment
                             </v-icon>
                         </v-btn>
                         
@@ -63,7 +63,7 @@ export default {
           { text: 'Прізвище', value: 'lastname',sortable: false },
           { text: 'Ім`я', value: 'firstname' ,sortable: false},
           { text: 'Вік', value: 'age' },
-          { text: 'Actions', value: 'register_number', sortable: false }
+          { text: 'Переглянути', value: 'register_number', sortable: false }
         ],
         patient: [
           {
