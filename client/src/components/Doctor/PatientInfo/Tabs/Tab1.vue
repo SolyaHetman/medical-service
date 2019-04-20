@@ -4,27 +4,18 @@
       <v-layout>
 
         <v-flex md2 >
-          <p><font color="#808080">Ім'я</font></p>
+          <p><font color="#808080">Номер реєстрації</font></p>
           <v-text-field
-            v-model="generalData.lastname"
+            v-model="generalData.numberOfRegistry"
             :rules="nameRules"
             readonly
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
-          <p><font color="#808080">Прізвище</font></p>
+        <v-flex md2 >
+          <p><font color="#808080">ПІБ</font></p>
           <v-text-field
-            v-model="generalData.firstname"
-            :rules="nameRules"
-            readonly
-          ></v-text-field>
-        </v-flex>
-
-        <v-flex md2>
-          <p><font color="#808080">Побатькові</font></p>
-          <v-text-field
-            v-model="generalData.middlename"
+            v-model="generalData.pib"
             :rules="nameRules"
             readonly
           ></v-text-field>
@@ -140,17 +131,16 @@
           (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         ],
         generalData: {
-          firstname:  "Тарас",
-          lastname:   "Кулаков",
-          middlename: "Миколайович",
-          birthdate:  "18-03-2000",
-          Sex:        "Чоловік",
-          Country:    "Білорусь",
-          CountryN:   "Україна",
-          FamilyTies: "По чоловічій лінії",
-          Agreement:  "Згода лише на науковий аналіз",
-          Affinity:   "Невідомо",
-          numberESID: "Невідомо",
+          numberOfRegistry: "ТКМ18032000", 
+          pib:              "Т.К.М.",
+          birthdate:        "18-03-2000",
+          Sex:              "Чоловік",
+          Country:          "Білорусь",
+          CountryN:         "Україна",
+          FamilyTies:       "По чоловічій лінії",
+          Agreement:        "Згода лише на науковий аналіз",
+          Affinity:         "Невідомо",
+          numberESID:       "Невідомо",
         } 
       }
     },

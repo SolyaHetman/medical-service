@@ -19,7 +19,7 @@
         </v-flex>
 
         <v-flex md5>
-          <p>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише напідставі  лабораторних відхилень </p>   
+          <p>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень </p>   
           <v-radio-group v-model=" pathDagnosis.pid_lab_only" :mandatory="false">
             <v-radio color="#1976d2" label="так" value="yes"></v-radio>
             <v-radio color="#1976d2" label="ні" value="no"></v-radio>
@@ -117,6 +117,10 @@
             <v-text-field 
                 v-model= pathDagnosis.IgM
                 label="Рівень IgM"
+            ></v-text-field>
+            <v-text-field 
+                v-model= pathDagnosis.IgE
+                label="Рівень IgE"
             ></v-text-field>
         </v-flex>
                 

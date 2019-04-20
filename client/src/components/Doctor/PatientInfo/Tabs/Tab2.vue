@@ -15,7 +15,7 @@
         <v-flex md6>
           <p>
           	<font color="#808080">
-          		Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише напідставі лабораторних відхилень
+          		Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі лабораторних відхилень
           	</font>
           </p>
           <v-text-field
@@ -72,6 +72,14 @@
             readonly
           ></v-text-field>
         </v-flex>
+        <v-flex md2>
+          <p><font color="#808080">IgE</font></p>
+          <v-text-field
+            v-model="pathDiagnosis.IgE"
+            solo
+            readonly
+          ></v-text-field>
+        </v-flex>
       </v-layout>
     </v-container>
     <v-btn @click="add" to="/newpatient">Додати</v-btn>
@@ -91,6 +99,7 @@
           IgG: "9.2 г/л",
           IgA: "2 г/л",
           IgM: "1.4 г/л",
+          IgE: "80 мо/мл",
         } 
       }
     },
