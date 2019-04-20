@@ -44,7 +44,7 @@
     <v-container>
       <v-layout>
         <v-flex md2 >
-          <p><font color="#808080">Країна народження</font></p>
+          <p><font color="#808080">Країна та місто народження</font></p>
           <v-text-field
             v-model="generalData.Country"
             readonly
@@ -53,7 +53,7 @@
         </v-flex>
 
         <v-flex md3>
-          <p><font color="#808080">Країна теперішнього проживання</font></p>
+          <p><font color="#808080">Країна та місто теперішнього проживання</font></p>
           <v-text-field
             v-model="generalData.CountryN"
             readonly
@@ -135,8 +135,8 @@
           pib:              "Т.К.М.",
           birthdate:        "18-03-2000",
           Sex:              "Чоловік",
-          Country:          "Білорусь",
-          CountryN:         "Україна",
+          Country:          "Білорусь, Мінськ",
+          CountryN:         "Україна, Львів",
           FamilyTies:       "По чоловічій лінії",
           Agreement:        "Згода лише на науковий аналіз",
           Affinity:         "Невідомо",

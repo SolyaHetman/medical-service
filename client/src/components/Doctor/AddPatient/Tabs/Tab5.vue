@@ -50,7 +50,7 @@
             <v-radio color="#1976d2" label="Дом`язово" value="domuscle"></v-radio>
           </v-radio-group>
           </v-flex>
-          <v-flex md4>
+          <v-flex md3>
           <p>Актуальне місце введення імуноглобуліну:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.actual_injection_location" :mandatory="false">
             <v-radio color="#1976d2" label="Вдома" value="at_home"></v-radio>

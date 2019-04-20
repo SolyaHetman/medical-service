@@ -108,19 +108,19 @@
           <p>Вкажіть наступні дані</p>   
             <v-text-field 
                 v-model= pathDagnosis.IgG
-                label="Рівень IgG"
+                label="Рівень IgG(г/л)"
             ></v-text-field>
             <v-text-field 
                 v-model= pathDagnosis.IgA
-                label="Рівень IgA"
+                label="Рівень IgA(г/л)"
             ></v-text-field>
             <v-text-field 
                 v-model= pathDagnosis.IgM
-                label="Рівень IgM"
+                label="Рівень IgM(г/л)"
             ></v-text-field>
             <v-text-field 
                 v-model= pathDagnosis.IgE
-                label="Рівень IgE"
+                label="Рівень IgE(мо/мл)"
             ></v-text-field>
         </v-flex>
                 
