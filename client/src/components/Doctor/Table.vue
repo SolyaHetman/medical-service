@@ -20,8 +20,7 @@
                 >
                     <template v-slot:items="props">
                     <td>{{ props.item.register_number }}</td>
-                    <td>{{ props.item.lastname }}</td>
-                    <td>{{ props.item.firstname }}</td>
+                    <td>{{ props.item.pib }}</td>
                     <td>{{ props.item.age }}</td>
                     <td class="text-center">
                         <v-btn flat icon color="#1976d2" to="/patientinfo">
@@ -60,34 +59,29 @@ export default {
             sortable: false,
             value: 'register_number'
           },
-          { text: 'Прізвище', value: 'lastname',sortable: false },
-          { text: 'Ім`я', value: 'firstname' ,sortable: false},
+          { text: 'ПІБ', value: 'pib',sortable: false },
           { text: 'Вік', value: 'age' },
           { text: 'Переглянути', value: 'register_number', sortable: false }
         ],
         patient: [
           {
             register_number: 'АТМ18032000',
-            firstname: 'Тарас',
-            lastname: 'Кулаков',
+            pib: 'А.Т.М.',
             age : 19,
           },  
           {
-            register_number: 'ЩТМ18032000',
-            firstname: 'Василь',
-            lastname: 'Кулаков',
+            register_number: 'КВМ18032000',
+            pib: 'К.В.М.',
             age : 20,
           }, 
           {
-            register_number: 'КТМ18032000',
-            firstname: 'Олеся',
-            lastname: 'Кулакова',
+            register_number: 'КОС18032000',
+            pib: 'К.О.С.',
             age : 49,
           }, 
           {
             register_number: 'КТМ18032000',
-            firstname: 'Тарас',
-            lastname: 'Кулаков',
+            pib: 'К.Т.М.',
             age : 59,
           },         
         ]
