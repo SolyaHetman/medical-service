@@ -16,19 +16,29 @@ npm run serve
 ```
 ---------------------------
 ### TO DO LIST
-- [*] Genetare Vue.js project
-- [*] Connect Bootstrap 4
-- [ ] Create Basic Routes
-- [ ] Create Basic Views
-- [ ] Create Basic Components
+- [x] Genetare Vue.js project
+- [x] Connect Bootstrap 4
+- [x] Create Basic Routes
+- [x] Create Basic Views
+- [x] Create Basic Components
 
 #### Login Page
-- [ ] Create View For Login
+- [x] Create View For Login
 
 #### Doctor Dashboard
-- [ ] Create Dashboard view
-- [ ] Add html markup
+- [x] Create Dashboard view
+- [x] Add html markup
+- [ ] Realize the search for certain data
 
-### Add new patient
-- [ ] Create route
-- [ ] Add html markup
+#### Add new patient
+- [x] Create Add patient view
+- [x] Create route
+- [x] Add form
+
+#### Patient cabinet
+- [x] Create Add patient view
+- [x] Create route
+- [x] Add html markup
+- [ ] Realize method of edit
+- [ ] Realize method of add information
+  
