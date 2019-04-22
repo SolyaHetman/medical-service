@@ -116,15 +116,12 @@
   .v-form>.container>.layout:only-child {
     margin: -20px;
 }
-.v-input--selection-controls {
-    margin-top: -9px;
-}
-
 </style>
 
 
 
 <script>
+  import style from './tab.css'
   export default {
     data () {
       return {
