@@ -127,22 +127,13 @@
       </v-layout>
     </v-container>
 
-
-  
-
-
     <v-btn @click="submit">Зберегти</v-btn>
   </v-form>
 </template>
 
-<style scoped>
-.v-input--selection-controls {
-    margin-top: -9px;
-}
-
-</style>
 
 <script>
+import style from './tab.css'
 export default {
     data(){
         return{
