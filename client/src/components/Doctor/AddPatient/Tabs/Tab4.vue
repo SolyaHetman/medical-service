@@ -47,7 +47,8 @@
                 <v-text-field v-if="stemCellsGeneticTheraty.genetic_therapy == 'yes'"
                     v-model= stemCellsGeneticTheraty.genetic_therapy_yes
                     :rules= "dataRules"
-                    label="Введіть дані"
+                    label="Введіть дату"
+                    prepend-icon ="event"
                 ></v-text-field>
               </v-radio-group>
             </v-flex>

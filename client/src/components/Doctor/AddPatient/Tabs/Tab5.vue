@@ -12,7 +12,7 @@
           </v-radio-group>
         </v-flex>
         <v-flex md3>
-          <p>Дата першого введення:</p>   
+          <p>Дата введення:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
@@ -29,12 +29,11 @@
           <v-radio-group v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
-            <v-select v-if="replacementImunoqlobulinTherary.imunoqlobulin_producer == 'known'"
+            <v-text-field v-if="replacementImunoqlobulinTherary.imunoqlobulin_producer == 'known'"
                 v-model= replacementImunoqlobulinTherary.imunoqlobulin_producer_select
-                label="Виберіть"
-                :items="items"
-                attach
-            ></v-select>
+                label="Введіть"
+                prepend-icon ="create"
+            ></v-text-field>
           </v-radio-group>
         </v-flex>
     </v-layout>
@@ -61,16 +60,25 @@
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex md1>
+        <v-flex md2>
           <p>Доза:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.dosa" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
             <v-text-field v-if="replacementImunoqlobulinTherary.dosa == 'known'"
                 v-model= replacementImunoqlobulinTherary.do_yes
-                label="Введіть дозу мг/кг ваги"
+                label="Доза мг/кг ваги"
+                prepend-icon ="create"
             ></v-text-field>
           </v-radio-group>
+        </v-flex>
+        <v-flex md3>
+        <p>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</p>   
+            <v-text-field 
+                v-model= replacementImunoqlobulinTherary.IgG
+                label="Введіть IgG "
+                prepend-icon ="create"
+            ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>   
@@ -111,6 +119,7 @@
             <v-text-field v-if="replacementImunoqlobulinTherary.recorded_phenomenal_select == 'Інше,вказати'"
                 v-model= replacementImunoqlobulinTherary.recorded_phenomenal_select_enter
                 label="Введіть інформацію"
+                prepend-icon ="create"
             ></v-text-field>
           </v-radio-group>
         </v-flex>
@@ -132,6 +141,7 @@ export default {
                 first_imunoqlobulin_injection_data: null,
                 first_imunoqlobulin_injection_data_yes: null,  
                 imunoqlobulin_producer: null,
+                IgG: null,
                 imunoqlobulin_producer_select: null,   
                 actual_injection_way: null,  
                 actual_injection_location: null,  

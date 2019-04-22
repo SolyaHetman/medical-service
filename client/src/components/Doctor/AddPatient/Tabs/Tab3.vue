@@ -50,12 +50,11 @@
 
         <v-flex xs12 md4>
           <p>Лабораторія,яка проводила генетичні дослідження</p>  
-          <v-select
+          <v-text-field
                 v-model="pidDiagnosis.research_lab"
-                :items="items"
-                attach
-                label="Виберіть лабораторію"
-          ></v-select>
+                label="Введіть лабораторію"
+                prepend-icon ="create"
+          ></v-text-field>
         </v-flex>
         <v-flex md5>
           <p>Причина генетичного дослідження</p>   
@@ -90,7 +89,6 @@ export default {
                 genetic_research_reason: null,
                 
             },
-            items: ['1', '2', '3'],
             dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
                 ],

@@ -5,32 +5,21 @@
 
         <v-flex xs12 md4 >
           <v-text-field
-            v-model="generalData.lastname"
+            v-model="generalData.pid"
             :rules="nameRules"
             :counter="20"
-            label="Прізвище"
+            label="ПIД"
+            prepend-icon ="create"
             required
           ></v-text-field>
         </v-flex>
-
-        <v-flex xs12 md4>
+        <v-flex md4>
           <v-text-field
-            v-model="generalData.firstname"
-            :rules="nameRules"
-            :counter="20"
-            label="Ім'я"
-            required
-          ></v-text-field>
-        </v-flex>
-
-        <v-flex xs12 md4>
-          <v-text-field
-            v-model="generalData.middlename"
-            :rules="nameRules"
-            :counter="20"
-            label="Побатькові"
-            required
-          ></v-text-field>
+            v-model="generalData.date"
+            label="Дата народження"
+            :rules="dataRules"
+            prepend-icon ="event"
+            ></v-text-field>
         </v-flex>
 
       </v-layout>
@@ -39,30 +28,21 @@
     <v-container>
       <v-layout>
         <v-flex md4>
-            <v-text-field
-              v-model="date"
-              label="Дата народження"
-              :rules="dataRules"
-              prepend-icon ="event"
-            ></v-text-field>
+          <v-autocomplete
+            :items="items"
+            attach
+            label="Місто народження"
+            prepend-icon ="place"
+          ></v-autocomplete>
         </v-flex>
 
         <v-flex md4>
-          <v-select
+          <v-autocomplete
             :items="items"
             attach
-            label="Країна народження"
+            label="Місто теперішнього проживання"
             prepend-icon ="place"
-          ></v-select>
-        </v-flex>
-
-        <v-flex md4>
-          <v-select
-            :items="items"
-            attach
-            label="Країна теперішнього проживання"
-            prepend-icon ="place"
-          ></v-select>
+          ></v-autocomplete>
         </v-flex>
 
       </v-layout>
@@ -159,11 +139,10 @@
         dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
                 ],
-        items: ['Львів', 'Київ', 'Вінниця', 'Рівне'],
+        items: ['Львів,львівська область', 'Київ,київська область', 'Вінниця,вінницька область', ],
         generalData: {
-          firstname: null,
-          lastname: null,
-          middlename: null,
+          pid: null,
+          date: null,
           radioSex: null,
           radioYesNo: null,
           radiosAgreement: null,
@@ -179,8 +158,8 @@
       },
       save (date) {
         this.$refs.menu.save(date)
-      },
-    },
+      }
+    }
   }
 </script>
 

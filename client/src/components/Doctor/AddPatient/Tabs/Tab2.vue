@@ -101,6 +101,7 @@
             <v-text-field v-if="pathDagnosis.symptoms_start.includes('another')"
                 v-model= pathDagnosis.symptoms_start_another 
                 label="Введіть інформацію"
+                prepend-icon ="create"
             ></v-text-field>
         </v-flex>
 
