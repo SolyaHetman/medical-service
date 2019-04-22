@@ -3,15 +3,28 @@
         <v-flex md10 class="mx-auto">
             <v-card>
                 <v-card-title>
-                    <h1>Пацієнти</h1>
-                    <v-spacer></v-spacer>
-                    <v-text-field
-                      v-model="search"
-                      append-icon="search"
-                      label="Пошук"
-                      single-line
-                      hide-details
-                    ></v-text-field>
+                    <v-flex  md2>
+                        <v-select
+                          v-model="search"
+                          label="Пошук"
+                          attach
+                        ></v-select>
+                     </v-flex> 
+                     <v-flex  md2>
+                       <v-select
+                          v-model="searchage"
+                          label="Виберіть вік"
+                          attach
+                        ></v-select>
+                     </v-flex> 
+                     <v-flex  md3>
+                        <v-select
+                          v-model="searchdata"
+                          label="Виберіть дату введення "
+                          attach
+                        ></v-select>
+                     </v-flex> 
+                                           
                 </v-card-title>
                 <v-data-table class="table table-striped"
                     :headers="headers"
