@@ -53,7 +53,7 @@
       <v-layout row wrap>
         <v-flex xs12 md4>
           <p>Стать</p>
-          <v-radio-group v-model="generalData.radioSex" :mandatory="false">
+          <v-radio-group v-model="generalData.sex" :mandatory="false">
             <v-radio color="#1976d2" label="жіноча" value="female"></v-radio>
             <v-radio color="#1976d2" label="чоловіча" value="male"></v-radio>
           </v-radio-group>
@@ -70,7 +70,7 @@
 
         <v-flex xs12 md4>
           <p>Родинні зв'язки ПІД</p>   
-          <v-radio-group v-model="generalData.radiosFamilyTies" :mandatory="false">
+          <v-radio-group v-model="generalData.family_ties_pid" :mandatory="false">
             <v-radio color="#1976d2" label="По чоловічій лінії" value="yes2"></v-radio>
             <v-radio color="#1976d2" label="По жіночій лінії" value="no2"></v-radio>
             <v-radio color="#1976d2" label="невідомо" value="unknown2"></v-radio>
@@ -143,10 +143,10 @@
         generalData: {
           pid: null,
           date: null,
-          radioSex: null,
+          sex: null,
           radioYesNo: null,
           radiosAgreement: null,
-          radiosFamilyTies:null,
+          family_ties_pid:null,
           radiosAffinity: null,
           numberESID:null,
         } 
