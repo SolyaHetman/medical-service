@@ -1,58 +1,41 @@
 {
-    "users": [{
-            "first_diagnostic_pid_dat": null,
-            "first_diagnostic_pid_data_time": null,
-            "pid_lab_only": "Ні",
-            "pid_select": null,
-            "symptoms_start": [
-                "Інфекції"
-            ],
-            "symptoms_start_another": null,
-            "IgG": "w",
-            "IgA": "3",
-            "IgM": "1",
-            "first_diagnostic_pid_data": "Невідомо",
-            "symptoms_start_data": "234",
-            "IgE": "3",
-            "id": 9
-        },
-        {
-            "damage_genes": "no_mutations_detected",
-            "additional_genes": null,
-            "genetic_research_data": "no_data",
-            "sequencing_method": "sequencing_gene",
-            "research_lab": "sxcsdsa",
-            "genetic_research_reason": "prenatal diagnosis",
-            "id": 10
-        },
-        {
-            "damage_genes": "Додаткові гени",
-            "additional_genes": "sdadada",
-            "genetic_research_data": "Відомо",
-            "sequencing_method": "Секвенціонування гена",
-            "research_lab": "sxcsdsasAS",
-            "genetic_research_reason": "Сімейний скринінг",
-            "genetic_research_data_input": "29-03-2000",
-            "id": 11
-        },
-        {
-            "rit_till_today": "Так",
-            "first_imunoqlobulin_injection_data": "Невідомо",
-            "first_imunoqlobulin_injection_data_yes": null,
-            "imunoqlobulin_producer": "Відомо",
-            "IgG": "asa",
-            "imunoqlobulin_producer_select": "saas",
-            "actual_injection_way": "Довенно",
-            "actual_injection_location": "Вдома",
-            "dosa": "Відомо",
-            "injection_interval": "Так",
-            "patient_weight": "Відомо",
-            "patient_weight_yes": "sas",
-            "recorded_phenomenal": "Так",
-            "recorded_phenomenal_select": "Анафілаксія",
-            "recorded_phenomenal_select_enter": null,
-            "do_yes": "asas",
-            "id": 12
-        }
-    ]
+  "users": [
+    {
+      "pid": "asd",
+      "date": "12-12-1991",
+      "homeland": "Львів,львівська область",
+      "city": "Львів,львівська область",
+      "sex": "Жіноча",
+      "radioYesNo": "Ні",
+      "radiosAgreement": "Цілковита",
+      "family_ties_pid": "По чоловічій лінії",
+      "radiosAffinity": "Ні",
+      "numberESID": null,
+      "first_diagnostic_pid_dat": null,
+      "first_diagnostic_pid_data_time": null,
+      "pid_lab_only": "Ні",
+      "pid_select": null,
+      "symptoms_start": [
+        "Інфекції"
+      ],
+      "symptoms_start_another": null,
+      "IgG": "1",
+      "IgA": "2",
+      "IgM": "3",
+      "IgE": "4",
+      "first_diagnostic_pid_data": "Невідомо",
+      "damage_genes": "Генетичне дослідження проводилось,мутацій не виявлено",
+      "genetic_research_data": "Невідомо",
+      "sequencing_method": "Секвенціонування гена",
+      "research_lab": "12",
+      "genetic_research_reason": "Специфічні клінічні симптоми",
+      "stem_cells_transplantation": "no",
+      "stem_cells_transplantation_yes": null,
+      "transplantation_data": "unknown",
+      "transplantation_data_yes": null,
+      "CB14_soure": "peripheral_blood",
+      "genetic_therapy": "no",
+      "id": 1
+    }
+  ]
 }

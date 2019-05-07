@@ -134,6 +134,7 @@
 <script>
 import style from './tab.css'
 import axios from 'axios'
+import EventBus from '@/event-bus';
 export default {
     data(){
         return{
@@ -169,11 +170,7 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        const url = 'http://localhost:3000/users';
-
-        axios.post(url, this.replacementImunoqlobulinTherary)
-          .then(res =>console.log('Saved2!!!'))
-          .catch(err => console.log(err))
+        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherar);
       }
     }
     

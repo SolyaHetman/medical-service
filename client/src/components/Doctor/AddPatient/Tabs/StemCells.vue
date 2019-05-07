@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" @submit.prevent="savePatient">
     <v-container>
       <v-layout>
 
@@ -55,13 +55,14 @@
       </v-layout>
     </v-container>        
 
-    <v-btn @click="submit">Зберегти</v-btn>
+    <v-btn type="submit">Зберегти</v-btn>
   </v-form>
 </template>
 
 
 <script>
 import style from './tab.css'
+import EventBus from '@/event-bus';
 export default {
     data(){
         return{
@@ -82,6 +83,13 @@ export default {
       submit () {
         this.$refs.form()
       },
+      save (date) {
+        this.$refs.menu.save(date)
+      },
+      savePatient: function () {
+        EventBus.$emit('completedForm', this.stemCellsGeneticTheraty);
+      }
+      
     }
     
 }

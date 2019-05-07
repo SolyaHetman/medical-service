@@ -125,6 +125,8 @@
 <script>
   import style from './tab.css';
   import axios from 'axios';
+  import EventBus from '@/event-bus';
+  
   export default {
     data () {
       return {
@@ -162,11 +164,13 @@
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        const url = 'http://localhost:3000/users';
+      //   const url = 'http://localhost:3000/users';
 
-        axios.post(url, this.generalData)
-          .then(res =>console.log('Saved!!!'))
-          .catch(err => console.log(err))
+        EventBus.$emit('completedForm', this.generalData);  
+
+        // axios.post(url, this.generalData)
+          // .then(res =>console.log('Saved!!!'))
+          // .catch(err => console.log(err))
       }
     }
   }

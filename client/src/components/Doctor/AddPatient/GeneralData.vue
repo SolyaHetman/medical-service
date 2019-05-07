@@ -62,6 +62,24 @@ import PathDig from "@/components/Doctor/AddPatient/Tabs/PathDig.vue"
 import DiagnosiImmunodeficiency from "@/components/Doctor/AddPatient/Tabs/DiagnosiImmunodeficiency.vue"
 import StemCells from "@/components/Doctor/AddPatient/Tabs/StemCells.vue"
 import ReplacementIm  from "@/components/Doctor/AddPatient/Tabs/ReplacementIm.vue"
+import EventBus from '@/event-bus'
+import axios from 'axios'
+
+let tempObj = new Object();
+
+  EventBus.$on('completedForm', function (payLoad) {
+    tempObj = Object.assign(tempObj, payLoad);
+    console.log(tempObj);
+  });
+
+  EventBus.$on('postToDB', function (payLoad) {
+    tempObj = Object.assign(tempObj, payLoad);
+    const url = 'http://localhost:3000/users';
+    axios.post(url, tempObj)
+      .then(res =>console.log('Saved'))
+      .catch(err => console.log(err))
+  });
+
 
   export default {
     name: 'GeneralData',
@@ -75,6 +93,7 @@ import ReplacementIm  from "@/components/Doctor/AddPatient/Tabs/ReplacementIm.vu
     data() {
       return {
         active: '',
+        testObj: {},
         tabs: [
           {
             title:'Загальні дані',
@@ -94,5 +113,6 @@ import ReplacementIm  from "@/components/Doctor/AddPatient/Tabs/ReplacementIm.vu
         ]
       }
     }
+
   }
 </script>

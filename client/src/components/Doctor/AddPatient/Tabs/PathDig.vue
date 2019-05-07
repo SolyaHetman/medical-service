@@ -136,27 +136,28 @@
 <script>
 import style from './tab.css'
 import axios from 'axios';
+import EventBus from '@/event-bus';
+
 export default {
     data(){
-        return{
-            pathDagnosis:{
-                first_diagnostic_pid_dat: null,
-                first_diagnostic_pid_data_time: null,
-                pid_lab_only: null,
-                pid_select: null,
-                symptoms_start: [],
-                symptoms_start_another: null,
-                IgG: null,
-                IgA: null,
-                IgM: null,
-                IgE: null
-            },
-            dataRules: [
-                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
-                ],
-            items: ['Лімфопенія', 'Нейтропенія', 'Тромбоцитопенія', 'Анемія','Монцитопенія','Підвищений рівень IgE','Гіпогамаглобулінемія','Інше'],
- 
-        }
+      return {
+        pathDagnosis: {
+          first_diagnostic_pid_dat: null,
+          first_diagnostic_pid_data_time: null,
+          pid_lab_only: null,
+          pid_select: null,
+          symptoms_start: [],
+          symptoms_start_another: null,
+          IgG: null,
+          IgA: null,
+          IgM: null,
+          IgE: null
+        },
+        dataRules: [
+          (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+        ],
+        items: ['Лімфопенія', 'Нейтропенія', 'Тромбоцитопенія', 'Анемія','Монцитопенія','Підвищений рівень IgE','Гіпогамаглобулінемія','Інше'],
+      }
     },
     methods: {
       submit () {
@@ -166,11 +167,7 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        const url = 'http://localhost:3000/users';
-
-        axios.post(url, this.pathDagnosis)
-          .then(res =>console.log('Saved2!!!'))
-          .catch(err => console.log(err))
+        EventBus.$emit('completedForm', this.pathDagnosis);
       }
     }
     
