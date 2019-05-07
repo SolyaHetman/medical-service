@@ -18,35 +18,35 @@
           <!-- Start Tab1 -->
           <v-tab-item>
             <v-card flat>
-              <Tab1 />
+              <General />
             </v-card>
           </v-tab-item>
           <!-- End Tab1 -->
           <!-- Start Tab2 -->
           <v-tab-item>
             <v-card flat>
-              <Tab2 />
+              <PathDig />
             </v-card>
           </v-tab-item>
           <!-- End Tab2 -->
           <!-- Start Tab3 -->
           <v-tab-item>
             <v-card flat>
-              <Tab3 />
+              <DiagnosiImmunodeficiency />
             </v-card>
           </v-tab-item>
           <!-- End Tab3 -->
           <!-- Start Tab4 -->
           <v-tab-item>
             <v-card flat>
-              <Tab4 />
+              <StemCells />
             </v-card>
           </v-tab-item>
           <!-- End Tab4 -->
           <!-- Start Tab5 -->
           <v-tab-item>
             <v-card flat>
-              <Tab5 />
+              <ReplacementIm />
             </v-card>
           </v-tab-item>
           <!-- End Tab5 -->
@@ -57,20 +57,20 @@
 </template>
 
 <script>
-import Tab1 from "@/components/Doctor/AddPatient/Tabs/Tab1.vue"
-import Tab2 from "@/components/Doctor/AddPatient/Tabs/Tab2.vue"
-import Tab3 from "@/components/Doctor/AddPatient/Tabs/Tab3.vue"
-import Tab4 from "@/components/Doctor/AddPatient/Tabs/Tab4.vue"
-import Tab5 from "@/components/Doctor/AddPatient/Tabs/Tab5.vue"
+import General from "@/components/Doctor/AddPatient/Tabs/General.vue"
+import PathDig from "@/components/Doctor/AddPatient/Tabs/PathDig.vue"
+import DiagnosiImmunodeficiency from "@/components/Doctor/AddPatient/Tabs/DiagnosiImmunodeficiency.vue"
+import StemCells from "@/components/Doctor/AddPatient/Tabs/StemCells.vue"
+import ReplacementIm  from "@/components/Doctor/AddPatient/Tabs/ReplacementIm.vue"
 
   export default {
     name: 'GeneralData',
     components: {
-      Tab1,
-      Tab2,
-      Tab3,
-      Tab4,
-      Tab5
+      General,
+      PathDig,
+      DiagnosiImmunodeficiency,
+      StemCells,
+      ReplacementIm
     },
     data() {
       return {

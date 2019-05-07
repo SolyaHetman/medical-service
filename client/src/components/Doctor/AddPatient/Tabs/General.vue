@@ -132,7 +132,7 @@
         menu: null,
         date: null,
         nameRules: [
-          (v) => !!v || 'Name is required',
+          (v) => !!v || 'Введіть дані',
           (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
           (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
         ],

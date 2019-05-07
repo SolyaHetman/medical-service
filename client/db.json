@@ -1,61 +1,58 @@
 {
-  "users": [
-    {
-      "pid": "asd",
-      "date": "12-12-1996",
-      "sex": "male",
-      "radioYesNo": "no",
-      "radiosAgreement": "complete",
-      "family_ties_pid": "no2",
-      "radiosAffinity": "no1",
-      "numberESID": null,
-      "id": 1
-    },
-    {
-      "pid": "Test User",
-      "date": "03-06-1196",
-      "sex": "male",
-      "radioYesNo": "no",
-      "radiosAgreement": "onlyresearch",
-      "family_ties_pid": "no2",
-      "radiosAffinity": "no1",
-      "numberESID": null,
-      "id": 2
-    },
-    {
-      "pid": "Test User",
-      "date": "03-06-1196",
-      "sex": "male",
-      "radioYesNo": "no",
-      "radiosAgreement": "onlyresearch",
-      "family_ties_pid": "no2",
-      "radiosAffinity": "no1",
-      "numberESID": null,
-      "id": 3
-    },
-    {
-      "pid": "solomia",
-      "date": "29-03-2014",
-      "sex": "Жіноча",
-      "radioYesNo": "Так",
-      "radiosAgreement": "Цілковита",
-      "family_ties_pid": "По жіночій лінії",
-      "radiosAffinity": "Так",
-      "numberESID": "2356",
-      "id": 4
-    },
-    {
-      "pid": "ddd",
-      "date": "29-03-2000",
-      "homeland": "Львів,львівська область",
-      "city": "Львів,львівська область",
-      "sex": "Жіноча",
-      "radioYesNo": "Так",
-      "radiosAgreement": "Цілковита",
-      "family_ties_pid": "Невідомо",
-      "radiosAffinity": "Можливо",
-      "numberESID": "12",
-      "id": 5
-    }
-  ]
+    "users": [{
+            "first_diagnostic_pid_dat": null,
+            "first_diagnostic_pid_data_time": null,
+            "pid_lab_only": "Ні",
+            "pid_select": null,
+            "symptoms_start": [
+                "Інфекції"
+            ],
+            "symptoms_start_another": null,
+            "IgG": "w",
+            "IgA": "3",
+            "IgM": "1",
+            "first_diagnostic_pid_data": "Невідомо",
+            "symptoms_start_data": "234",
+            "IgE": "3",
+            "id": 9
+        },
+        {
+            "damage_genes": "no_mutations_detected",
+            "additional_genes": null,
+            "genetic_research_data": "no_data",
+            "sequencing_method": "sequencing_gene",
+            "research_lab": "sxcsdsa",
+            "genetic_research_reason": "prenatal diagnosis",
+            "id": 10
+        },
+        {
+            "damage_genes": "Додаткові гени",
+            "additional_genes": "sdadada",
+            "genetic_research_data": "Відомо",
+            "sequencing_method": "Секвенціонування гена",
+            "research_lab": "sxcsdsasAS",
+            "genetic_research_reason": "Сімейний скринінг",
+            "genetic_research_data_input": "29-03-2000",
+            "id": 11
+        },
+        {
+            "rit_till_today": "Так",
+            "first_imunoqlobulin_injection_data": "Невідомо",
+            "first_imunoqlobulin_injection_data_yes": null,
+            "imunoqlobulin_producer": "Відомо",
+            "IgG": "asa",
+            "imunoqlobulin_producer_select": "saas",
+            "actual_injection_way": "Довенно",
+            "actual_injection_location": "Вдома",
+            "dosa": "Відомо",
+            "injection_interval": "Так",
+            "patient_weight": "Відомо",
+            "patient_weight_yes": "sas",
+            "recorded_phenomenal": "Так",
+            "recorded_phenomenal_select": "Анафілаксія",
+            "recorded_phenomenal_select_enter": null,
+            "do_yes": "asas",
+            "id": 12
+        }
+    ]
 }

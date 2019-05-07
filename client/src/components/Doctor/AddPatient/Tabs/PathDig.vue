@@ -1,15 +1,15 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" @submit.prevent="savePatient">
     <v-container>
       <v-layout>
 
         <v-flex xs12 md4>
           <p>Дата вперше встановленого клінічного діагнозу первинного імунодефіцину</p>   
           <v-radio-group v-model=" pathDagnosis.first_diagnostic_pid_data" :mandatory="false">
-            <v-radio color="#1976d2" label="відомо" value="yes"></v-radio>
-            <v-radio color="#1976d2" label="невідомо" value="no"></v-radio>
-            <v-radio color="#1976d2" label="є лише генетичний анамнез" value="anamnesis"></v-radio>
-            <v-text-field v-if="pathDagnosis.first_diagnostic_pid_data == 'yes'"
+            <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-radio color="#1976d2" label="Є лише генетичний анамнез" value="Є лише генетичний анамнез"></v-radio>
+            <v-text-field v-if="pathDagnosis.first_diagnostic_pid_data == 'Відомо'"
                 v-model= pathDagnosis.first_diagnostic_pid_data_time
                 :rules="dataRules"
                 prepend-icon ="event"
@@ -21,16 +21,16 @@
         <v-flex md5>
           <p>Чи був встановлений діагноз ПІД без наявності ПІД-асоційованих симтомів і лише на підставі  лабораторних відхилень </p>   
           <v-radio-group v-model=" pathDagnosis.pid_lab_only" :mandatory="false">
-            <v-radio color="#1976d2" label="так" value="yes"></v-radio>
-            <v-radio color="#1976d2" label="ні" value="no"></v-radio>
-            <v-radio color="#1976d2" label="невідомо" value="unknown"></v-radio>
-            <v-select v-if="pathDagnosis.pid_lab_only == 'yes'"
+            <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
+            <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-select v-if="pathDagnosis.pid_lab_only == 'Так'"
                 v-model="pathDagnosis.pid_select"
                 :items="items"
                 attach
                 label="Виберіть"
             ></v-select>
-            <v-text-field v-if="(pathDagnosis.pid_select == 'Інше') & (pathDagnosis.pid_lab_only == 'yes')"
+            <v-text-field v-if="(pathDagnosis.pid_select == 'Інше') & (pathDagnosis.pid_lab_only == 'Так')"
                 v-model= pathDagnosis.pid_select_enter
                 label="Введіть інформацію"
                 clearable
@@ -58,38 +58,38 @@
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Інфекції"
-              value="infection"
+              value="Інфекції"
               color="#1976d2" 
               clq
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Дисрегуляція імунної відповіді"
-              value="immune_response"
+              value="Дисрегуляція імунної відповіді"
               color="#1976d2" 
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Малігнізація (онконастороженість)"
-              value="onconsumption"
+              value="Малігнізація (онконастороженість)"
               color="#1976d2" 
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Синдромальні маніфестації"
-              value="syndromal_manifestations"
+              value="Синдромальні маніфестації"
               color="#1976d2" 
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Перші симтоми невідомі"
-              value="no_first_symptoms"
+              value="Перші симтоми невідомі"
               color="#1976d2" 
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Відсутність ПІД-асоційованих симтомів"
-              value="no_pid_symptoms"
+              value="Відсутність ПІД-асоційованих симтомів"
               color="#1976d2" 
             ></v-checkbox>
             <v-checkbox  
@@ -128,13 +128,14 @@
       </v-layout>
     </v-container>
 
-    <v-btn @click="submit">Зберегти</v-btn>
+    <v-btn type="submit">Зберегти</v-btn>
   </v-form>
 </template>
 
 
 <script>
 import style from './tab.css'
+import axios from 'axios';
 export default {
     data(){
         return{
@@ -148,6 +149,7 @@ export default {
                 IgG: null,
                 IgA: null,
                 IgM: null,
+                IgE: null
             },
             dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
@@ -160,6 +162,16 @@ export default {
       submit () {
         this.$refs.form()
       },
+      save (date) {
+        this.$refs.menu.save(date)
+      },
+      savePatient: function () {
+        const url = 'http://localhost:3000/users';
+
+        axios.post(url, this.pathDagnosis)
+          .then(res =>console.log('Saved2!!!'))
+          .catch(err => console.log(err))
+      }
     }
     
 }
