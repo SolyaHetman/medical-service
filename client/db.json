@@ -1,9 +1,61 @@
 {
-    "posts": [
-        { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-        { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+  "users": [
+    {
+      "pid": "asd",
+      "date": "12-12-1996",
+      "sex": "male",
+      "radioYesNo": "no",
+      "radiosAgreement": "complete",
+      "family_ties_pid": "no2",
+      "radiosAffinity": "no1",
+      "numberESID": null,
+      "id": 1
+    },
+    {
+      "pid": "Test User",
+      "date": "03-06-1196",
+      "sex": "male",
+      "radioYesNo": "no",
+      "radiosAgreement": "onlyresearch",
+      "family_ties_pid": "no2",
+      "radiosAffinity": "no1",
+      "numberESID": null,
+      "id": 2
+    },
+    {
+      "pid": "Test User",
+      "date": "03-06-1196",
+      "sex": "male",
+      "radioYesNo": "no",
+      "radiosAgreement": "onlyresearch",
+      "family_ties_pid": "no2",
+      "radiosAffinity": "no1",
+      "numberESID": null,
+      "id": 3
+    },
+    {
+      "pid": "solomia",
+      "date": "29-03-2014",
+      "sex": "Жіноча",
+      "radioYesNo": "Так",
+      "radiosAgreement": "Цілковита",
+      "family_ties_pid": "По жіночій лінії",
+      "radiosAffinity": "Так",
+      "numberESID": "2356",
+      "id": 4
+    },
+    {
+      "pid": "ddd",
+      "date": "29-03-2000",
+      "homeland": "Львів,львівська область",
+      "city": "Львів,львівська область",
+      "sex": "Жіноча",
+      "radioYesNo": "Так",
+      "radiosAgreement": "Цілковита",
+      "family_ties_pid": "Невідомо",
+      "radiosAffinity": "Можливо",
+      "numberESID": "12",
+      "id": 5
+    }
+  ]
 }

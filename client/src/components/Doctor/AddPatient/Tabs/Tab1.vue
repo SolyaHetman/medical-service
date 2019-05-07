@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid" ref="form">
+  <v-form v-model="valid" ref="form" @submit.prevent="savePatient">
     <v-container>
       <v-layout>
 
@@ -30,6 +30,7 @@
         <v-flex md4>
           <v-autocomplete
             :items="items"
+            v-model="generalData.homeland"
             attach
             label="Місто народження"
             prepend-icon ="place"
@@ -39,6 +40,7 @@
         <v-flex md4>
           <v-autocomplete
             :items="items"
+            v-model="generalData.city"
             attach
             label="Місто теперішнього проживання"
             prepend-icon ="place"
@@ -54,49 +56,49 @@
         <v-flex xs12 md4>
           <p>Стать</p>
           <v-radio-group v-model="generalData.sex" :mandatory="false">
-            <v-radio color="#1976d2" label="жіноча" value="female"></v-radio>
-            <v-radio color="#1976d2" label="чоловіча" value="male"></v-radio>
+            <v-radio color="#1976d2" label="Жіноча" value="Жіноча"></v-radio>
+            <v-radio color="#1976d2" label="Чоловіча" value="Чоловіча"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Згода пацієнта на використання особистої інформації</p>   
           <v-radio-group v-model="generalData.radiosAgreement" :mandatory="false">
-            <v-radio color="#1976d2" label="цілковита" value="complete"></v-radio>
-            <v-radio color="#1976d2" label="згода лише на науковий аналіз" value="onlyresearch"></v-radio>
-            <v-radio color="#1976d2" label="не застосовується" value="notallow"></v-radio>
+            <v-radio color="#1976d2" label="Цілковита" value="Цілковита"></v-radio>
+            <v-radio color="#1976d2" label="Згода лише на науковий аналіз" value="Згода лише на науковий аналіз"></v-radio>
+            <v-radio color="#1976d2" label="Не застосовується" value="Не застосовується"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Родинні зв'язки ПІД</p>   
           <v-radio-group v-model="generalData.family_ties_pid" :mandatory="false">
-            <v-radio color="#1976d2" label="По чоловічій лінії" value="yes2"></v-radio>
-            <v-radio color="#1976d2" label="По жіночій лінії" value="no2"></v-radio>
-            <v-radio color="#1976d2" label="невідомо" value="unknown2"></v-radio>
+            <v-radio color="#1976d2" label="По чоловічій лінії" value="По чоловічій лінії"></v-radio>
+            <v-radio color="#1976d2" label="По жіночій лінії" value="По жіночій лінії"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Спорідненість пацієнта</p>   
           <v-radio-group v-model="generalData.radiosAffinity" :mandatory="false">
-            <v-radio color="#1976d2" label="так" value="yes1"></v-radio>
-            <v-radio color="#1976d2" label="ні" value="no1"></v-radio>
-            <v-radio color="#1976d2" label="невідомо" value="unknown1"></v-radio>
-            <v-radio color="#1976d2" label="можливо" value="maybe"></v-radio>
+            <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
+            <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-radio color="#1976d2" label="Можливо" value="Можливо"></v-radio>
           </v-radio-group>
         </v-flex>
 
         <v-flex xs12 md4>
           <p>Генетично ускладнений сімейний анамнез первинних імунодифецитів</p>   
           <v-radio-group v-model="generalData.radioYesNo" :mandatory="false">
-            <v-radio color="#1976d2" label="так" value="yes"></v-radio>
-            <v-radio color="#1976d2" label="ні" value="no"></v-radio>
-            <v-radio color="#1976d2" label="невідомо" value="unknown"></v-radio>
+            <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
+            <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
 
-        <v-flex md4 v-if="generalData.radioYesNo == 'yes'">
+        <v-flex md4 v-if="generalData.radioYesNo == 'Так'">
           <v-text-field
             v-model= generalData.numberESID
             prepend-icon ="edit"
@@ -108,8 +110,7 @@
       </v-layout>
     </v-container>
 
-    <v-btn @click="submit">Зберегти</v-btn>
-    <v-btn @click.native="savePatient">Save to JSON</v-btn>
+    <v-btn type="submit">Зберегти</v-btn>
   </v-form>
 </template>
 
@@ -122,7 +123,8 @@
 
 
 <script>
-  import style from './tab.css'
+  import style from './tab.css';
+  import axios from 'axios';
   export default {
     data () {
       return {
@@ -141,6 +143,8 @@
         generalData: {
           pid: null,
           date: null,
+          homeland: null,
+          city: null,
           sex: null,
           radioYesNo: null,
           radiosAgreement: null,
@@ -150,9 +154,6 @@
         } 
       }
     },
-    created () {
-      this.savePatient();
-    },
     methods: {
       submit () {
         this.$refs.form.validate()
@@ -161,24 +162,10 @@
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        console.log('here!!!');
-        const url = 'http://localhost:3000/posts';
+        const url = 'http://localhost:3000/users';
 
-        const data = {
-          firtstName: 'John',
-          secondName: 'Doe'
-        }
-
-        // const headers = {
-        //   method: 'POST',
-        //   'Accept': 'application/json',
-        //   'Content-Type': 'application/json',
-        //   body: JSON.stringify(data)
-        // }
-
-        fetch(url)
-          .then(res => res.json())
-          .then(res =>console.log(res))
+        axios.post(url, this.generalData)
+          .then(res =>console.log('Saved!!!'))
           .catch(err => console.log(err))
       }
     }
