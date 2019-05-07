@@ -109,6 +109,7 @@
     </v-container>
 
     <v-btn @click="submit">Зберегти</v-btn>
+    <v-btn @click.native="savePatient">Save to JSON</v-btn>
   </v-form>
 </template>
 
@@ -149,12 +150,36 @@
         } 
       }
     },
+    created () {
+      this.savePatient();
+    },
     methods: {
       submit () {
         this.$refs.form.validate()
       },
       save (date) {
         this.$refs.menu.save(date)
+      },
+      savePatient: function () {
+        console.log('here!!!');
+        const url = 'http://localhost:3000/posts';
+
+        const data = {
+          firtstName: 'John',
+          secondName: 'Doe'
+        }
+
+        // const headers = {
+        //   method: 'POST',
+        //   'Accept': 'application/json',
+        //   'Content-Type': 'application/json',
+        //   body: JSON.stringify(data)
+        // }
+
+        fetch(url)
+          .then(res => res.json())
+          .then(res =>console.log(res))
+          .catch(err => console.log(err))
       }
     }
   }
