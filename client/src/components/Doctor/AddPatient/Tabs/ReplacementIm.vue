@@ -2,7 +2,6 @@
   <v-form ref="form"  @submit.prevent="savePatient">
     <v-container>
       <v-layout>
-
         <v-flex xs12 md4>
           <p>Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.rit_till_today" :mandatory="false">
@@ -86,11 +85,19 @@
       <v-container>
         <v-layout>
           <v-flex xs12 md4>
-            <p>Інтервал між введенями</p>   
+            <p>Інтервал між введенями:</p>   
             <v-radio-group v-model="replacementImunoqlobulinTherary.injection_interval" :mandatory="false">
-              <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
-              <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+              <v-radio color="#1976d2" label="Кожні 7 днів" value="Кожні 7 днів"></v-radio>
+              <v-radio color="#1976d2" label="Кожні 14 днів" value="Кожні 14 днів"></v-radio>
+              <v-radio color="#1976d2" label="Кожні 21 днів" value="Кожні 21 днів"></v-radio>
+              <v-radio color="#1976d2" label="Кожні 28 днів" value="Кожні 28 днів"></v-radio>
               <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+              <v-radio color="#1976d2" label="Вказати" value="Вказати"></v-radio>
+              <v-text-field v-if="replacementImunoqlobulinTherary.injection_interval == 'Вказати'"
+                v-model= replacementImunoqlobulinTherary.injection_interval_other
+                label="Інтервал"
+                prepend-icon ="create"
+              ></v-text-field>
             </v-radio-group>
         </v-flex>
         <v-flex md3>
@@ -125,19 +132,32 @@
         </v-flex>
       </v-layout>
     </v-container>      
-     
-
     <v-btn type="submit">Зберегти</v-btn>
+    <v-layout row>
+      <!-- Start Alert -->
+      <v-flex xs12>
+      <v-alert
+        :value="alertShow"
+        type="success"
+      >
+          This is a success alert.
+        </v-alert>
+      </v-flex>
+      <!-- End alert -->
+    </v-layout>
   </v-form>
+  
 </template>
 
 <script>
 import style from './tab.css'
 import axios from 'axios'
-import EventBus from '@/event-bus';
+import EventBus from '@/event-bus'
+
 export default {
     data(){
         return{
+          alertShow:false, 
             replacementImunoqlobulinTherary:{
                 rit_till_today: null, 
                 first_imunoqlobulin_injection_data: null,
@@ -156,7 +176,7 @@ export default {
                 recorded_phenomenal_select_enter: null,
             },
            items: ['1','2','3','4'], 
-           others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Інше,вказати'],
+           others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Летальний випадок','Інше,вказати'],
            dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
                 ], 
@@ -171,6 +191,10 @@ export default {
       },
       savePatient: function () {
         EventBus.$emit('postToDB', this.replacementImunoqlobulinTherar);
+        this.alertShow = true;
+        setTimeout(() => {
+          this.alertShow = false;
+        }, 3000)
       }
     }
     

@@ -111,6 +111,8 @@
     </v-container>
 
     <v-btn type="submit">Зберегти</v-btn>
+    <!-- <v-btn @click="next">next tab</v-btn> -->
+  
   </v-form>
 </template>
 
@@ -134,14 +136,16 @@
         menu: null,
         date: null,
         nameRules: [
-          (v) => !!v || 'Введіть дані',
+          (v) => !!v || 'Заповніть дані',
           (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
           (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
         ],
         dataRules: [
-                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
+                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР',
+                  (v) => !!v || 'Заповніть дані',
                 ],
         items: ['Львів,львівська область', 'Київ,київська область', 'Вінниця,вінницька область', ],
+        alert: true,
         generalData: {
           pid: null,
           date: null,
@@ -157,21 +161,20 @@
       }
     },
     methods: {
-      submit () {
-        this.$refs.form.validate()
-      },
       save (date) {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-      //   const url = 'http://localhost:3000/users';
-
+        this.$refs.form.validate()
         EventBus.$emit('completedForm', this.generalData);  
 
-        // axios.post(url, this.generalData)
-          // .then(res =>console.log('Saved!!!'))
-          // .catch(err => console.log(err))
-      }
+        // EventBus.$emit('moveToForm', this.general); 
+      },
+      // move (){
+      //   document.querySelector('general').onclick = function() { 
+      //               console.log("worl"); 
+      //          }
+      // }     
     }
   }
 </script>

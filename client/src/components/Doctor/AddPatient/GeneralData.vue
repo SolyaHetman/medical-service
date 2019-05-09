@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-layout row wrap>
+
       <v-flex xs12>
         <v-tabs
         v-model="active"
@@ -69,7 +70,16 @@ let tempObj = new Object();
 
   EventBus.$on('completedForm', function (payLoad) {
     tempObj = Object.assign(tempObj, payLoad);
-    console.log(tempObj);
+    let allTabs = document.querySelectorAll('.v-tabs__item');
+    let activeTabIndex = null;
+    allTabs.forEach((tab, index) => {
+      if (tab.classList.contains('v-tabs__item--active')) {
+        activeTabIndex = index;
+      }
+    });
+
+    let nextTab = document.getElementsByClassName('v-tabs__item')[activeTabIndex + 1].classList.add('v-tabs__item--active');
+    let activeTab = document.querySelector('.v-tabs__item--active').classList.remove('v-tabs__item--active');
   });
 
   EventBus.$on('postToDB', function (payLoad) {
@@ -79,7 +89,11 @@ let tempObj = new Object();
       .then(res =>console.log('Saved'))
       .catch(err => console.log(err))
   });
-
+  
+  // EventBus.$on('moveToForm', function (payLoad) {
+  //    element = document.querySelector("class",payLoad); 
+  //    console.log("Work");
+  // });
 
   export default {
     name: 'GeneralData',
@@ -111,6 +125,12 @@ let tempObj = new Object();
             title:'Замісна імуноглобулінотерапія',
           },
         ]
+      }
+    },
+    methods:{
+      next () {
+        const active = parseInt(this.active)
+        this.active = (active < 2 ? active + 1 : 0)
       }
     }
 
