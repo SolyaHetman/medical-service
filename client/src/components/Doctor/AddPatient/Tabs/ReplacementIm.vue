@@ -145,7 +145,7 @@
       </v-flex>
       <!-- End alert -->
     </v-layout>    
-    <v-btn type="submit" to="/dashboard">Зберегти</v-btn>
+    <v-btn type="submit">Зберегти</v-btn>
   </v-form>
   
 </template>
@@ -195,10 +195,10 @@ export default {
         if (this.replacementImunoqlobulinTherary.dosa == 'Відомо') {
           this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
         }
-        if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
-          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.
-          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
-        }
+        // if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
+        //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.
+        //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
+        // }
         EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary);
         this.alertShow = true;
         setTimeout(() => {
