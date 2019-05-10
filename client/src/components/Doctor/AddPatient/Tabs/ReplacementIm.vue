@@ -196,6 +196,7 @@ export default {
           this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
         }
         if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
+          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.
           this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
         }
         EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary);

@@ -106,13 +106,10 @@
             clearable
           ></v-text-field>
         </v-flex>
-
+        
       </v-layout>
     </v-container>
-
-    <v-btn type="submit">Зберегти</v-btn>
-    <!-- <v-btn @click="next">next tab</v-btn> -->
-  
+    <v-btn type="submit">Зберегти</v-btn>  
   </v-form>
 </template>
 
@@ -166,15 +163,11 @@
       },
       savePatient: function () {
         this.$refs.form.validate()
+        if (this.generalData.radioYesNo == 'Так') {
+          this.generalData.radioYesNo = this.generalData.numberESID;
+        }
         EventBus.$emit('completedForm', this.generalData);  
-
-        // EventBus.$emit('moveToForm', this.general); 
-      },
-      // move (){
-      //   document.querySelector('general').onclick = function() { 
-      //               console.log("worl"); 
-      //          }
-      // }     
+      },    
     }
   }
 </script>
