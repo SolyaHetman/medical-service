@@ -12,7 +12,7 @@
           ></v-text-field>
         </v-flex>
         <v-flex md3>
-          <p><font color="#808080"><br/>Виробник імуноглобулінів, які отримує пацієнт</font></p>
+          <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer"
             solo
@@ -34,7 +34,7 @@
         </v-flex>
 
         <v-flex md3>
-          <p><font color="#808080"><br/>Актуальний шлях введення імуноглобуліну</font></p>
+          <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.actual_injection_way"
             solo
@@ -62,7 +62,7 @@
         </v-flex>
 
         <v-flex md2>
-          <p><font color="#808080">Доза</font></p>
+          <p><font color="#808080"><br/>Доза</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.dosa"
             solo
@@ -70,7 +70,7 @@
           ></v-text-field>
         </v-flex>
         <v-flex md2>
-          <p><font color="#808080">Інтервал між введенями</font></p>
+          <p><font color="#808080"><br/>Інтервал між введенями</font></p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.injection_interval"
             solo
@@ -89,7 +89,7 @@
 
          <v-flex md2>
           <p>
-          	<font color="#808080">
+          	<font color="#808080"><br/>
           		 Актуальна вага
           	</font>
           </p>
