@@ -131,20 +131,21 @@
           </v-radio-group>
         </v-flex>
       </v-layout>
-    </v-container>      
-    <v-btn type="submit">Зберегти</v-btn>
+    </v-container>  
     <v-layout row>
       <!-- Start Alert -->
       <v-flex xs12>
-      <v-alert
-        :value="alertShow"
-        type="success"
-      >
-          This is a success alert.
+        <v-alert
+          :value="alertShow"
+          type="success"        
+          color='#1976d2'
+        >
+          Дані збережено
         </v-alert>
       </v-flex>
       <!-- End alert -->
-    </v-layout>
+    </v-layout>    
+    <v-btn type="submit" to="/dashboard">Зберегти</v-btn>
   </v-form>
   
 </template>
@@ -158,23 +159,24 @@ export default {
     data(){
         return{
           alertShow:false, 
-            replacementImunoqlobulinTherary:{
-                rit_till_today: null, 
-                first_imunoqlobulin_injection_data: null,
-                first_imunoqlobulin_injection_data_yes: null,  
-                imunoqlobulin_producer: null,
-                IgG: null,
-                imunoqlobulin_producer_select: null,   
-                actual_injection_way: null,  
-                actual_injection_location: null,  
-                dosa: null, 
-                injection_interval: null, 
-                patient_weight: null,
-                patient_weight_yes: null,  
-                recorded_phenomenal: null,  
-                recorded_phenomenal_select: null,
-                recorded_phenomenal_select_enter: null,
-            },
+          replacementImunoqlobulinTherary:{
+            rit_till_today: null, 
+            first_imunoqlobulin_injection_data: null,
+            first_imunoqlobulin_injection_data_yes: null,  
+            imunoqlobulin_producer: null,
+            IgG: null,
+            imunoqlobulin_producer_select: null,   
+            actual_injection_way: null,  
+            actual_injection_location: null,  
+            dosa: null, 
+            do_yes: null,
+            injection_interval: null, 
+            patient_weight: null,
+            patient_weight_yes: null,  
+            recorded_phenomenal: null,  
+            recorded_phenomenal_select: null,
+            recorded_phenomenal_select_enter: null,
+          },
            items: ['1','2','3','4'], 
            others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Летальний випадок','Інше,вказати'],
            dataRules: [
@@ -190,7 +192,13 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherar);
+        if (this.replacementImunoqlobulinTherary.dosa == 'Відомо') {
+          this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
+        }
+        if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
+          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
+        }
+        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary);
         this.alertShow = true;
         setTimeout(() => {
           this.alertShow = false;

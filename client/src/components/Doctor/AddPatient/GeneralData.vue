@@ -127,12 +127,5 @@ let tempObj = new Object();
         ]
       }
     },
-    methods:{
-      next () {
-        const active = parseInt(this.active)
-        this.active = (active < 2 ? active + 1 : 0)
-      }
-    }
-
   }
 </script>

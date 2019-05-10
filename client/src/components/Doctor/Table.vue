@@ -28,23 +28,23 @@
                 </v-card-title>
                 <v-data-table class="table table-striped"
                     :headers="headers"
-                    :items="patient"
+                    :items="patients"
                     :search="search"
                 >
                 <template v-slot:items="props">
-                    <td>{{ props.item.register_number }}</td>
-                    <td>{{ props.item.pib }}</td>
-                    <td>{{ props.item.age }}</td>
-                    <td>{{ props.item.first_diagnostic_pid_data }}</td>
-                    <td>{{ props.item.first_imunoqlobulin_injection_data }}</td>
-                    <td>{{ props.item.dosa }}</td>
-                    <td class="text-center">
-                        <v-btn flat icon color="#1976d2" to="/patientinfo">
-                            <v-icon >
-                                assignment
-                            </v-icon>
-                        </v-btn>                        
-                    </td>
+                  <td>{{ props.item.register_number }}</td>
+                  <td>{{ props.item.pid }}</td>
+                  <td>{{ props.item.age }}</td>
+                  <td>{{ props.item.first_diagnostic_pid_data }}</td>
+                  <td>{{ props.item.first_imunoqlobulin_injection_data }}</td>
+                  <td>{{ props.item.dosa }}</td>
+                  <td class="text-center">
+                    <v-btn flat icon color="#1976d2" to="/patientinfo">
+                      <v-icon >
+                        assignment
+                      </v-icon>
+                    </v-btn>                        
+                  </td>
                 </template>
                   <v-alert v-slot:no-results :value="true" color="error" icon="warning">
                     Your search for "{{ search }}" found no results.
@@ -52,7 +52,9 @@
                 </v-data-table>
             </v-card>
         </v-flex>
+        <!-- <v-btn @click="getData">llll</v-btn>   -->
     </v-layout>
+    
 </template>
 
 <style>
@@ -62,11 +64,16 @@ table tbody tr:nth-of-type(odd) {
 </style>
 
 
+
 <script>
+import axios from 'axios';
+
 export default {
     data () {
       return {
         search: '',
+        searchage: '',
+        searchdata: '',
         headers: [
           {
             text: 'Номер реєстрації',
@@ -74,48 +81,30 @@ export default {
             sortable: false,
             value: 'register_number'
           },
-          { text: 'ПІБ', value: 'pib',sortable: false },
+          { text: 'ПІБ', value: 'pid',sortable: false },
           { text: 'Вік', value: 'age' },
           { text: 'Встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
-          { text: 'Дата введення', value: 'first_imunoqlobulin_injection_data', sortable: false},
+          { text: 'Дата введення', value: 'first_imunoqlobulin_injection_data_yes', sortable: false},
           { text: 'Доза', value: 'dosa', sortable: false},
           { text: 'Переглянути', value: 'register_number', sortable: false },
         ],
-        patient: [
-          {
-            register_number: 'АТМ18032000',
-            pib: 'А.Т.М.',
-            age : 19,
-            first_diagnostic_pid_data: "29.03.2017",
-            first_imunoqlobulin_injection_data: "29.03.2017",
-            dosa:  '23 мг/кг'
-          },  
-          {
-            register_number: 'КВМ18032000',
-            pib: 'К.В.М.',
-            age : 20,
-            first_diagnostic_pid_data: "29.03.2017",
-            first_imunoqlobulin_injection_data: "29.03.2018",
-            dosa:  '23 мг/кг'
-          }, 
-          {
-            register_number: 'КОС18032000',
-            pib: 'К.О.С.',
-            age : 49,
-            first_diagnostic_pid_data: "29.03.2017",
-            first_imunoqlobulin_injection_data: "29.03.2017",
-            dosa:  '23 мг/кг'
-          }, 
-          {
-            register_number: 'КТМ18032000',
-            pib: 'К.Т.М.',
-            age : 59,
-            first_diagnostic_pid_data: "29.03.2017",
-            first_imunoqlobulin_injection_data: "29.03.2017",
-            dosa:  '23 мг/кг'
-          },         
-        ]
+        patients: []
       }
-    }
+    },
+    created: function()
+    {
+      this.fetchItems();
+    },
+    methods: {
+      fetchItems(){
+      axios.get('http://localhost:3000/users').then((response) => {
+        this.patients = response.data
+        console.log(response.data)
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+      }
+    },
 }
 </script>
