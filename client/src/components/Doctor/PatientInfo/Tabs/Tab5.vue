@@ -106,21 +106,40 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
     data(){
         return{
-            replacementImunoqlobulinTherary:{
-                rit_till_today: "Так", 
-                first_imunoqlobulin_injection_data: "22-08-2007",  
-                imunoqlobulin_producer: "2",   
-                actual_injection_way: "Підшкірно",  
-                actual_injection_location: "В лікарні",  
-                dosa: "10 мг/кг", 
-                injection_interval: "Так", 
-                patient_weight: "80 кг",  
-                recorded_phenomenal: "Так, анафілаксія",  
-            },
+            // replacementImunoqlobulinTherary:{
+            //     rit_till_today: "Так", 
+            //     first_imunoqlobulin_injection_data: "22-08-2007",  
+            //     imunoqlobulin_producer: "2",   
+            //     actual_injection_way: "Підшкірно",  
+            //     actual_injection_location: "В лікарні",  
+            //     dosa: "10 мг/кг", 
+            //     injection_interval: "Так", 
+            //     patient_weight: "80 кг",  
+            //     recorded_phenomenal: "Так, анафілаксія",  
+            // },
+            patients: []
         }
     },
+    created: function()
+    {
+      this.fetchItems();
+    },
+    methods: {
+      fetchItems(){
+      axios.get('http://localhost:3000/users/{$id}').then((response) => {
+        this.patients = response.data
+        console.log(response.data)
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+      },
+    }
 }
 </script>
