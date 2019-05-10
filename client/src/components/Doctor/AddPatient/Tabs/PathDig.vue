@@ -170,12 +170,12 @@ export default {
         if (this.pathDagnosis.first_diagnostic_pid_data == 'Відомо') {
           this.pathDagnosis.first_diagnostic_pid_data = this.pathDagnosis.first_diagnostic_pid_data_time;
         }
-        if (this.pathDagnosis.pid_lab_only == 'Так') {
-          this.pathDagnosis.pid_lab_only = this.pathDagnosis.pid_select;
-          if(this.pathDagnosis.pid_select == 'Інше' & this.pathDagnosis.pid_lab_only == 'Так'){
-          this.pathDagnosis.pid_select = this.this.pathDagnosis.pid_select
-          }
-        }
+        // if (this.pathDagnosis.pid_lab_only == 'Так') {
+        //   this.pathDagnosis.pid_lab_only = this.pathDagnosis.pid_select;
+        //   if(this.pathDagnosis.pid_select == 'Інше' & this.pathDagnosis.pid_lab_only == 'Так'){
+        //   this.pathDagnosis.pid_select = this.this.pathDagnosis.pid_select
+        //   }
+        // }
         EventBus.$emit('completedForm', this.pathDagnosis);
       }
     }

@@ -3,21 +3,21 @@
         <v-flex md10 class="mx-auto">
             <v-card>
                 <v-card-title>
-                    <v-flex  md2>
+                    <v-flex  md2 px-2>
                         <v-select
                           v-model="search"
                           label="Пошук"
                           attach
                         ></v-select>
                      </v-flex> 
-                     <v-flex  md2>
+                     <v-flex  md2 px-2>
                        <v-select
                           v-model="searchage"
                           label="Виберіть вік"
                           attach
                         ></v-select>
                      </v-flex> 
-                     <v-flex  md3>
+                     <v-flex  md3 px-2>
                         <v-select
                           v-model="searchdata"
                           label="Виберіть дату введення "
@@ -39,7 +39,7 @@
                   <td>{{ props.item.first_imunoqlobulin_injection_data }}</td>
                   <td>{{ props.item.dosa }}</td>
                   <td class="text-center">
-                    <v-btn flat icon color="#1976d2" to="/patientinfo">
+                    <v-btn flat icon color="#1976d2" :to="'/patientinfo/'+props.item.id">
                       <v-icon >
                         assignment
                       </v-icon>
@@ -69,53 +69,52 @@ table tbody tr:nth-of-type(odd) {
 import axios from 'axios';
 
 export default {
-    data () {
-      return {
-        search: '',
-        searchage: '',
-        searchdata: '',
-        headers: [
-          {
-            text: 'Номер реєстрації',
-            align: 'left',
-            sortable: false,
-            value: 'register_number'
-          },
-          { text: 'ПІБ', value: 'pid',sortable: false },
-          { text: 'Вік', value: 'age' },
-          { text: 'Встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
-          { text: 'Дата введення', value: 'first_imunoqlobulin_injection_data_yes', sortable: false},
-          { text: 'Доза', value: 'dosa', sortable: false},
-          { text: 'Переглянути', value: 'register_number', sortable: false },
-        ],
-        patients: []
-      }
-    },
-    created: function()
-    {
-      this.fetchItems();
-    },
-    methods: {
-      fetchItems(){
-      axios.get('http://localhost:3000/users').then((response) => {
-        this.patients = response.data
-        console.log(response.data)
+  data () {
+    return {
+      search: '',
+      searchage: '',
+      searchdata: '',
+      headers: [
+        {
+          text: 'Номер реєстрації',
+          align: 'left',
+          sortable: false,
+          value: 'register_number'
+        },
+        { text: 'ПІБ', value: 'pid',sortable: false },
+        { text: 'Вік', value: 'age' },
+        { text: 'Встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
+        { text: 'Дата введення', value: 'first_imunoqlobulin_injection_data_yes', sortable: false},
+        { text: 'Доза', value: 'dosa', sortable: false},
+        { text: 'Переглянути', value: 'register_number', sortable: false },
+      ],
+      patients: []
+    }
+  },
+  created: function()
+  {
+    this.fetchItems();
+  },
+  methods: {
+    fetchItems() {
+
+      axios.get(`http://localhost:3000/users`).then((response) => {
+        let res = response.data;
+        this.patients = response.data;
+        
+        res.forEach(user => {
+          let birthday = new Date (user.date);
+          const ageDifMs = Date.now() - birthday.getTime();
+          const ageDate = new Date(ageDifMs);
+          const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+          user = Object.assign(user, { age: age })
+        })
+
       })
       .catch((e) => {
         console.error(e)
       })
-      },
-      getAge(date) {
-       var today = new Date();
-       var birthDate = new Date(dateString);
-       var age = today.getFullYear() - birthDate.getFullYear();
-       var m = today.getMonth() - birthDate.getMonth();
-       if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-        {
-          age--;
-        }
-       return this.age;
-     }
     },
+  },
 }
 </script>

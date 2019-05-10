@@ -103,13 +103,13 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        // const url = 'http://localhost:3000/users';
-
+        if (this.pidDiagnosis.damage_genes == 'Додаткові гени') {
+          this.pidDiagnosis.damage_genes = this.pidDiagnosis.additional_genes;
+        }
+        if (this.pidDiagnosis.genetic_research_data == 'Відомо') {
+          this.pidDiagnosis.genetic_research_data = this.pidDiagnosis.genetic_research_data_input;
+        }
         EventBus.$emit('completedForm', this.pidDiagnosis);
-
-        // axios.post(url, this.pidDiagnosis)
-        //   .then(res =>console.log('Saved2!!!'))
-        //   .catch(err => console.log(err))
       }
     }
     
