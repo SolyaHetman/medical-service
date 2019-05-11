@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <v-form v-model="valid" ref="form">
     <v-container>
       <v-layout>
@@ -22,9 +22,9 @@
 
         <v-flex md2 >
           <p>
-          	<font color="#808080"><br/>
-          		Дата першого введення
-          	</font>
+            <font color="#808080"><br/>
+              Дата першого введення
+            </font>
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data"
@@ -47,12 +47,12 @@
 
     <v-container>
       <v-layout>
-      	
+        
         <v-flex md3>
           <p>
-          	<font color="#808080">
-          		Актуальне місце введення імуноглобуліну
-          	</font>
+            <font color="#808080">
+              Актуальне місце введення імуноглобуліну
+            </font>
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.actual_injection_location"
@@ -89,9 +89,9 @@
 
          <v-flex md2>
           <p>
-          	<font color="#808080"><br/>
-          		 Актуальна вага
-          	</font>
+            <font color="#808080"><br/>
+               Актуальна вага
+            </font>
           </p>
           <v-text-field
             v-model="replacementImunoqlobulinTherary.patient_weight"
@@ -101,14 +101,12 @@
         </v-flex>
       </v-layout>
     </v-container>
-	<v-btn @click="add" to="/newpatient">Додати</v-btn>
+  <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
 <script>
-
 import axios from 'axios';
-
 export default {
     data(){
         return{
@@ -142,4 +140,50 @@ export default {
       },
     }
 }
+</script> -->
+
+<template>
+  <div>
+    <h1>LETS DO IT</h1>
+    <div>
+      <div v-for="user in users"
+      :key="user.id">
+        <h3>{{user.pid}}</h3>
+        <h3>{{user.patient_weight}}</h3>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<script>
+  import axios from 'axios';
+
+  export default {
+    data(){
+      return{
+        users: []
+      }
+    },
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      var self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(function(res){
+        self.users = res.data;
+        console.log('Data :', res.data);
+      })
+      .catch(function(error){
+        console.log('Error :', error)
+      })
+    }
+  }
+  
 </script>
