@@ -142,7 +142,7 @@ export default {
     data(){
       return {
         pathDagnosis: {
-          first_diagnostic_pid_dat: null,
+          first_diagnostic_pid_data: null,
           first_diagnostic_pid_data_time: null,
           pid_lab_only: null,
           pid_select: null,

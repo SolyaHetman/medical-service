@@ -1,13 +1,14 @@
 <template>
-  <v-form v-model="valid" ref="form">
+  <v-form  ref="form">
     <v-container>
       <v-layout>
 
         <v-flex md2 >
           <p><font color="#808080">Номер реєстрації</font></p>
           <v-text-field
-            v-model="generalData.numberOfRegistry"
-            :rules="nameRules"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.register_number"
             readonly
           ></v-text-field>
         </v-flex>
@@ -15,8 +16,9 @@
         <v-flex md2 >
           <p><font color="#808080">ПІБ</font></p>
           <v-text-field
-            v-model="generalData.pib"
-            :rules="nameRules"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.pid"
             readonly
           ></v-text-field>
         </v-flex>
@@ -24,7 +26,9 @@
         <v-flex md2>
           <p><font color="#808080">Дата народження</font></p>
           <v-text-field
-            v-model="generalData.birthdate"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.date"
             prepend-icon ="event"
             readonly
           ></v-text-field>
@@ -33,7 +37,9 @@
         <v-flex md2>
           <p><font color="#808080">Стать</font></p>
           <v-text-field
-            v-model="generalData.Sex"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.sex"
             readonly
           ></v-text-field>
         </v-flex>
@@ -46,7 +52,9 @@
         <v-flex md2 >
           <p><font color="#808080">Країна та місто народження</font></p>
           <v-text-field
-            v-model="generalData.Country"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.homeland"
             readonly
             prepend-icon ="place"
           ></v-text-field>
@@ -55,7 +63,9 @@
         <v-flex md3>
           <p><font color="#808080">Країна та місто теперішнього проживання</font></p>
           <v-text-field
-            v-model="generalData.CountryN"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.city"
             readonly
             prepend-icon ="place"
           ></v-text-field>
@@ -69,7 +79,9 @@
         <v-flex md2>
           <p><font color="#808080">Родинні зв'язки ПІД</font></p>
           <v-text-field
-            v-model="generalData.FamilyTies"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.family_ties_pid"
             readonly
           ></v-text-field>
         </v-flex>
@@ -77,7 +89,9 @@
         <v-flex md2>
           <p><font color="#808080">Спорідненість пацієнта</font></p>
           <v-text-field
-            v-model="generalData.Affinity"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.radiosAffinity"
             readonly
           ></v-text-field>
         </v-flex>
@@ -85,7 +99,9 @@
         <v-flex md6>
           <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
           <v-text-field
-            v-model="generalData.numberESID"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.radioYesNo"
             readonly
           ></v-text-field>
         </v-flex>
@@ -98,7 +114,9 @@
         <v-flex md3>
           <p><font color="#808080">Згода пацієнта на використання особистої інформації</font></p>
           <v-text-field
-            v-model="generalData.Agreement"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.radiosAgreement"
             readonly
             solo
           ></v-text-field>
@@ -121,39 +139,38 @@
 
 
 <script>
+import axios from 'axios';
   export default {
     data () {
       return {
-        valid: false,
-        date: null,
-        nameRules: [
-          (v) => !!v || 'Name is required',
-          (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
-        ],
-        generalData: {
-          numberOfRegistry: "ТКМ18032000", 
-          pib:              "Т.К.М.",
-          birthdate:        "18-03-2000",
-          Sex:              "Чоловік",
-          Country:          "Білорусь, Мінськ",
-          CountryN:         "Україна, Львів",
-          FamilyTies:       "По чоловічій лінії",
-          Agreement:        "Згода лише на науковий аналіз",
-          Affinity:         "Невідомо",
-          numberESID:       "Невідомо",
-        } 
+        // valid: false,
+        // date: null,
+        // nameRules: [
+        //   (v) => !!v || 'Name is required',
+        //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
+        // ],
+        users: []
       }
     },
-    methods: {
-      submit () {
-        this.$refs.form.validate()
-      },
-      save (date) {
-        this.$refs.menu.save(date)
-      },
-      edit(){
-        this.generalData.push(this.edit);
-      }
-    }
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      
+      var self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(function(res){
+        self.users = res.data;
+        console.log('Data :', res.data);
+      })
+      .catch(function(error){
+        console.log('Error :', error)
+      })
+    },
   }
 </script>

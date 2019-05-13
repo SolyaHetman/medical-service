@@ -8,7 +8,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.first_diagnostic_pid_dat"
+            v-model="user.first_diagnostic_pid_data"
             solo
             readonly
           ></v-text-field>
@@ -43,6 +43,7 @@
             readonly
           ></v-text-field>
         </v-flex>
+
       	<v-flex md2>
           <p><font color="#808080">Початок симтомів</font></p>
           <v-text-field
