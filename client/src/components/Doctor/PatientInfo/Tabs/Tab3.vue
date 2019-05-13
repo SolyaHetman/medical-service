@@ -6,7 +6,9 @@
         <v-flex md6>
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
-            v-model="pidDiagnosis.damage_genes"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.damage_genes"
             solo
             readonly
           ></v-text-field>
@@ -19,7 +21,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="pidDiagnosis.genetic_research_data"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.genetic_research_data"
             solo
             readonly
           ></v-text-field>
@@ -27,7 +31,9 @@
         <v-flex md3>
           <p><font color="#808080">Метод секвенціонування</font></p>
           <v-text-field
-            v-model="pidDiagnosis.sequencing_method"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.sequencing_method"
             solo
             readonly
           ></v-text-field>
@@ -41,7 +47,9 @@
         <v-flex md3>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
-            v-model="pidDiagnosis.research_lab"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.research_lab"
             solo
             readonly
           ></v-text-field>
@@ -53,7 +61,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="pidDiagnosis.genetic_research_reason"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.genetic_research_reason"
             solo
             readonly
           ></v-text-field>
@@ -66,19 +76,33 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    data () {
-      return {
-        pidDiagnosis: {
-          damage_genes: "Генетичне дослідження проводилось,мутацій не виявлено",
-          genetic_research_data: "12-03-2006",
-          sequencing_method: "Секвенціонування гена",
-          symptoms_start_data: "10-02-2006",
-          research_lab: "1",
-          genetic_research_reason: "Невідомо",
-        } 
+    data(){
+      return{
+        users: []
       }
     },
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      var self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(function(res){
+        self.users = res.data;
+        console.log('Data :', res.data);
+      })
+      .catch(function(error){
+        console.log('Error :', error)
+      })
+    }
   }
 </script>
 

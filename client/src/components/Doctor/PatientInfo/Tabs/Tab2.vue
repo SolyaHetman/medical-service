@@ -6,7 +6,9 @@
         <v-flex md4 >
           <p><font color="#808080">Дата вперше встановленого клінічного діагнозу первинного імунодефіцину</font></p>
           <v-text-field
-            v-model="pathDiagnosis.first_diagnostic_pid_dat"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.first_diagnostic_pid_dat"
             solo
             readonly
           ></v-text-field>
@@ -19,7 +21,9 @@
           	</font>
           </p>
           <v-text-field
-            v-model="pathDiagnosis.pid_lab_only"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.pid_lab_only"
             solo
             readonly
           ></v-text-field>
@@ -32,7 +36,9 @@
        <v-flex md4>
           <p><font color="#808080">Перші ПІД-асоційовані симтоми</font></p>
           <v-text-field
-            v-model="pathDiagnosis.symptoms_start"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.symptoms_start"
             solo
             readonly
           ></v-text-field>
@@ -40,7 +46,9 @@
       	<v-flex md2>
           <p><font color="#808080">Початок симтомів</font></p>
           <v-text-field
-            v-model="pathDiagnosis.symptoms_start_data"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.symptoms_start_data"
             solo
             readonly            
           ></v-text-field>
@@ -50,7 +58,9 @@
           	<font color="#808080">IgG</font>
           </p>
           <v-text-field
-            v-model="pathDiagnosis.IgG"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.IgG"
             solo
             readonly
           ></v-text-field>
@@ -59,7 +69,9 @@
         <v-flex md2>
           <p><font color="#808080">IgA</font></p>
           <v-text-field
-            v-model="pathDiagnosis.IgA"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.IgA"
             solo
             readonly
           ></v-text-field>
@@ -67,7 +79,9 @@
         <v-flex md2>
           <p><font color="#808080">IgM</font></p>
           <v-text-field
-            v-model="pathDiagnosis.IgM"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.IgM"
             solo
             readonly
           ></v-text-field>
@@ -75,7 +89,9 @@
         <v-flex md2>
           <p><font color="#808080">IgE</font></p>
           <v-text-field
-            v-model="pathDiagnosis.IgE"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.IgE"
             solo
             readonly
           ></v-text-field>
@@ -87,22 +103,33 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
-    data () {
-      return {
-        valid: false,
-        pathDiagnosis: {
-          first_diagnostic_pid_dat: "15-03-2005",
-          pid_lab_only: "Так, встановлено лімфопенію",
-          symptoms_start: "Інфекції, дисрегуляція іммуної відповіді",
-          symptoms_start_data: "27-03-2005",
-          IgG: "9.2 г/л",
-          IgA: "2 г/л",
-          IgM: "1.4 г/л",
-          IgE: "80 мо/мл",
-        } 
+    data(){
+      return{
+        users: []
       }
     },
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      var self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(function(res){
+        self.users = res.data;
+        console.log('Data :', res.data);
+      })
+      .catch(function(error){
+        console.log('Error :', error)
+      })
+    }
   }
 </script>
 

@@ -6,7 +6,9 @@
         <v-flex md4>
           <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
-            v-model="stemCellsGeneticTheraty.stem_cells_transplantation"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.stem_cells_transplantation"
             solo
             readonly
           ></v-text-field>
@@ -19,7 +21,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="stemCellsGeneticTheraty.transplantation_data"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.transplantation_data"
             solo
             readonly
           ></v-text-field>
@@ -27,7 +31,9 @@
         <v-flex md3>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
-            v-model="stemCellsGeneticTheraty.CD14_soure"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.CB14_soure"
             solo
             readonly
           ></v-text-field>
@@ -36,7 +42,9 @@
         <v-flex md2>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-model="stemCellsGeneticTheraty.genetic_therapy"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.genetic_therapy"
             solo
             readonly
           ></v-text-field>
@@ -49,16 +57,32 @@
 </template>
 
 <script>
-export default {
+import axios from 'axios';
+
+  export default {
     data(){
-        return{
-            stemCellsGeneticTheraty:{
-                stem_cells_transplantation: "Так",
-                transplantation_data: "19-03-2007",
-                CD14_soure: "Кістковий мозок",
-                genetic_therapy: "Так",              
-            },     
-        }
+      return{
+        users: []
+      }
     },
-}
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      var self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(function(res){
+        self.users = res.data;
+        console.log('Data :', res.data);
+      })
+      .catch(function(error){
+        console.log('Error :', error)
+      })
+    }
+  }
 </script>

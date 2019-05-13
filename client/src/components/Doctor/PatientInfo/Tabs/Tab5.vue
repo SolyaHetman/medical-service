@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <v-form v-model="valid" ref="form">
     <v-container>
       <v-layout>
@@ -6,7 +6,9 @@
         <v-flex md3>
           <p><font color="#808080">Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.rit_till_today"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.rit_till_today"
             solo
             readonly
           ></v-text-field>
@@ -14,7 +16,9 @@
         <v-flex md3>
           <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.imunoqlobulin_producer"
             solo
             readonly
           ></v-text-field>
@@ -27,7 +31,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.first_imunoqlobulin_injection_data"
             solo
             readonly
           ></v-text-field>
@@ -36,7 +42,9 @@
         <v-flex md3>
           <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.actual_injection_way"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.actual_injection_way"
             solo
             readonly
           ></v-text-field>
@@ -55,7 +63,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.actual_injection_location"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.actual_injection_location"
             solo
             readonly
           ></v-text-field>
@@ -64,7 +74,9 @@
         <v-flex md2>
           <p><font color="#808080"><br/>Доза</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.dosa"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.dosa"
             solo
             readonly
           ></v-text-field>
@@ -72,7 +84,9 @@
         <v-flex md2>
           <p><font color="#808080"><br/>Інтервал між введенями</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.injection_interval"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.injection_interval"
             solo
             readonly
           ></v-text-field>
@@ -81,7 +95,9 @@
         <v-flex md2>
           <p><font color="#808080">Зафіксовані небажані явища</font></p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.recorded_phenomenal"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.recorded_phenomenal"
             solo
             readonly
           ></v-text-field>
@@ -94,7 +110,9 @@
             </font>
           </p>
           <v-text-field
-            v-model="replacementImunoqlobulinTherary.patient_weight"
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.patient_weight"
             solo
             readonly
           ></v-text-field>
@@ -104,57 +122,6 @@
   <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
-
-<script>
-import axios from 'axios';
-export default {
-    data(){
-        return{
-            // replacementImunoqlobulinTherary:{
-            //     rit_till_today: "Так", 
-            //     first_imunoqlobulin_injection_data: "22-08-2007",  
-            //     imunoqlobulin_producer: "2",   
-            //     actual_injection_way: "Підшкірно",  
-            //     actual_injection_location: "В лікарні",  
-            //     dosa: "10 мг/кг", 
-            //     injection_interval: "Так", 
-            //     patient_weight: "80 кг",  
-            //     recorded_phenomenal: "Так, анафілаксія",  
-            // },
-            patients: []
-        }
-    },
-    created: function()
-    {
-      this.fetchItems();
-    },
-    methods: {
-      fetchItems(){
-      axios.get('http://localhost:3000/users/{$id}').then((response) => {
-        this.patients = response.data
-        console.log(response.data)
-      })
-      .catch((e) => {
-        console.error(e)
-      })
-      },
-    }
-}
-</script> -->
-
-<template>
-  <div>
-    <h1>LETS DO IT</h1>
-    <div>
-      <div v-for="user in users"
-      :key="user.id">
-        <h3>{{user.pid}}</h3>
-        <h3>{{user.patient_weight}}</h3>
-      </div>
-    </div>
-  </div>
-</template>
-
 
 <script>
   import axios from 'axios';
@@ -185,5 +152,4 @@ export default {
       })
     }
   }
-  
 </script>
