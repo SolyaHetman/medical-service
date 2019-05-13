@@ -132,6 +132,7 @@
         users: []
       }
     },
+<<<<<<< Updated upstream
     created() {
       console.log(this.$route.params.user);
     },
@@ -146,6 +147,18 @@
       .then(function(res){
         self.users = res.data;
         console.log('Data :', res.data);
+=======
+    created: function()
+    {
+      this.fetchItems();
+      const id = this.$route.params.user;
+    },
+    methods: {
+      fetchItems(){
+      axios.get('http://localhost:3000/users/{id}').then((response) => {
+        this.patients = response.data
+        console.log(response.data)
+>>>>>>> Stashed changes
       })
       .catch(function(error){
         console.log('Error :', error)
