@@ -8,7 +8,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.register_number"
+            v-model="user.pid+user.date.replace(/-/g,'')"
             readonly
           ></v-text-field>
         </v-flex>
