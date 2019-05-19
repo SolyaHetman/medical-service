@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid" ref="form">
+  <v-form ref="form">
     <v-container>
       <v-layout>
 
@@ -10,7 +10,7 @@
             :key="user.id"
             v-model="user.rit_till_today"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
         <v-flex md3>
@@ -20,7 +20,7 @@
             :key="user.id"
             v-model="user.imunoqlobulin_producer"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -35,7 +35,7 @@
             :key="user.id"
             v-model="user.first_imunoqlobulin_injection_data"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -46,7 +46,7 @@
             :key="user.id"
             v-model="user.actual_injection_way"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -67,7 +67,7 @@
             :key="user.id"
             v-model="user.actual_injection_location"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -78,7 +78,7 @@
             :key="user.id"
             v-model="user.dosa"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
         <v-flex md2>
@@ -88,7 +88,7 @@
             :key="user.id"
             v-model="user.injection_interval"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -99,7 +99,7 @@
             :key="user.id"
             v-model="user.recorded_phenomenal"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
          </v-flex>
 
@@ -114,12 +114,14 @@
             :key="user.id"
             v-model="user.patient_weight"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
-  <v-btn @click="add" to="/newpatient">Додати</v-btn>
+    <v-btn @click="edit">Редагувати</v-btn>
+    <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
+  <!-- <v-btn @click="add" to="/newpatient">Додати</v-btn> -->
  </v-form>
 </template>
 
@@ -150,6 +152,22 @@
       .catch(function(error){
         console.log('Error :', error)
       })
-    }
+    },
+    methods: {
+      edit() {
+      this.shouldDisable = false
+      },
+      submit(user){
+        this.shouldDisable = true;
+        console.log('edit: ', user),
+        axios.put(`http://localhost:3000/users/${user.id}`,user)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(err);
+        });
+      }
+    },
   }
 </script>

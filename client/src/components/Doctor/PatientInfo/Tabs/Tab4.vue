@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid" ref="form">
+  <v-form ref="form">
     <v-container>
       <v-layout>
 
@@ -10,7 +10,7 @@
             :key="user.id"
             v-model="user.stem_cells_transplantation"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -25,7 +25,7 @@
             :key="user.id"
             v-model="user.transplantation_data"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
         <v-flex md3>
@@ -35,7 +35,7 @@
             :key="user.id"
             v-model="user.CB14_soure"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -46,13 +46,15 @@
             :key="user.id"
             v-model="user.genetic_therapy"
             solo
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
       </v-layout>
     </v-container>
-    <v-btn @click="add" to="/newpatient">Додати</v-btn>
+    <v-btn @click="edit">Редагувати</v-btn>
+    <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
+    <!-- <v-btn @click="add" to="/newpatient">Додати</v-btn> -->
  </v-form>
 </template>
 
@@ -62,7 +64,8 @@ import axios from 'axios';
   export default {
     data(){
       return{
-        users: []
+        users: [],
+        shouldDisable: true
       }
     },
     created() {
@@ -83,6 +86,22 @@ import axios from 'axios';
       .catch(function(error){
         console.log('Error :', error)
       })
-    }
+    },
+    methods: {
+      edit() {
+      this.shouldDisable = false
+      },
+      submit(user){
+        this.shouldDisable = true;
+        console.log('edit: ', user),
+        axios.put(`http://localhost:3000/users/${user.id}`,user)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(err);
+        });
+      }
+    },
   }
 </script>

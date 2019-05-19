@@ -50,13 +50,13 @@
             </v-card>
           </v-tab-item>
           <!-- End Tab5 -->
-          <!-- Start reviewTab1 -->
+          <!-- Start Tab1 -->
           <v-tab-item>
             <v-card flat>
               <reviewTab1 />
             </v-card>
           </v-tab-item>
-          <!-- End reviewTab1 -->
+          <!-- End Tab1 -->
         </v-tabs>
       </v-flex>
     </v-layout>

@@ -9,6 +9,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.pid+user.date.replace(/-/g,'')"
+            type="text"
             readonly
           ></v-text-field>
         </v-flex>
@@ -19,7 +20,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.pid"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -30,7 +31,7 @@
             :key="user.id"
             v-model="user.date"
             prepend-icon ="event"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -40,7 +41,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.sex"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -55,7 +56,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.homeland"
-            readonly
+            :readonly="shouldDisable"
             prepend-icon ="place"
           ></v-text-field>
         </v-flex>
@@ -66,7 +67,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.city"
-            readonly
+            :readonly="shouldDisable"
             prepend-icon ="place"
           ></v-text-field>
         </v-flex>
@@ -82,7 +83,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.family_ties_pid"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -92,7 +93,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.radiosAffinity"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -102,7 +103,7 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.radioYesNo"
-            readonly
+            :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
@@ -117,14 +118,14 @@
             v-for="user in users"
             :key="user.id"
             v-model="user.radiosAgreement"
-            readonly
+            :readonly="shouldDisable"
             solo
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
 
-    <v-btn @click="submit">Зберегти</v-btn>
+    <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
     <v-btn @click="edit">Редагувати</v-btn>
 
  </v-form>
@@ -149,14 +150,14 @@ import axios from 'axios';
         //   (v) => !!v || 'Name is required',
         //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         // ],
-        users: []
+        users: [],
+        shouldDisable: true
       }
     },
     created() {
       console.log(this.$route.params.user);
     },
     mounted() {
-      
       var self = this;
       const id = this.$route.params.user;
       axios.get('http://localhost:3000/users',{
@@ -171,6 +172,22 @@ import axios from 'axios';
       .catch(function(error){
         console.log('Error :', error)
       })
+    },
+    methods: {
+      edit() {
+      this.shouldDisable = false
+      },
+      submit(user){
+        this.shouldDisable = true;
+        console.log('edit: ', user),
+        axios.put(`http://localhost:3000/users/${user.id}`,user)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(err);
+        });
+      }
     },
   }
 </script>
