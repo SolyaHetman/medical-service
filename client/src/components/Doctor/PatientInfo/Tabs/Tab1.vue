@@ -185,6 +185,7 @@ import axios from 'axios';
         .catch(error => {
           console.log(err);
         });
+        this.shouldDisable = true
       }
     },
   }

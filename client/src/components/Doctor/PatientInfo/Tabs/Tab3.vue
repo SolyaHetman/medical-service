@@ -120,6 +120,7 @@
         .catch(error => {
           console.log(err);
         });
+        this.shouldDisable = true
       }
     },
   }
