@@ -1,5 +1,5 @@
 <template>
-  <v-form  ref="form">
+  <v-form ref="form">
     <v-container>
       <v-layout>
 
@@ -8,12 +8,10 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.pid+user.date.replace(/-/g,'')"
-            type="text"
+            v-model="user.pid + user.date.replace(/-/g,'')" 
             readonly
           ></v-text-field>
         </v-flex>
-
         <v-flex md2 >
           <p><font color="#808080">ПІБ</font></p>
           <v-text-field
@@ -123,11 +121,10 @@
           ></v-text-field>
         </v-flex>
       </v-layout>
-    </v-container>
-
-    <v-btn @click="edit">Редагувати</v-btn>
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-
+    </v-container> 
+    <v-btn @click="edit">Редагувати</v-btn> 
+    <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
+    
 
  </v-form>
 </template>
@@ -152,7 +149,7 @@ import axios from 'axios';
         //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         // ],
         users: [],
-        shouldDisable: true,
+        shouldDisable: true
       }
     },
     created() {
