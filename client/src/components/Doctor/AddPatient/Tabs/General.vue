@@ -134,7 +134,7 @@ export default {
       nameRules: [
         (v) => !!v || 'Заповніть дані',
         (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
-        (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
+        // (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
       ],
       dataRules: [
         (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР',

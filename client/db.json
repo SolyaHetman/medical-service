@@ -1,12 +1,13 @@
 {
   "users": [
     {
-      "pid": "df",
-      "date": "27-03-2000",
+      "pid": "SoloLL",
+      "date": "01-03-1990",
       "homeland": "Київ,київська область",
       "city": "Львів,львівська область",
       "sex": "Жіноча",
       "radioYesNo": "Ні",
+<<<<<<< Updated upstream
       "radiosAgreement": "Цілковита",
       "family_ties_pid": "По чоловічій лінії",
       "radiosAffinity": "Невідомо",
@@ -167,48 +168,51 @@
       "sex": "Жіноча",
       "radioYesNo": null,
       "radiosAgreement": "Цілковита",
+=======
+      "radiosAgreement": "Згода лише на науковий аналіз",
+>>>>>>> Stashed changes
       "family_ties_pid": "По жіночій лінії",
-      "radiosAffinity": "Ні",
+      "radiosAffinity": "Так",
       "numberESID": null,
-      "first_diagnostic_pid_dat": null,
-      "first_diagnostic_pid_data_time": null,
+      "first_diagnostic_pid_data": "23-04-2000",
+      "first_diagnostic_pid_data_time": "23-04-2000",
       "pid_lab_only": "Ні",
       "pid_select": null,
       "symptoms_start": [
+        "Інфекції",
         "Дисрегуляція імунної відповіді",
-        "Малігнізація (онконастороженість)",
-        "Синдромальні маніфестації"
+        "Малігнізація (онконастороженість)"
       ],
       "symptoms_start_another": null,
-      "IgG": "67",
-      "IgA": "23",
+      "IgG": "1",
+      "IgA": "2",
       "IgM": "3",
       "IgE": "3",
-      "first_diagnostic_pid_data": "Невідомо",
-      "symptoms_start_data": "3343",
-      "damage_genes": "Генетичне дослідження проводилось,мутацій не виявлено",
+      "symptoms_start_data": "333",
+      "damage_genes": "Генетичне дослідження не проводилось",
       "genetic_research_data": "Невідомо",
-      "sequencing_method": "Негенетичні гени",
-      "research_lab": "Лаб 2",
-      "genetic_research_reason": "Специфічні клінічні симптоми",
+      "sequencing_method": "Екзом/геном секвенціонування",
+      "research_lab": "3",
+      "genetic_research_reason": "Сімейний скринінг",
       "stem_cells_transplantation": "no",
       "stem_cells_transplantation_yes": null,
       "transplantation_data": "unknown",
       "transplantation_data_yes": null,
       "CB14_soure": "bone_marrow",
-      "genetic_therapy": "no",
-      "rit_till_today": "Ні",
+      "genetic_therapy": null,
+      "rit_till_today": "Так",
       "first_imunoqlobulin_injection_data": "Невідомо",
       "first_imunoqlobulin_injection_data_yes": null,
-      "imunoqlobulin_producer": "Відомо",
-      "imunoqlobulin_producer_select": "ваіваі",
+      "imunoqlobulin_producer": "Невідомо",
+      "imunoqlobulin_producer_select": null,
       "actual_injection_way": "Довенно",
-      "actual_injection_location": "В лікарні",
+      "actual_injection_location": "Невідомо",
       "dosa": "Невідомо",
       "do_yes": null,
       "injection_interval": "Кожні 14 днів",
       "patient_weight": "Невідомо",
       "patient_weight_yes": null,
+<<<<<<< Updated upstream
       "recorded_phenomenal": "Ні",
       "recorded_phenomenal_select": null,
       "recorded_phenomenal_select_enter": null,
@@ -517,9 +521,12 @@
       "patient_weight": null,
       "patient_weight_yes": null,
       "recorded_phenomenal": null,
+=======
+      "recorded_phenomenal": "Невідомо",
+>>>>>>> Stashed changes
       "recorded_phenomenal_select": null,
       "recorded_phenomenal_select_enter": null,
-      "id": 22
+      "id": 1
     }
   ]
 }

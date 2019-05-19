@@ -1,29 +1,15 @@
 <template>
-    <v-layout row wrap class="mt-5">
-        <v-flex md10 class="mx-auto">
-            <v-card>
-                <v-card-title>
-                    <v-flex  md2 px-2>
-                        <v-select
-                          v-model="search"
-                          label="Пошук"
-                          attach
-                        ></v-select>
-                     </v-flex> 
-                     <v-flex  md2 px-2>
-                       <v-select
-                          v-model="searchage"
-                          label="Виберіть вік"
-                          attach
-                        ></v-select>
-                     </v-flex> 
-                     <v-flex  md3 px-2>
-                        <v-select
-                          v-model="searchdata"
-                          label="Виберіть дату введення "
-                          attach
-                        ></v-select>
-                     </v-flex> 
+        <v-card>
+        <v-card-title>
+                    Пацієнти
+                <v-spacer></v-spacer>
+                <v-text-field
+                  v-model="search"
+                  append-icon="search"
+                  label="Пошук"
+                  single-line
+                  hide-details
+                ></v-text-field>
                                            
                 </v-card-title>
                 <v-data-table class="table table-striped"
@@ -32,7 +18,11 @@
                     :search="search"
                 >
                 <template v-slot:items="props">
+<<<<<<< Updated upstream
                   <td>props.item.pid+props.item.date.replace(/-/g,'')</td>
+=======
+                  <td>{{ props.item.pid + props.item.date.replace(/-/g,'')}}</td>
+>>>>>>> Stashed changes
                   <td>{{ props.item.pid }}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.first_diagnostic_pid_data }}</td>
@@ -52,8 +42,7 @@
                 </v-data-table>
             </v-card>
             
-        </v-flex>
-    </v-layout>
+        
     
 </template>
 
@@ -107,7 +96,8 @@ export default {
           const ageDifMs = Date.now() - birthday.getTime();
           const ageDate = new Date(ageDifMs);
           const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-          user = Object.assign(user, { age: age })
+          user = Object.assign(user, { age: age.toString() })
+          console.log(user, { age: age.toString() })
         })
 
       })
