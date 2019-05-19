@@ -199,7 +199,7 @@ export default {
         //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.
         //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
         // }
-        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary);
+        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
         this.alertShow = true;
         setTimeout(() => {
           this.alertShow = false;

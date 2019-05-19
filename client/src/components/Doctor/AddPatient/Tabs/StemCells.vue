@@ -55,7 +55,7 @@
       </v-layout>
     </v-container>        
 
-    <v-btn type="submit">Зберегти</v-btn>
+    <v-btn type="submit">Далі</v-btn>
   </v-form>
 </template>
 
@@ -87,7 +87,7 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        EventBus.$emit('completedForm', this.stemCellsGeneticTheraty);
+        EventBus.$emit('completedForm', this.stemCellsGeneticTheraty,4);
       }
       
     }

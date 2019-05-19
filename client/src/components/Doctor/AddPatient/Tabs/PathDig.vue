@@ -128,7 +128,7 @@
       </v-layout>
     </v-container>
 
-    <v-btn type="submit">Зберегти</v-btn>
+    <v-btn type="submit">Далі</v-btn>
   </v-form>
 </template>
 
@@ -176,7 +176,7 @@ export default {
         //   this.pathDagnosis.pid_select = this.this.pathDagnosis.pid_select
         //   }
         // }
-        EventBus.$emit('completedForm', this.pathDagnosis);
+        EventBus.$emit('completedForm', this.pathDagnosis,2);
       }
     }
     

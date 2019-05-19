@@ -70,7 +70,7 @@
       </v-layout>
     </v-container>
 
-    <v-btn type="submit">Зберегти</v-btn>
+    <v-btn type="submit">Далі</v-btn>
   </v-form>
 </template>
 
@@ -109,7 +109,7 @@ export default {
         if (this.pidDiagnosis.genetic_research_data == 'Відомо') {
           this.pidDiagnosis.genetic_research_data = this.pidDiagnosis.genetic_research_data_input;
         }
-        EventBus.$emit('completedForm', this.pidDiagnosis);
+        EventBus.$emit('completedForm', this.pidDiagnosis,3);
       }
     }
     
