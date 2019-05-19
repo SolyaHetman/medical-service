@@ -125,8 +125,9 @@
       </v-layout>
     </v-container>
 
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
     <v-btn @click="edit">Редагувати</v-btn>
+    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+
 
  </v-form>
 </template>
@@ -151,7 +152,7 @@ import axios from 'axios';
         //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         // ],
         users: [],
-        shouldDisable: true
+        shouldDisable: true,
       }
     },
     created() {
