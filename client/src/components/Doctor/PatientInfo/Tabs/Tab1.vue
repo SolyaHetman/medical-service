@@ -1,5 +1,5 @@
 <template>
-  <v-form  ref="form">
+  <v-form ref="form">
     <v-container>
       <v-layout>
 
@@ -8,12 +8,16 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
+<<<<<<< Updated upstream
             v-model="user.pid+user.date.replace(/-/g,'')"
             type="text"
+=======
+            v-model="user.name"
+>>>>>>> Stashed changes
             readonly
           ></v-text-field>
         </v-flex>
-
+          <!-- v-model="user.pid+user.date.replace(/-/g,'')" -->
         <v-flex md2 >
           <p><font color="#808080">ПІБ</font></p>
           <v-text-field
@@ -125,8 +129,14 @@
       </v-layout>
     </v-container>
 
+<<<<<<< Updated upstream
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)">Зберегти</v-btn>
     <v-btn @click="edit">Редагувати</v-btn>
+=======
+    <!-- <v-btn @click="submit">Зберегти</v-btn> -->
+    <!-- <v-btn @click="edit">Редагувати</v-btn> -->
+    
+>>>>>>> Stashed changes
 
  </v-form>
 </template>

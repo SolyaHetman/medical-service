@@ -109,7 +109,8 @@
         
       </v-layout>
     </v-container>
-    <v-btn type="submit">Зберегти</v-btn>  
+    <v-btn type="submit">Далі</v-btn>
+    <!-- <v-btn @click="next">next</v-btn> -->
   </v-form>
 </template>
 
@@ -119,57 +120,55 @@
 }
 </style>
 
-
-
 <script>
-  import style from './tab.css';
-  import axios from 'axios';
-  import EventBus from '@/event-bus';
-  
-  export default {
-    data () {
-      return {
-        valid: false,
-        menu: null,
+import style from './tab.css';
+import axios from 'axios';
+import EventBus from '@/event-bus';
+
+export default {
+  data () {
+    return {
+      valid: false,
+      menu: null,
+      date: null,
+      nameRules: [
+        (v) => !!v || 'Заповніть дані',
+        (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
+        (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
+      ],
+      dataRules: [
+        (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР',
+        (v) => !!v || 'Заповніть дані',
+              ],
+      items: ['Львів,львівська область', 'Київ,київська область', 'Вінниця,вінницька область', ],
+      alert: true,
+      generalData: {
+        pid: null,
         date: null,
-        nameRules: [
-          (v) => !!v || 'Заповніть дані',
-          (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
-          (v) => /^[a-zA-Z\s]*$/.test(v) || 'Тільки літери'
-        ],
-        dataRules: [
-                  (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР',
-                  (v) => !!v || 'Заповніть дані',
-                ],
-        items: ['Львів,львівська область', 'Київ,київська область', 'Вінниця,вінницька область', ],
-        alert: true,
-        generalData: {
-          pid: null,
-          date: null,
-          homeland: null,
-          city: null,
-          sex: null,
-          radioYesNo: null,
-          radiosAgreement: null,
-          family_ties_pid:null,
-          radiosAffinity: null,
-          numberESID:null,
-        } 
-      }
+        homeland: null,
+        city: null,
+        sex: null,
+        radioYesNo: null,
+        radiosAgreement: null,
+        family_ties_pid:null,
+        radiosAffinity: null,
+        numberESID:null,
+      } 
+    }
+  },
+  methods: {
+    save (date) {
+      this.$refs.menu.save(date)
     },
-    methods: {
-      save (date) {
-        this.$refs.menu.save(date)
-      },
-      savePatient: function () {
-        this.$refs.form.validate()
-        if (this.generalData.radioYesNo == 'Так') {
-          this.generalData.radioYesNo = this.generalData.numberESID;
-        }
-        EventBus.$emit('completedForm', this.generalData);  
-      },    
+    savePatient: function () {
+      this.$refs.form.validate()
+      if (this.generalData.radioYesNo == 'Так') {
+        this.generalData.radioYesNo = this.generalData.numberESID;
+      }
+      EventBus.$emit('completedForm', this.generalData, 1);
     }
   }
+}
 </script>
 
 
