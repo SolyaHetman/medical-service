@@ -4,7 +4,7 @@
       <v-layout>
 
         <v-flex xs12 md4>
-          <p>Дата вперше встановленого клінічного діагнозу первинного імунодефіцину</p>   
+          <p>Дата вперше встановленого клінічного ПІД</p>   
           <v-radio-group v-model=" pathDagnosis.first_diagnostic_pid_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>

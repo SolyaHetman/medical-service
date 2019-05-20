@@ -80,16 +80,6 @@
         </v-flex>
 
         <v-flex xs12 md4>
-          <p>Спорідненість пацієнта</p>   
-          <v-radio-group v-model="generalData.radiosAffinity" :mandatory="false">
-            <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
-            <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-            <v-radio color="#1976d2" label="Можливо" value="Можливо"></v-radio>
-          </v-radio-group>
-        </v-flex>
-
-        <v-flex xs12 md4>
           <p>Генетично ускладнений сімейний анамнез первинних імунодифецитів</p>   
           <v-radio-group v-model="generalData.radioYesNo" :mandatory="false">
             <v-radio color="#1976d2" label="Так" value="Так"></v-radio>

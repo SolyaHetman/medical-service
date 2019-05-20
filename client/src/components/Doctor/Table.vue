@@ -22,6 +22,7 @@
                   <td>{{ props.item.pid }}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.first_diagnostic_pid_data }}</td>
+                  <td>{{ props.item.actual_injection_location }}</td>
                   <td>{{ props.item.first_imunoqlobulin_injection_data }}</td>
                   <td>{{ props.item.dosa }}</td>
                   <td class="text-center">
@@ -69,7 +70,8 @@ export default {
         { text: 'ПІБ', value: 'pid',sortable: false },
         { text: 'Вік', value: 'age' },
         { text: 'Встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
-        { text: 'Дата введення', value: 'first_imunoqlobulin_injection_data_yes', sortable: false},
+        { text: 'Дата введення імуноглобуліну', value: 'first_imunoqlobulin_injection_data_yes', sortable: false},
+        { text: 'Актуальне місце введення імуноглобуліну', value: 'actual_injection_location', sortable: false},
         { text: 'Доза', value: 'dosa', sortable: false},
         { text: 'Переглянути', value: 'register_number', sortable: false },
       ],
