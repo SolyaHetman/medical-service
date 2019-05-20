@@ -6,10 +6,10 @@
         <v-flex xs12 md4>
           <p>Чи була трасплатнація стовбурових клітин? </p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.stem_cells_transplantation" :mandatory="false">
-            <v-radio color="#1976d2" label="Так" value="yes"></v-radio>
-            <v-radio color="#1976d2" label="Ні" value="no"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
-            <v-text-field v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'yes'"
+            <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
+            <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-text-field v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'Так'"
                 v-model= stemCellsGeneticTheraty.stem_cells_transplantation_yes
                 label="Введіть дані"
                 prepend-icon ="edit"
@@ -19,9 +19,9 @@
         <v-flex md4>
           <p>Дата трансплантації</p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.transplantation_data" :mandatory="false">
-            <v-radio color="#1976d2" label="Відомо" value="known"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
-            <v-text-field v-if="stemCellsGeneticTheraty.transplantation_data == 'known'"
+            <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-text-field v-if="stemCellsGeneticTheraty.transplantation_data == 'Відомо'"
                 v-model= stemCellsGeneticTheraty.transplantation_data_yes
                 label="Введіть дані"
                 :rules= "dataRules"
@@ -32,19 +32,19 @@
         <v-flex md4>
           <p>Джерело CD34 стовбурових  клітин</p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.CB14_soure" :mandatory="false">
-            <v-radio color="#1976d2" label="Кістковий мозок" value="bone_marrow"></v-radio>
-            <v-radio color="#1976d2" label="Периферична кров" value="peripheral_blood"></v-radio>
-            <v-radio color="#1976d2" label="Пуповинна кров" value="umbilical_cord_blood"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
+            <v-radio color="#1976d2" label="Кістковий мозок" value="Кістковий мозок"></v-radio>
+            <v-radio color="#1976d2" label="Периферична кров" value="Периферична кров"></v-radio>
+            <v-radio color="#1976d2" label="Пуповинна кров" value="Пуповинна кров"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
         <v-flex  md4>
               <p>Генна терапія</p>   
               <v-radio-group v-model=" stemCellsGeneticTheraty.genetic_therapy" :mandatory="false">
-                <v-radio color="#1976d2" label="Так" value="yes"></v-radio>
-                <v-radio color="#1976d2" label="Ні" value="no"></v-radio>
-                <v-radio color="#1976d2" label="Невідомо" value="unknown"></v-radio>
-                <v-text-field v-if="stemCellsGeneticTheraty.genetic_therapy == 'yes'"
+                <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
+                <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
+                <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+                <v-text-field v-if="stemCellsGeneticTheraty.genetic_therapy == 'Так'"
                     v-model= stemCellsGeneticTheraty.genetic_therapy_yes
                     :rules= "dataRules"
                     label="Введіть дату"

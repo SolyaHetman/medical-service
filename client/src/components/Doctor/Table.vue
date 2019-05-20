@@ -18,11 +18,7 @@
                     :search="search"
                 >
                 <template v-slot:items="props">
-<<<<<<< Updated upstream
-                  <td>props.item.pid+props.item.date.replace(/-/g,'')</td>
-=======
                   <td>{{ props.item.pid + props.item.date.replace(/-/g,'')}}</td>
->>>>>>> Stashed changes
                   <td>{{ props.item.pid }}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.first_diagnostic_pid_data }}</td>
