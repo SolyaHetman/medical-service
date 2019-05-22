@@ -101,6 +101,6 @@ import Tab5 from "@/components/Doctor/PatientInfo/Tabs/Tab5.vue"
           },
         ]
       }
-    }
+    },    
   }
 </script>

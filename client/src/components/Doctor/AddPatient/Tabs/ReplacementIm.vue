@@ -146,6 +146,7 @@
       <!-- End alert -->
     </v-layout>    
     <v-btn type="submit">Зберегти</v-btn>
+    
   </v-form>
   
 </template>
@@ -194,11 +195,11 @@ export default {
       savePatient: function () {
         if (this.replacementImunoqlobulinTherary.dosa == 'Відомо') {
           this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
+        };
+        if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
+          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
+          console.log(this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes)
         }
-        // if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
-        //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.
-        //   this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
-        // }
         EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
         this.alertShow = true;
         setTimeout(() => {

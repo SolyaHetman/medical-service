@@ -119,9 +119,20 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <!-- Start Alert -->
+      <v-flex xs12>
+        <v-alert
+          :value="alertShow"
+          type="success"        
+          color='#1976d2'
+        >
+          Дані збережено
+        </v-alert>
+      </v-flex>
+      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-  <!-- <v-btn @click="add" to="/newpatient">Додати</v-btn> -->
+   <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
@@ -131,6 +142,7 @@
   export default {
     data(){
       return{
+        alertShow: false,
         users: [],
         shouldDisable: true
       }
@@ -169,6 +181,11 @@
           console.log(err);
         });
         this.shouldDisable = true
+        this.shouldDisable = true
+        this.alertShow = true;
+        setTimeout(() => {
+          this.alertShow = false;
+        }, 2000)
       }
     },
   }

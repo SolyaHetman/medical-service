@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" @submit.prevent="addData">
     <v-container>
       <v-layout>
 
@@ -85,15 +85,6 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
-          <p><font color="#808080">Спорідненість пацієнта</font></p>
-          <v-text-field
-            v-for="user in users"
-            :key="user.id"
-            v-model="user.radiosAffinity"
-            :readonly="shouldDisable"
-          ></v-text-field>
-        </v-flex>
 
         <v-flex md6>
           <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
@@ -122,8 +113,21 @@
         </v-flex>
       </v-layout>
     </v-container> 
+    <!-- Start Alert -->
+      <v-flex xs12>
+        <v-alert
+          :value="alertShow"
+          type="success"        
+          color='#1976d2'
+        >
+          Дані збережено
+        </v-alert>
+      </v-flex>
+      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn> 
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="add" to="/newpatient">Додати</v-btn>
+    
     
 
  </v-form>
@@ -142,6 +146,7 @@ import axios from 'axios';
   export default {
     data () {
       return {
+        alertShow: false,
         // valid: false,
         // date: null,
         // nameRules: [
@@ -185,7 +190,13 @@ import axios from 'axios';
         .catch(error => {
           console.log(err);
         });
-        this.shouldDisable = true
+        
+        this.alertShow = true;
+
+        // console.log('HERE!!!!  '+ this.alertShow)
+        setTimeout(() => {
+          this.alertShow = false;
+        }, 1500)
       }
     },
   }
