@@ -32,7 +32,7 @@
           </v-radio-group>
         </v-flex>
         <v-flex md5>
-          <p>Метод секвенціонування</p>   
+          <p>Метод секвенування</p>   
           <v-radio-group v-model=" pidDiagnosis.sequencing_method" :mandatory="false">
             <v-radio color="#1976d2" label="Секвенціонування гена" value="Секвенціонування гена"></v-radio>
             <v-radio color="#1976d2" label="Екзом/геном секвенціонування" value="Екзом/геном секвенціонування"></v-radio>
@@ -50,11 +50,17 @@
 
         <v-flex xs12 md4>
           <p>Лабораторія,яка проводила генетичні дослідження</p>  
-          <v-text-field
+           <v-select
                 v-model="pidDiagnosis.research_lab"
-                label="Введіть лабораторію"
+                :items="variety"
+                attach
+                label="Виберіть"
+            ></v-select>
+            <v-text-field v-if="pidDiagnosis.research_lab == 'Інше,вказати'"
+                v-model= pidDiagnosis.research_lab_enter
+                label="Введіть інформацію"
                 prepend-icon ="create"
-          ></v-text-field>
+            ></v-text-field>
         </v-flex>
         <v-flex md5>
           <p>Причина генетичного дослідження</p>   
@@ -87,12 +93,14 @@ export default {
                 genetic_research_data: null,
                 sequencing_method: null,
                 research_lab: null,
+                research_lab_enter: null,
                 genetic_research_reason: null,
                 
             },
             dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
                 ],
+            variety: ['Invitae, Сан-Франциско США', 'Генетична лабораторія медичного університету, Дебрецин Угорщина', 'Інститут спадкової паталогії АМН України', 'Інше,вказати' ],
         }
     },
     methods: {

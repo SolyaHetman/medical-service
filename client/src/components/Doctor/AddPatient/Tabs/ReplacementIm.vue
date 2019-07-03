@@ -29,9 +29,15 @@
           <v-radio-group v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-            <v-text-field v-if="replacementImunoqlobulinTherary.imunoqlobulin_producer == 'Відомо'"
-                v-model= replacementImunoqlobulinTherary.imunoqlobulin_producer_select
-                label="Введіть"
+            <v-select v-if="replacementImunoqlobulinTherary.imunoqlobulin_producer == 'Відомо'"
+                v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer_select"
+                :items="variety"
+                attach
+                label="Виберіть"
+            ></v-select>
+            <v-text-field v-if="replacementImunoqlobulinTherary.imunoqlobulin_producer_select == 'Інше,вказати'"
+                v-model= replacementImunoqlobulinTherary.imunoqlobulin_producer_select_enter
+                label="Введіть інформацію"
                 prepend-icon ="create"
             ></v-text-field>
           </v-radio-group>
@@ -167,7 +173,8 @@ export default {
             first_imunoqlobulin_injection_data_yes: null,  
             imunoqlobulin_producer: null,
             IgG: null,
-            imunoqlobulin_producer_select: null,   
+            imunoqlobulin_producer_select: null,
+            imunoqlobulin_producer_select_enter: null,   
             actual_injection_way: null,  
             actual_injection_location: null,  
             dosa: null, 
@@ -179,7 +186,8 @@ export default {
             recorded_phenomenal_select: null,
             recorded_phenomenal_select_enter: null,
           },
-           items: ['1','2','3','4'], 
+           items: ['1','2','3','4'],
+           variety: ['Октафарма', 'Біофарма', 'Інше,вказати' ], 
            others: ['Анафілаксія','Біль голови','Ниркова недостатність','Венозний тромбоз','Гарячка','Місцеві побічні явища','Асептичний менінгіт','Артеріальний тромбоз','Летальний випадок','Інше,вказати'],
            dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
