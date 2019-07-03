@@ -70,17 +70,9 @@
           </v-radio-group>
         </v-flex>
 
-        <v-flex xs12 md4>
-          <p>Родинні зв'язки ПІД</p>   
-          <v-radio-group v-model="generalData.family_ties_pid" :mandatory="false">
-            <v-radio color="#1976d2" label="По чоловічій лінії" value="По чоловічій лінії"></v-radio>
-            <v-radio color="#1976d2" label="По жіночій лінії" value="По жіночій лінії"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-          </v-radio-group>
-        </v-flex>
 
         <v-flex xs12 md4>
-          <p>Генетично ускладнений сімейний анамнез первинних імунодифецитів</p>   
+          <p>Генетично ускладнений сімейний анамнез ПІД</p>   
           <v-radio-group v-model="generalData.radioYesNo" :mandatory="false">
             <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
             <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
@@ -89,12 +81,86 @@
         </v-flex>
 
         <v-flex md4 v-if="generalData.radioYesNo == 'Так'">
-          <v-text-field
-            v-model= generalData.numberESID
-            prepend-icon ="edit"
-            label="Номер ESID"
-            clearable
-          ></v-text-field>
+          
+          <p>Родинні зв'язки ПІД</p>   
+            <v-checkbox  
+              v-model="generalData.numberESID" 
+              label="Батько"
+              value="Батько"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Батько')">
+              <v-text-field 
+                v-model= generalData.fatherESID
+                label="ESID батька"
+              ></v-text-field>
+            </v-flex>  
+            <v-checkbox  
+              v-model="generalData.numberESID" 
+              label="Мати"
+              value="Мати"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Мати')">
+              <v-text-field 
+                v-model= generalData.motherESID
+                label="ESID Мати"
+              ></v-text-field>
+            </v-flex>  
+            <v-checkbox  
+              v-model="generalData.numberESID"
+              label="Сестра"
+              value="Сестра"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Сестра')">
+              <v-text-field 
+                v-model= generalData.sisterESID
+                label="ESID Сестра"
+              ></v-text-field>
+            </v-flex>
+            <v-checkbox  
+              v-model="generalData.numberESID"
+              label="Брат"
+              value="Брат"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Брат')">
+              <v-text-field 
+                v-model= generalData.brotherESID
+                label="ESID Брат"
+              ></v-text-field>
+            </v-flex>   
+            <v-checkbox  
+              v-model="generalData.numberESID" 
+              label="Родич по жіночій лінії"
+              value="Родич по жіночій лінії"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Родич по жіночій лінії')">
+              <v-text-field 
+                v-model= generalData.womenESID
+                label="ESID Родич по жіночій лінії"
+              ></v-text-field>
+            </v-flex>  
+            <v-checkbox  
+              v-model="generalData.numberESID" 
+              label="Родич по чоловічій лінії"
+              value="Родич по чоловічій лінії"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-flex xs12 v-if="generalData.numberESID.includes('Родич по чоловічій лінії')">
+              <v-text-field 
+                v-model= generalData.menESID
+                label="ESID Родич по чоловічій лінії"
+              ></v-text-field>
+            </v-flex>  
         </v-flex>
         
       </v-layout>
@@ -142,7 +208,14 @@ export default {
         radiosAgreement: null,
         family_ties_pid:null,
         radiosAffinity: null,
-        numberESID:null,
+        numberESID:[],
+        fatherESID: null,
+        motherESID: null,
+        sisterESID: null,
+        brotherESID: null,
+        womenESID: null,
+        menESID: null,
+
       } 
     }
   },
