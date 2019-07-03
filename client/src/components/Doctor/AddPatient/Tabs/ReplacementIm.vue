@@ -75,7 +75,7 @@
         <p>Рівень імуноглобулінів,перед введеням замісної імуноглобулінотерапії:</p>   
             <v-text-field 
                 v-model= replacementImunoqlobulinTherary.IgG
-                label="Введіть IgG "
+                label="Введіть IgG(г/л)"
                 prepend-icon ="create"
             ></v-text-field>
         </v-flex>

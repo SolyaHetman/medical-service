@@ -72,7 +72,7 @@ export default {
         { text: 'Дата встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
         { text: 'Остання дата введення імуноглобуліну', value: 'first_imunoqlobulin_injection_data', sortable: false},
         { text: 'Актуальний шлях введення імуноглобуліну', value: 'actual_injection_location', sortable: false},
-        { text: 'Доза', value: 'dosa', sortable: false},
+        { text: 'Доза(мг/кг)', value: 'dosa', sortable: false},
         { text: 'Переглянути', value: 'register_number', sortable: false },
       ],
       patients: []
