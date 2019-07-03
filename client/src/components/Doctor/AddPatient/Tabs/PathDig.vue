@@ -37,14 +37,6 @@
           </v-radio-group>
         </v-flex>
 
-        <v-flex  md3 v-if="pathDagnosis.pid_lab_only == 'Так'">
-          <p>Початок симтомів</p>   
-            <v-text-field
-                v-model= pathDagnosis.symptoms_start_data
-                prepend-icon ="event"
-                label="Введіть дату РР-ММ"
-            ></v-text-field>
-        </v-flex>
 
       </v-layout>
     </v-container>
@@ -54,32 +46,7 @@
       <v-layout>
         <v-flex xs12 md4>
           <p>Перші ПІД-асоційовані симтоми ( один або декілька з-поміж наступних)</p>
-            <v-checkbox  
-              v-model=" pathDagnosis.symptoms_start" 
-              label="Інфекції"
-              value="Інфекції"
-              color="#1976d2" 
-              clq
-            ></v-checkbox>
-            <v-checkbox  
-              v-model=" pathDagnosis.symptoms_start" 
-              label="Дисрегуляція імунної відповіді"
-              value="Дисрегуляція імунної відповіді"
-              color="#1976d2" 
-            ></v-checkbox>
-            <v-checkbox  
-              v-model=" pathDagnosis.symptoms_start" 
-              label="Малігнізація (онконастороженість)"
-              value="Малігнізація (онконастороженість)"
-              color="#1976d2" 
-            ></v-checkbox>
-            <v-checkbox  
-              v-model=" pathDagnosis.symptoms_start" 
-              label="Синдромальні маніфестації"
-              value="Синдромальні маніфестації"
-              color="#1976d2" 
-            ></v-checkbox>
-            <v-checkbox  
+          <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
               label="Перші симтоми невідомі"
               value="Перші симтоми невідомі"
@@ -93,6 +60,55 @@
             ></v-checkbox>
             <v-checkbox  
               v-model=" pathDagnosis.symptoms_start" 
+              label="Інфекції"
+              value="Інфекції"
+              color="#1976d2" 
+              clq
+            ></v-checkbox>
+            <v-text-field v-if="pathDagnosis.symptoms_start.includes('Інфекції')"
+                v-model= pathDagnosis.infection
+                :rules="dataRules"
+                prepend-icon ="event"
+                label="Введіть дату"
+            ></v-text-field>
+            <v-checkbox  
+              v-model=" pathDagnosis.symptoms_start" 
+              label="Дисрегуляція імунної відповіді"
+              value="Дисрегуляція імунної відповіді"
+              color="#1976d2" 
+            ></v-checkbox>
+            <v-text-field v-if="pathDagnosis.symptoms_start.includes('Дисрегуляція імунної відповіді')"
+                v-model= pathDagnosis.dysregulation
+                :rules="dataRules"
+                prepend-icon ="event"
+                label="Введіть дату"
+            ></v-text-field>
+            <v-checkbox  
+              v-model=" pathDagnosis.symptoms_start" 
+              label="Малігнізація (онконастороженість)"
+              value="Малігнізація (онконастороженість)"
+              color="#1976d2" 
+            ></v-checkbox>
+            <v-text-field v-if="pathDagnosis.symptoms_start.includes('Малігнізація (онконастороженість)')"
+                v-model= pathDagnosis.malignancy
+                :rules="dataRules"
+                prepend-icon ="event"
+                label="Введіть дату"
+            ></v-text-field>
+            <v-checkbox  
+              v-model=" pathDagnosis.symptoms_start" 
+              label="Синдромальні маніфестації"
+              value="Синдромальні маніфестації"
+              color="#1976d2" 
+            ></v-checkbox>
+            <v-text-field v-if="pathDagnosis.symptoms_start.includes('Синдромальні маніфестації')"
+                v-model= pathDagnosis.manifestations
+                :rules="dataRules"
+                prepend-icon ="event"
+                label="Введіть дату"
+            ></v-text-field>
+            <v-checkbox  
+              v-model=" pathDagnosis.symptoms_start" 
               label="Інше,вказати"
               value="another"
               color="#1976d2" 
@@ -102,8 +118,13 @@
                 label="Введіть інформацію"
                 prepend-icon ="create"
             ></v-text-field>
+            <v-text-field v-if="pathDagnosis.symptoms_start.includes('another')"
+                v-model= pathDagnosis.symptoms_start_another_data
+                :rules="dataRules"
+                prepend-icon ="event"
+                label="Введіть дату"
+            ></v-text-field>
         </v-flex>
-
         <v-flex  md3>
           <p>Вкажіть наступні дані</p>   
             <v-text-field 
@@ -147,10 +168,15 @@ export default {
           pid_select: null,
           symptoms_start: [],
           symptoms_start_another: null,
+          infection: null,
+          dysregulation: null,
+          malignancy: null,
+          manifestations: null,
+          symptoms_start_another_data: null,
           IgG: null,
           IgA: null,
           IgM: null,
-          IgE: null
+          IgE: null,
         },
         dataRules: [
           (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'

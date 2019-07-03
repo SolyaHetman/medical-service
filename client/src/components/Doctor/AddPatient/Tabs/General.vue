@@ -21,6 +21,13 @@
             prepend-icon ="event"
             ></v-text-field>
         </v-flex>
+        <v-flex xs12 md1>
+          <p>Стать</p>
+          <v-radio-group v-model="generalData.sex" :mandatory="false">
+            <v-radio color="#1976d2" label="Жіноча" value="Жіноча"></v-radio>
+            <v-radio color="#1976d2" label="Чоловіча" value="Чоловіча"></v-radio>
+          </v-radio-group>
+        </v-flex>
 
       </v-layout>
     </v-container>
@@ -46,21 +53,13 @@
             prepend-icon ="place"
           ></v-autocomplete>
         </v-flex>
-
       </v-layout>
     </v-container>
  
 
     <v-container>
       <v-layout row wrap>
-        <v-flex xs12 md4>
-          <p>Стать</p>
-          <v-radio-group v-model="generalData.sex" :mandatory="false">
-            <v-radio color="#1976d2" label="Жіноча" value="Жіноча"></v-radio>
-            <v-radio color="#1976d2" label="Чоловіча" value="Чоловіча"></v-radio>
-          </v-radio-group>
-        </v-flex>
-
+        
         <v-flex xs12 md4>
           <p>Згода пацієнта на використання особистої інформації</p>   
           <v-radio-group v-model="generalData.radiosAgreement" :mandatory="false">
@@ -80,8 +79,7 @@
           </v-radio-group>
         </v-flex>
 
-        <v-flex md4 v-if="generalData.radioYesNo == 'Так'">
-          
+        <v-flex  v-if="generalData.radioYesNo == 'Так'">         
           <p>Родинні зв'язки ПІД</p>   
             <v-checkbox  
               v-model="generalData.numberESID" 
@@ -89,13 +87,11 @@
               value="Батько"
               color="#1976d2" 
               clq
-            ></v-checkbox>
-            <v-flex xs12 v-if="generalData.numberESID.includes('Батько')">
-              <v-text-field 
-                v-model= generalData.fatherESID
-                label="ESID батька"
-              ></v-text-field>
-            </v-flex>  
+            ></v-checkbox>       
+            <v-text-field v-if="generalData.numberESID.includes('Батько')"
+              v-model= generalData.fatherESID
+              label="ESID батька"
+            ></v-text-field>
             <v-checkbox  
               v-model="generalData.numberESID" 
               label="Мати"

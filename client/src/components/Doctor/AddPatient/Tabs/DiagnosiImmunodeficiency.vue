@@ -6,12 +6,18 @@
         <v-flex xs12 md5>
           <p>Уражені гени</p>   
           <v-radio-group v-model=" pidDiagnosis.damage_genes" :mandatory="false">
-            <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутацій не виявлено" value="Генетичне дослідження проводилось,мутацій не виявлено"></v-radio>
             <v-radio color="#1976d2" label="Генетичне дослідження не проводилось" value="Генетичне дослідження не проводилось"></v-radio>
             <v-radio color="#1976d2" label="Історія генетичних досліджень невідома" value="Історія генетичних досліджень невідома"></v-radio>
-            <v-radio color="#1976d2" label="Додаткові гени" value="Додаткові гени"></v-radio>
-            <v-text-field v-if="pidDiagnosis.damage_genes == 'Додаткові гени'"
-                v-model= pidDiagnosis.additional_genes
+            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось,мутації не виявлено" value="Генетичне дослідження не проводилось,мутації не виявлено"></v-radio>
+            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження не проводилось,мутації не виявлено'"
+              v-model= pidDiagnosis.mutations_no
+              label="Введіть дані"
+              prepend-icon ="edit"
+              clearable
+            ></v-text-field>
+            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось,мутації виявлено" value="Генетичне дослідження не проводилось,мутації виявлено"></v-radio>
+            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження не проводилось,мутації виявлено'"
+                v-model= pidDiagnosis.mutations_yes
                 label="Введіть дані"
                 prepend-icon ="edit"
                 clearable
@@ -95,7 +101,8 @@ export default {
                 research_lab: null,
                 research_lab_enter: null,
                 genetic_research_reason: null,
-                
+                mutations_no: null,
+                mutations_yes: null,
             },
             dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
