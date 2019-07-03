@@ -8,7 +8,6 @@
           <v-radio-group v-model=" pathDagnosis.first_diagnostic_pid_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-            <v-radio color="#1976d2" label="Є лише генетичний анамнез" value="Є лише генетичний анамнез"></v-radio>
             <v-text-field v-if="pathDagnosis.first_diagnostic_pid_data == 'Відомо'"
                 v-model= pathDagnosis.first_diagnostic_pid_data_time
                 :rules="dataRules"
@@ -38,9 +37,9 @@
           </v-radio-group>
         </v-flex>
 
-        <v-flex  md3>
+        <v-flex  md3 v-if="pathDagnosis.pid_lab_only == 'Так'">
           <p>Початок симтомів</p>   
-            <v-text-field 
+            <v-text-field
                 v-model= pathDagnosis.symptoms_start_data
                 prepend-icon ="event"
                 label="Введіть дату РР-ММ"

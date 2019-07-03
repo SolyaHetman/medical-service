@@ -16,7 +16,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4>
+        <v-flex md4 v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'Так'">
           <p>Дата трансплантації</p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.transplantation_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -29,7 +29,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4>
+        <v-flex md4 v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'Так'">
           <p>Джерело CD34 стовбурових  клітин</p>   
           <v-radio-group v-model=" stemCellsGeneticTheraty.CB14_soure" :mandatory="false">
             <v-radio color="#1976d2" label="Кістковий мозок" value="Кістковий мозок"></v-radio>
@@ -38,7 +38,7 @@
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex  md4>
+        <v-flex  md4 v-if="stemCellsGeneticTheraty.stem_cells_transplantation== 'Так'">
               <p>Генна терапія</p>   
               <v-radio-group v-model=" stemCellsGeneticTheraty.genetic_therapy" :mandatory="false">
                 <v-radio color="#1976d2" label="Так" value="Так"></v-radio>

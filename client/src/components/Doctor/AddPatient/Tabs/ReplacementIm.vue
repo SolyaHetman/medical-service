@@ -8,9 +8,10 @@
             <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
             <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-radio color="#1976d2" label="Нерегулярно" value="Нерегулярно"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex md3>
+        <v-flex md3 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
           <p>Дата введення:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -23,7 +24,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4>
+        <v-flex md4 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')"> 
           <p>Виробник імуноглобулінів, які отримує пацієнт:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.imunoqlobulin_producer" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -38,7 +39,7 @@
     </v-layout>
     </v-container>   
 
-    <v-container>
+    <v-container v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
       <v-layout>
           <v-flex xs12 md4>
           <p>Актуальний шлях введення імуноглобуліну:</p>   
@@ -82,7 +83,7 @@
       </v-layout>
     </v-container>   
 
-      <v-container>
+      <v-container v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
         <v-layout>
           <v-flex xs12 md4>
             <p>Інтервал між введенями:</p>   
