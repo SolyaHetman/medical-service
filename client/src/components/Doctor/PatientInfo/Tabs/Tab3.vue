@@ -1,13 +1,13 @@
 <template>
   <v-form ref="form">
-    <v-container>
+    <v-container
+      v-for="user in users"
+      :key="user.id">
       <v-layout>
 
         <v-flex md6>
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.damage_genes"
             solo
             :readonly="shouldDisable"
@@ -21,8 +21,6 @@
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.genetic_research_data"
             solo
             :readonly="shouldDisable"
@@ -31,8 +29,6 @@
         <v-flex md3>
           <p><font color="#808080">Метод секвенування</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.sequencing_method"
             solo
             :readonly="shouldDisable"
@@ -42,13 +38,13 @@
       </v-layout>
     </v-container>
 
-    <v-container>
+    <v-container
+      v-for="user in users"
+      :key="user.id">
       <v-layout>
         <v-flex md4>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.research_lab"
             solo
             :readonly="shouldDisable"
@@ -61,8 +57,6 @@
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.genetic_research_reason"
             solo
             :readonly="shouldDisable"
