@@ -55,14 +55,6 @@
           ></v-text-field>
         </v-flex>
 
-      	<v-flex md2>
-          <p><font color="#808080">Початок симтомів</font></p>
-          <v-text-field
-            v-model="user.symptoms_start_data"
-            solo
-            :readonly="shouldDisable"            
-          ></v-text-field>
-        </v-flex>
         <v-flex md2>
           <p>
           	<font color="#808080">IgG</font>
