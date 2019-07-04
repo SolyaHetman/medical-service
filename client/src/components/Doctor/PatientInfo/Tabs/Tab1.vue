@@ -98,7 +98,6 @@
             :key="user.id"
             v-model="user.radiosAgreement"
             :readonly="shouldDisable"
-            
           ></v-text-field>
         </v-flex>
 
@@ -112,36 +111,44 @@
         
         <v-flex md2 v-if = '(user.radioYesNo != "Ні") && (user.radioYesNo != "Невідомо")'>
           <p><font color="#808080">Родинні зв'язки ПІД</font></p>
-          <v-text-field
-            v-if='user.fatherESID != null'
-            v-model="user.fatherESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='user.motherESID != null'
-            v-model="user.motherESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='user.sisterESID != null'
-            v-model="user.sisterESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='user.brotherESID != null'
-            v-model="user.brotherESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='user.manESID != null'
-            v-model="user.manESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='user.womenESID != null'
-            v-model="user.womenESID"
-            :readonly="shouldDisable"
-          ></v-text-field>
+          <ul>
+            <li v-if='user.fatherESID != null'>
+              <v-text-field
+                v-model="father+user.fatherESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+            <li v-if='user.motherESID != null'>
+              <v-text-field
+                v-model="mother+user.motherESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+            <li v-if='user.sisterESID != null'>         
+              <v-text-field
+                v-model="sister+user.sisterESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+            <li v-if='user.brotherESID != null'>
+              <v-text-field
+                v-model="brother+user.brotherESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+            <li v-if='user.manESID != null'>  
+              <v-text-field
+                v-model="man+user.manESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+            <li v-if='user.womenESID != null'>  
+              <v-text-field
+                v-model="women+user.womenESID"
+                :readonly="shouldDisable"
+              ></v-text-field>
+            </li>
+          </ul>
         </v-flex>
       </v-layout>
     </v-container> 
@@ -187,6 +194,12 @@ import axios from 'axios';
         // ],
         users: [],
         tmp: "Так",
+        father: "ESID батька: ",
+        mother: "ESID матері: ",
+        brother: "ESID брата: ",
+        sister: "ESID сестри: ",
+        women: "ESID родича по жіночій лінії: ",
+        man: "ESID родича по чоловічій лінії: ",
         shouldDisable: true
       }
     },
