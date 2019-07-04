@@ -42,7 +42,6 @@
           <v-radio-group v-model=" pidDiagnosis.sequencing_method" :mandatory="false">
             <v-radio color="#1976d2" label="Секвенціонування гена" value="Секвенціонування гена"></v-radio>
             <v-radio color="#1976d2" label="Екзом/геном секвенціонування" value="Екзом/геном секвенціонування"></v-radio>
-            <v-radio color="#1976d2" label="Негенетичні гени" value="Негенетичні гени"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
@@ -74,7 +73,6 @@
             <v-radio color="#1976d2" label="Специфічні клінічні симптоми" value="Специфічні клінічні симптоми"></v-radio>
             <v-radio color="#1976d2" label="Сімейний скринінг" value="Сімейний скринінг"></v-radio>
             <v-radio color="#1976d2" label="Пренатальна діагностика" value="Пренатальна діагностика"></v-radio>
-            <v-radio color="#1976d2" label="Діагноз під час пренатального скринінгу" value="Діагноз під час пренатального скринінгу"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>

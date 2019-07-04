@@ -152,7 +152,8 @@
       </v-flex>
       <!-- End alert -->
     </v-layout>    
-    <v-btn type="submit">Зберегти</v-btn>
+    <!-- <v-btn type="submit">Зберегти</v-btn> -->
+    <v-btn type="alertDisplay">Click Me!</v-btn>
     
   </v-form>
   
@@ -195,26 +196,43 @@ export default {
         }
     },
     methods: {
+
       submit () {
         this.$refs.form()
       },
-      save (date) {
-        this.$refs.menu.save(date)
-      },
+      // save (date) {
+      //   this.$refs.menu.save(date)
+      // },
       savePatient: function () {
-        if (this.replacementImunoqlobulinTherary.dosa == 'Відомо') {
-          this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
-        };
-        if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
-          this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
-          console.log(this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes)
-        }
-        EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
-        this.alertShow = true;
-        setTimeout(() => {
-          this.alertShow = false;
-        }, 3000)
-      }
+        this.$swal({
+    		  title: '<i>Ви хочете додати ще якісь дані</i>',
+          showCancelButton: true,
+          confirmButtonText: 'ТАК',
+          cancelButtonText: 'НІ',
+          showCloseButton: true,
+          showLoaderOnConfirm: true,
+        }).then((result) => {
+          if(result.value) {
+            
+            EventBus.$emit('completedForm', this.stemCellsGeneticTheraty,4);
+            this.replacementImunoqlobulinTherary = {}
+           
+          } else {
+            if (this.replacementImunoqlobulinTherary.dosa == 'Відомо') {
+              this.replacementImunoqlobulinTherary.dosa = this.replacementImunoqlobulinTherary.do_yes;
+            };
+            if (this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо') {
+              this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes;
+              console.log(this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes)
+            }
+            EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
+            this.alertShow = true;
+            setTimeout(() => {
+              this.alertShow = false;
+            }, 3000)
+          }
+        })
+      },
     }
     
 }
