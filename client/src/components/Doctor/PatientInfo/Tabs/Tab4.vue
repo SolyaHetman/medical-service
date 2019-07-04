@@ -14,15 +14,22 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 >
+        <v-flex md2  
+            v-for="user in users" 
+            :key="user.id">
           <p>
             <font color="#808080">
               Дата трансплантації
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='user.transplantation_data=="Відомо"'
+            v-model="user.transplantation_data_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
             v-model="user.transplantation_data"
             solo
             :readonly="shouldDisable"
@@ -39,11 +46,18 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
+        <v-flex md2
+          v-for="user in users"
+          :key="user.id">
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='user.genetic_therapy=="Так"'
+            v-model="user.genetic_therapy_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
             v-model="user.genetic_therapy"
             solo
             :readonly="shouldDisable"

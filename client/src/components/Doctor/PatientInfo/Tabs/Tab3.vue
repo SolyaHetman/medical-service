@@ -29,7 +29,7 @@
           ></v-text-field>
         </v-flex>
         <v-flex md3>
-          <p><font color="#808080">Метод секвенціонування</font></p>
+          <p><font color="#808080">Метод секвенування</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
@@ -44,7 +44,7 @@
 
     <v-container>
       <v-layout>
-        <v-flex md3>
+        <v-flex md4>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
             v-for="user in users"
@@ -54,7 +54,7 @@
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md2>
+        <v-flex md4>
           <p>
             <font color="#808080">
               Причина генетичного дослідження

@@ -1,49 +1,50 @@
 <template>
   <v-form ref="form">
-    <v-container>
-      <v-layout>
+    <v-container
+      v-for="user in users"
+      :key="user.id">
+      <v-layout > 
 
         <v-flex md3>
           <p><font color="#808080">Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.rit_till_today"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3>
+        <v-flex md3 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
           <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='user.imunoqlobulin_producer=="Відомо"'
+            v-model="user.imunoqlobulin_producer_select"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
             v-model="user.imunoqlobulin_producer"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 >
+        <v-flex md2 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
           <p>
             <font color="#808080"><br>
               Дата першого введення
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.first_imunoqlobulin_injection_data"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md3>
+        <v-flex md3 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
           <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.actual_injection_way"
             solo
             :readonly="shouldDisable"
@@ -53,7 +54,10 @@
       </v-layout>
     </v-container>
 
-    <v-container>
+    <v-container 
+      v-for="user in users"
+      :key="user.id"
+      v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
       <v-layout>
         
         <v-flex md3>
@@ -63,8 +67,6 @@
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.actual_injection_location"
             solo
             :readonly="shouldDisable"
@@ -74,8 +76,13 @@
         <v-flex md2>
           <p><font color="#808080"><br>Доза</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='user.dosa=="Відомо"'
+            v-model="user.do_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
             v-model="user.dosa"
             solo
             :readonly="shouldDisable"
@@ -84,8 +91,6 @@
         <v-flex md2>
           <p><font color="#808080"><br>Інтервал між введенями</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.injection_interval"
             solo
             :readonly="shouldDisable"
@@ -95,8 +100,19 @@
         <v-flex md2>
           <p><font color="#808080">Зафіксовані небажані явища</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='(user.recorded_phenomenal=="Так") && (user.recorded_phenomenal_select=="Інше,вказати")'
+            v-model="user.recorded_phenomenal_select_enter"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-if='(user.recorded_phenomenal=="Так") && (user.recorded_phenomenal_select!="Інше,вказати")'
+            v-model="user.recorded_phenomenal_select"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-if='user.recorded_phenomenal!="Так"'
             v-model="user.recorded_phenomenal"
             solo
             :readonly="shouldDisable"
@@ -110,8 +126,13 @@
             </font>
           </p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
+            v-if='user.patient_weight=="Відомо"'
+            v-model="user.patient_weight_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
             v-model="user.patient_weight"
             solo
             :readonly="shouldDisable"

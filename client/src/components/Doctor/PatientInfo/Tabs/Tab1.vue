@@ -48,8 +48,8 @@
 
     <v-container>
       <v-layout>
-        <v-flex md2 >
-          <p><font color="#808080">Країна та місто народження</font></p>
+        <v-flex md4 >
+          <p><font color="#808080">Місце народження</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
@@ -59,8 +59,8 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md3>
-          <p><font color="#808080">Країна та місто теперішнього проживання</font></p>
+        <v-flex md4>
+          <p><font color="#808080">Місце теперішнього проживання</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
@@ -72,26 +72,23 @@
       </v-layout>
     </v-container>
 
-    <v-container>
+    <v-container 
+      v-for="user in users"
+      :key="user.id">
       <v-layout>
       
-        <v-flex md2>
-          <p><font color="#808080">Родинні зв'язки ПІД</font></p>
+        <v-flex md6>
+          <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
-            v-model="user.family_ties_pid"
+            v-model="user.radioYesNo"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-
-        <v-flex md6>
-          <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
+        <v-flex md2 v-if = 'user.radioYesNo == "Так"'>
+          <p><font color="#808080">Родинні зв'язки ПІД</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
-            v-model="user.radioYesNo"
+            v-model="user.family_ties_pid"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
