@@ -109,7 +109,7 @@
       :key="user.id">
       <v-layout>
         
-        <v-flex md2 v-if = '(user.radioYesNo != "Ні") && (user.radioYesNo != "Невідомо")'>
+        <v-flex md4 v-if = '(user.radioYesNo != "Ні") && (user.radioYesNo != "Невідомо")'>
           <p><font color="#808080">Родинні зв'язки ПІД</font></p>
           <ul>
             <li v-if='user.fatherESID != null'>
@@ -136,9 +136,9 @@
                 :readonly="shouldDisable"
               ></v-text-field>
             </li>
-            <li v-if='user.manESID != null'>  
+            <li v-if='user.menESID != null'>  
               <v-text-field
-                v-model="man+user.manESID"
+                v-model="man+user.menESID"
                 :readonly="shouldDisable"
               ></v-text-field>
             </li>

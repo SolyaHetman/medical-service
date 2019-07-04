@@ -117,16 +117,14 @@
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field 
-            v-for='item in user.symptoms_start'
-            v-if='item=="Перші симптоми невідомі"||item=="Відсутність ПІД-асоційованих симптомів"'
-            v-model="user.symptoms_start[0]"
+            v-if='user.symptoms_start=="Перші симтоми невідомі"'
+            v-model="user.symptoms_start"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field 
-            v-for='item in user.symptoms_start'
-            v-if='item=="Відсутність ПІД-асоційованих симптомів"'
-            v-model="user.symptoms_start[1]"
+            v-if='user.symptoms_start=="Відсутність ПІД-асоційованих симптомів"'
+            v-model="user.symptoms_start"
             solo
             :readonly="shouldDisable"
           ></v-text-field>

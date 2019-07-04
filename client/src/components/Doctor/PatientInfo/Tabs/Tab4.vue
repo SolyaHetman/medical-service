@@ -14,7 +14,7 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
+        <v-flex md2 v-if='user.transplantation_data=="Відомо"'>
           <p>
             <font color="#808080">
               Дата трансплантації
@@ -33,7 +33,7 @@
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3>
+        <v-flex md3 v-if='user.transplantation_data=="Відомо"'>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
             v-model="user.CB14_soure"
@@ -42,7 +42,7 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2>
+        <v-flex md2 v-if='user.transplantation_data=="Відомо"'>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
             v-if='user.genetic_therapy=="Так"'
