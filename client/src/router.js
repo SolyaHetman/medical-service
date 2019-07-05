@@ -5,7 +5,9 @@ import Login from './views/Login.vue'
 import Dashboard from './views/Doctor/Dashboard.vue'
 import NewPatient from './views/Doctor/NewPatient.vue'
 import PatientInfo from './views/Doctor/PatientInfo.vue'
-
+import DoctorRegion from './views/Doctor/DoctorRegion.vue'
+import DoctorCentre from './views/Doctor/DoctorCentre.vue'
+import MainDoctor from './views/Doctor/MainDoctor.vue'
 
 Vue.use(Router)
 
@@ -34,6 +36,22 @@ export default new Router({
             path: '/patientinfo/:user',
             name: 'patientinfo',
             component: PatientInfo
-        }
+        },
+        {
+            path: '/doctorRegion',
+            name: 'doctorRegion',
+            component: DoctorRegion
+        },
+        {
+            path: '/doctorCentre',
+            name: 'doctorCentre',
+            component: DoctorCentre
+        },
+        {
+            path: '/mainDoctor',
+            name: 'mainDoctor',
+            component: MainDoctor
+        },
+
     ]
 })

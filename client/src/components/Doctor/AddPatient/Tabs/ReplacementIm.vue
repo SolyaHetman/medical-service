@@ -12,12 +12,25 @@
           </v-radio-group>
         </v-flex>
         <v-flex md3 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
-          <p>Дата введення:</p>   
-          <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data" :mandatory="false">
+          <p>Початкова дата введення замісної імуноглобулінотерапії:</p>   
+          <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-            <v-text-field v-if="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data == 'Відомо'"
-                v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_yes
+            <v-text-field v-if="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start == 'Відомо'"
+                v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start_yes
+                :rules="dataRules"
+                label="Введіть дані"
+                prepend-icon ="event"
+            ></v-text-field>
+          </v-radio-group>
+        </v-flex>
+        <v-flex md3 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
+          <p>Кінцева дата введення замісної імуноглобулінотерапії:</p>   
+          <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end" :mandatory="false">
+            <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
+            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
+            <v-text-field v-if="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end == 'Відомо'"
+                v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end_yes
                 :rules="dataRules"
                 label="Введіть дані"
                 prepend-icon ="event"
@@ -153,7 +166,7 @@
       <!-- End alert -->
     </v-layout>    
     <!-- <v-btn type="submit">Зберегти</v-btn> -->
-    <v-btn type="alertDisplay">Click Me!</v-btn>
+    <v-btn type="alertDisplay">Зберегти</v-btn>
     
   </v-form>
   
@@ -170,8 +183,10 @@ export default {
           alertShow:false, 
           replacementImunoqlobulinTherary:{
             rit_till_today: null, 
-            first_imunoqlobulin_injection_data: null,
-            first_imunoqlobulin_injection_data_yes: null,  
+            first_imunoqlobulin_injection_data_start: null,
+            first_imunoqlobulin_injection_data_start_yes: null, 
+            first_imunoqlobulin_injection_data_end: null, 
+            first_imunoqlobulin_injection_data_end_yes: null,
             imunoqlobulin_producer: null,
             IgG: null,
             imunoqlobulin_producer_select: null,
@@ -200,12 +215,9 @@ export default {
       submit () {
         this.$refs.form()
       },
-      // save (date) {
-      //   this.$refs.menu.save(date)
-      // },
       savePatient: function () {
         this.$swal({
-    		  title: '<i>Ви хочете додати ще якісь дані</i>',
+    		  title: 'Чи бажаєте ви ввести ще дані про пацієнта?',
           showCancelButton: true,
           confirmButtonText: 'ТАК',
           cancelButtonText: 'НІ',
@@ -214,7 +226,7 @@ export default {
         }).then((result) => {
           if(result.value) {
             
-            EventBus.$emit('completedForm', this.stemCellsGeneticTheraty,4);
+            EventBus.$emit('completedForm', this.replacementImunoqlobulinTherary,5);
             this.replacementImunoqlobulinTherary = {}
            
           } else {
