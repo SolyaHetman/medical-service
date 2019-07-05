@@ -5,7 +5,7 @@
       :key="user.id">
       <v-layout>
 
-        <v-flex md6>
+        <v-flex md5>
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
             v-model="user.damage_genes"
@@ -14,7 +14,32 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md3>
+        <v-flex md6 v-if="user.damage_genes == 'Генетичне дослідження не проводилось,мутації не виявлено'">
+          <p><font color="#808080">Додаткова інформація</font></p>
+          <v-text-field
+            v-model="user.mutations_no"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+
+        <v-flex md5 v-if="user.damage_genes == 'Генетичне дослідження не проводилось,мутації виявлено'">
+          <p><font color="#808080">Додаткова інформація</font></p>
+          <v-text-field
+            v-model="user.mutations_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+
+      </v-layout>
+    </v-container>
+
+    <v-container
+      v-for="user in users"
+      :key="user.id">
+      <v-layout>
+        <v-flex md4>
           <p>
             <font color="#808080">
               Дата генетичного дослідження
@@ -26,7 +51,7 @@
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3>
+        <v-flex md4>
           <p><font color="#808080">Метод секвенування</font></p>
           <v-text-field
             v-model="user.sequencing_method"

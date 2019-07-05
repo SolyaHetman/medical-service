@@ -40,8 +40,8 @@
         <v-flex md5>
           <p>Метод секвенування</p>   
           <v-radio-group v-model=" pidDiagnosis.sequencing_method" :mandatory="false">
-            <v-radio color="#1976d2" label="Секвенціонування гена" value="Секвенціонування гена"></v-radio>
-            <v-radio color="#1976d2" label="Екзом/геном секвенціонування" value="Екзом/геном секвенціонування"></v-radio>
+            <v-radio color="#1976d2" label="Секвенування гена" value="Секвенування гена"></v-radio>
+            <v-radio color="#1976d2" label="Екзом/геном секвенування" value="Екзом/геном секвенування"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
