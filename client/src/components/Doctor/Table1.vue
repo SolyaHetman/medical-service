@@ -28,7 +28,7 @@
                   <td>Лікар1</td>
                   <td>Центр1</td>
                   <td class="text-center">
-                    <v-btn flat icon color="#1976d2" :to="'/patientinfo/'+props.item.id">
+                    <v-btn flat icon color="#1976d2" :to="'/regionInformation/'+props.item.id">
                       <v-icon >
                         assignment
                       </v-icon>

@@ -8,6 +8,7 @@ import PatientInfo from './views/Doctor/PatientInfo.vue'
 import DoctorRegion from './views/Doctor/DoctorRegion.vue'
 import DoctorCentre from './views/Doctor/DoctorCentre.vue'
 import MainDoctor from './views/Doctor/MainDoctor.vue'
+import RegionInformation from './views/Doctor/RegionInformation.vue'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
             path: '/mainDoctor',
             name: 'mainDoctor',
             component: MainDoctor
+        },
+        {
+            path: '/regionInformation/:user',
+            name: 'regionInformation',
+            component: RegionInformation
         },
 
     ]
