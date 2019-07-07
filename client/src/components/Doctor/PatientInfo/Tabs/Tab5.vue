@@ -29,19 +29,53 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
+        <v-flex md3 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
           <p>
-            <font color="#808080"><br>
-              Дата першого введення
+            <font color="#808080">
+              Початкова дата введення замісної імуноглобулінотерапії:
             </font>
           </p>
           <v-text-field
-            v-model="user.first_imunoqlobulin_injection_data"
+            v-if="user.first_imunoqlobulin_injection_data_start == 'Відомо'"
+            v-model="user.first_imunoqlobulin_injection_data_start_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
+            v-model="user.first_imunoqlobulin_injection_data_start"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
+        <v-flex md3 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
+          <p>
+            <font color="#808080">
+              Кінцева дата введення замісної імуноглобулінотерапії:
+            </font>
+          </p>
+          <v-text-field
+            v-if="user.first_imunoqlobulin_injection_data_end == 'Відомо'"
+            v-model="user.first_imunoqlobulin_injection_data_end_yes"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+          <v-text-field
+            v-else
+            v-model="user.first_imunoqlobulin_injection_data_end"
+            solo
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container 
+      v-for="user in users"
+      :key="user.id"
+      v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
+      <v-layout>
         <v-flex md3 v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
           <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
           <v-text-field
@@ -51,15 +85,6 @@
           ></v-text-field>
         </v-flex>
 
-      </v-layout>
-    </v-container>
-
-    <v-container 
-      v-for="user in users"
-      :key="user.id"
-      v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
-      <v-layout>
-        
         <v-flex md3>
           <p>
             <font color="#808080">
@@ -96,7 +121,14 @@
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
+      </v-layout>
+    </v-container>
 
+    <v-container 
+      v-for="user in users"
+      :key="user.id"
+      v-if='(user.rit_till_today=="Так") || (user.rit_till_today=="Нерегулярно")'>
+      <v-layout>
         <v-flex md2>
           <p><font color="#808080">Зафіксовані небажані явища</font></p>
           <v-text-field
@@ -140,6 +172,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+
     <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
