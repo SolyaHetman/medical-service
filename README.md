@@ -19,7 +19,7 @@ npm run serve
 #### Login Page
 - [x] Create View For Login
 
-#### Doctor Dashboard
+#### Doctors Dashboard
 - [x] Create Dashboard view
 - [x] Add html markup
 - [ ] Realize the search for certain data
