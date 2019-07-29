@@ -21,7 +21,7 @@
                   <td>{{ props.item.pid + props.item.date.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.first_diagnostic_pid_data }}</td>
-                  <td>{{ props.item.first_imunoqlobulin_injection_data }}</td>
+                  <td>{{ props.item.first_imunoqlobulin_injection_data_end_yes }}</td>
                   <td>{{ props.item.actual_injection_way }}</td>
                   <td>{{ props.item.dosa }}</td>
                   <td>{{ props.item.imunoqlobulin_producer_select }}</td>
@@ -71,7 +71,7 @@ export default {
         },
         { text: 'Вік', value: 'age' },
         { text: 'Дата встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
-        { text: 'Остання дата введення імуноглобуліну', value: 'first_imunoqlobulin_injection_data', sortable: false},
+        { text: 'Остання дата введення імуноглобуліну', value: 'first_imunoqlobulin_injection_data_end_yes', sortable: false},
         { text: 'Актуальний шлях введення імуноглобуліну', value: 'actual_injection_location', sortable: false},
         { text: 'Доза(мг/кг)', value: 'dosa', sortable: false},
         { text: 'Виробник', value: 'imunoqlobulin_producer_select', sortable: false},
