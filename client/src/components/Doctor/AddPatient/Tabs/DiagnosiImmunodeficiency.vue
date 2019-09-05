@@ -8,15 +8,15 @@
           <v-radio-group v-model=" pidDiagnosis.damage_genes" :mandatory="false">
             <v-radio color="#1976d2" label="Генетичне дослідження не проводилось" value="Генетичне дослідження не проводилось"></v-radio>
             <v-radio color="#1976d2" label="Історія генетичних досліджень невідома" value="Історія генетичних досліджень невідома"></v-radio>
-            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось,мутації не виявлено" value="Генетичне дослідження не проводилось,мутації не виявлено"></v-radio>
-            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження не проводилось,мутації не виявлено'"
+            <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутації не виявлено" value="Генетичне дослідження проводилось,мутації не виявлено"></v-radio>
+            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження проводилось,мутації не виявлено'"
               v-model= pidDiagnosis.mutations_no
               label="Введіть дані"
               prepend-icon ="edit"
               clearable
             ></v-text-field>
-            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось,мутації виявлено" value="Генетичне дослідження не проводилось,мутації виявлено"></v-radio>
-            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження не проводилось,мутації виявлено'"
+            <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутації виявлено" value="Генетичне дослідження проводилось,мутації виявлено"></v-radio>
+            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження проводилось,мутації виявлено'"
                 v-model= pidDiagnosis.mutations_yes
                 label="Введіть дані"
                 prepend-icon ="edit"

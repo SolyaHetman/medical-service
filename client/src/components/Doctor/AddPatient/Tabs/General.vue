@@ -3,12 +3,32 @@
     <v-container>
       <v-layout>
 
-        <v-flex xs12 md4 >
+        <v-flex xs12 md2 >
           <v-text-field
             v-model="generalData.pid"
             :rules="nameRules"
             :counter="20"
-            label="ПIД"
+            label="Прізвище"
+            prepend-icon ="create"
+            required
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md2 >
+          <v-text-field
+            v-model="generalData.pid"
+            :rules="nameRules"
+            :counter="20"
+            label="Ім'я"
+            prepend-icon ="create"
+            required
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 md2 >
+          <v-text-field
+            v-model="generalData.pid"
+            :rules="nameRules"
+            :counter="20"
+            label="Побатькові"
             prepend-icon ="create"
             required
           ></v-text-field>
@@ -21,37 +41,41 @@
             prepend-icon ="event"
             ></v-text-field>
         </v-flex>
-        <v-flex xs12 md1>
+      </v-layout>
+    </v-container>
+
+    <v-container>
+      <v-layoout>
+        <v-flex md1>
           <p>Стать</p>
           <v-radio-group v-model="generalData.sex" :mandatory="false">
             <v-radio color="#1976d2" label="Жіноча" value="Жіноча"></v-radio>
             <v-radio color="#1976d2" label="Чоловіча" value="Чоловіча"></v-radio>
           </v-radio-group>
         </v-flex>
-
-      </v-layout>
+      </v-layoout>
     </v-container>
 
     <v-container>
       <v-layout>
         <v-flex md4>
-          <v-autocomplete
+          <v-text-field
             :items="items"
             v-model="generalData.homeland"
             attach
             label="Місто народження"
             prepend-icon ="place"
-          ></v-autocomplete>
+          ></v-text-field>
         </v-flex>
 
         <v-flex md4>
-          <v-autocomplete
+          <v-text-field
             :items="items"
             v-model="generalData.city"
             attach
             label="Місто теперішнього проживання"
             prepend-icon ="place"
-          ></v-autocomplete>
+          ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>

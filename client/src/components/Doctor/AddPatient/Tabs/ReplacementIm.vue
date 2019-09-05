@@ -12,19 +12,6 @@
           </v-radio-group>
         </v-flex>
         <v-flex md3 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
-          <p>Початкова дата введення замісної імуноглобулінотерапії:</p>   
-          <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start" :mandatory="false">
-            <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
-            <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
-            <v-text-field v-if="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start == 'Відомо'"
-                v-model= replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_start_yes
-                :rules="dataRules"
-                label="Введіть дані"
-                prepend-icon ="event"
-            ></v-text-field>
-          </v-radio-group>
-        </v-flex>
-        <v-flex md3 v-if="(replacementImunoqlobulinTherary.rit_till_today == 'Так') || (replacementImunoqlobulinTherary.rit_till_today == 'Нерегулярно')">
           <p>Кінцева дата введення замісної імуноглобулінотерапії:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -153,7 +140,6 @@
       </v-layout>
     </v-container>  
     <v-layout row>
-      <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
           :value="alertShow"
@@ -163,9 +149,7 @@
           Дані збережено
         </v-alert>
       </v-flex>
-      <!-- End alert -->
     </v-layout>    
-    <!-- <v-btn type="submit">Зберегти</v-btn> -->
     <v-btn type="alertDisplay">Зберегти</v-btn>
     
   </v-form>
