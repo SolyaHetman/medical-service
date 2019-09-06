@@ -5,18 +5,18 @@
 
         <v-flex xs12 md5>
           <p>Уражені гени</p>   
-          <v-radio-group v-model=" pidDiagnosis.damage_genes" :mandatory="false">
+          <v-radio-group v-model=" pidDiagnosis.DamagedGenes" :mandatory="false">
             <v-radio color="#1976d2" label="Генетичне дослідження не проводилось" value="Генетичне дослідження не проводилось"></v-radio>
             <v-radio color="#1976d2" label="Історія генетичних досліджень невідома" value="Історія генетичних досліджень невідома"></v-radio>
             <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутації не виявлено" value="Генетичне дослідження проводилось,мутації не виявлено"></v-radio>
-            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження проводилось,мутації не виявлено'"
+            <v-text-field v-if="pidDiagnosis.DamagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'"
               v-model= pidDiagnosis.mutations_no
               label="Введіть дані"
               prepend-icon ="edit"
               clearable
             ></v-text-field>
             <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутації виявлено" value="Генетичне дослідження проводилось,мутації виявлено"></v-radio>
-            <v-text-field v-if="pidDiagnosis.damage_genes == 'Генетичне дослідження проводилось,мутації виявлено'"
+            <v-text-field v-if="pidDiagnosis.DamagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'"
                 v-model= pidDiagnosis.mutations_yes
                 label="Введіть дані"
                 prepend-icon ="edit"
@@ -26,10 +26,10 @@
         </v-flex>
         <v-flex md5>
           <p>Дата генетичного дослідження</p>   
-          <v-radio-group v-model=" pidDiagnosis.genetic_research_data" :mandatory="false">
+          <v-radio-group v-model=" pidDiagnosis.GeneticResearchDate" :mandatory="false">
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
-            <v-text-field v-if="pidDiagnosis.genetic_research_data == 'Відомо'"
+            <v-text-field v-if="pidDiagnosis.GeneticResearchDate == 'Відомо'"
                 v-model= pidDiagnosis.genetic_research_data_input
                 :rules="dataRules"
                 prepend-icon ="event"
@@ -39,7 +39,7 @@
         </v-flex>
         <v-flex md5>
           <p>Метод секвенування</p>   
-          <v-radio-group v-model=" pidDiagnosis.sequencing_method" :mandatory="false">
+          <v-radio-group v-model=" pidDiagnosis.SequencingMethod" :mandatory="false">
             <v-radio color="#1976d2" label="Секвенування гена" value="Секвенування гена"></v-radio>
             <v-radio color="#1976d2" label="Екзом/геном секвенування" value="Екзом/геном секвенування"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
@@ -56,12 +56,12 @@
         <v-flex xs12 md4>
           <p>Лабораторія,яка проводила генетичні дослідження</p>  
            <v-select
-                v-model="pidDiagnosis.research_lab"
+                v-model="pidDiagnosis.LaboratoryName"
                 :items="variety"
                 attach
                 label="Виберіть"
             ></v-select>
-            <v-text-field v-if="pidDiagnosis.research_lab == 'Інше,вказати'"
+            <v-text-field v-if="pidDiagnosis.LaboratoryName == 'Інше,вказати'"
                 v-model= pidDiagnosis.research_lab_enter
                 label="Введіть інформацію"
                 prepend-icon ="create"
@@ -69,7 +69,7 @@
         </v-flex>
         <v-flex md5>
           <p>Причина генетичного дослідження</p>   
-          <v-radio-group v-model=" pidDiagnosis.genetic_research_reason" :mandatory="false">
+          <v-radio-group v-model=" pidDiagnosis.GeneticResearchReason" :mandatory="false">
             <v-radio color="#1976d2" label="Специфічні клінічні симптоми" value="Специфічні клінічні симптоми"></v-radio>
             <v-radio color="#1976d2" label="Сімейний скринінг" value="Сімейний скринінг"></v-radio>
             <v-radio color="#1976d2" label="Пренатальна діагностика" value="Пренатальна діагностика"></v-radio>
@@ -93,12 +93,12 @@ export default {
     data(){
         return{
             pidDiagnosis:{
-                damage_genes: null,
-                genetic_research_data: null,
-                sequencing_method: null,
-                research_lab: null,
+                DamagedGenes: null,
+                GeneticResearchDate: null,
+                SequencingMethod: null,
+                LaboratoryName: null,
                 research_lab_enter: null,
-                genetic_research_reason: null,
+                GeneticResearchReason: null,
                 mutations_no: null,
                 mutations_yes: null,
             },
@@ -116,11 +116,11 @@ export default {
         this.$refs.menu.save(date)
       },
       savePatient: function () {
-        if (this.pidDiagnosis.damage_genes == 'Додаткові гени') {
-          this.pidDiagnosis.damage_genes = this.pidDiagnosis.additional_genes;
+        if (this.pidDiagnosis.GeneticResearchDate == 'Відомо') {
+          this.pidDiagnosis.GeneticResearchDate = this.pidDiagnosis.genetic_research_data_input;
         }
-        if (this.pidDiagnosis.genetic_research_data == 'Відомо') {
-          this.pidDiagnosis.genetic_research_data = this.pidDiagnosis.genetic_research_data_input;
+        if (this.pidDiagnosis.LaboratoryName == 'Інше,вказати') {
+          this.pidDiagnosis.LaboratoryName = this.pidDiagnosis.research_lab_enter;
         }
         EventBus.$emit('completedForm', this.pidDiagnosis,3);
       }

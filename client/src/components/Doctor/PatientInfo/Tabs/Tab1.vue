@@ -8,7 +8,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.pid + user.date.replace(/-/g,'')" 
+            v-model="user.FirstName + user.date.replace(/-/g,'')" 
             readonly
           ></v-text-field>
         </v-flex>
@@ -17,7 +17,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.pid"
+            v-model="user.SecondName"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
