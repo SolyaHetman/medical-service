@@ -18,6 +18,9 @@
                     :search="search"
                 >
                 <template v-slot:items="props">
+                  <td class="text-center"> 
+                    <v-checkbox input-value="true" color="red"></v-checkbox>
+                  </td>
                   <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.FirstDiagnosisPidDate }}</td>
@@ -61,6 +64,7 @@ export default {
       searchage: '',
       searchdata: '',
       headers: [
+        { text: 'Відкріпити пацієнта',sortable: false },
         {
           text: 'Номер реєстрації',
           align: 'left',
@@ -73,7 +77,7 @@ export default {
         { text: 'Актуальний шлях введення імуноглобуліну', value: 'ActualInjectionType', sortable: false},
         { text: 'Доза(мг/кг)', value: 'DoseYes', sortable: false},
         { text: 'Виробник', value: 'ProducerName', sortable: false},
-        { text: 'Переглянути', value: 'register_number', sortable: false },
+        { text: 'Переглянути', sortable: false },
       ],
       patients: []
     }

@@ -18,6 +18,9 @@
                     :search="search"
                 >
                 <template v-slot:items="props">
+                  <td class="text-center"> 
+                    <v-checkbox input-value="true" color="red"></v-checkbox>
+                  </td>
                   <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.FirstDiagnosisPidDate }}</td>
@@ -63,6 +66,7 @@ export default {
       searchage: '',
       searchdata: '',
       headers: [
+        { text: 'Відкріпити пацієнта',sortable: false },
         {
           text: 'Номер реєстрації',
           align: 'left',
