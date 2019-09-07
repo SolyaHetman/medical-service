@@ -193,6 +193,7 @@ export default {
       savePatient: function () {
         if (this.pathDagnosis.first_diagnostic_pid_data == 'Відомо') {
           this.pathDagnosis.first_diagnostic_pid_data = this.pathDagnosis.first_diagnostic_pid_data_time;
+          
         }
 
         if (this.pathDagnosis.SymptomName.includes('another')) {
@@ -213,6 +214,7 @@ export default {
         //   this.pathDagnosis.pid_select = this.this.pathDagnosis.pid_select
         //   }
         // }
+        this.$delete(this.pathDagnosis, 'first_diagnostic_pid_data_time')
         EventBus.$emit('completedForm', this.pathDagnosis,2);
       }
     }

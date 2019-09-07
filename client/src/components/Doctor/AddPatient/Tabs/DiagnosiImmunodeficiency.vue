@@ -122,6 +122,8 @@ export default {
         if (this.pidDiagnosis.LaboratoryName == 'Інше,вказати') {
           this.pidDiagnosis.LaboratoryName = this.pidDiagnosis.research_lab_enter;
         }
+        Vue.delete(this.pidDiagnosis, 1);
+        console.log(this.pidDiagnosis)
         EventBus.$emit('completedForm', this.pidDiagnosis,3);
       }
     }

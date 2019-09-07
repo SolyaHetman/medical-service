@@ -211,7 +211,18 @@ export default {
          if (this.replacementImunoqlobulinTherary.recorded_phenomenal_select == 'Інше,вказати') {
            this.replacementImunoqlobulinTherary.RecordedPhenomena = this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
         }
-        
+        if (this.replacementImunoqlobulinTherary.recorded_phenomenal_select == 'Інше,вказати') {
+           this.replacementImunoqlobulinTherary.RecordedPhenomena = this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
+        }
+        if (this.replacementImunoqlobulinTherary.recorded_phenomenal_select == 'Інше,вказати') {
+           this.replacementImunoqlobulinTherary.RecordedPhenomena = this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
+        }
+
+        delete this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end_yes;
+        delete this.replacementImunoqlobulinTherary.recorded_phenomenal_select;
+        delete this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
+        delete this.replacementImunoqlobulinTherary.injection_interval_other;
+
         this.$swal({
     		  title: 'Чи бажаєте ви ввести ще дані про пацієнта?',
           showCancelButton: true,
