@@ -13,15 +13,38 @@
           ></v-text-field>
         </v-flex>
         <v-flex md2 >
-          <p><font color="#808080">ПІБ</font></p>
+          <p><font color="#808080">Прізвище</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.LastName[0] + user.FirstName[0] + user.MiddleName[0]"
+            v-model="user.LastName"
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+        <v-flex md2 >
+          <p><font color="#808080">Ім'я</font></p>
+          <v-text-field
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.FirstName"
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+        <v-flex md2 >
+          <p><font color="#808080">Побатькові</font></p>
+          <v-text-field
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.MiddleName"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
+      </v-layout>
+    </v-container>
+    
+    <v-container>
+      <v-layout>
         <v-flex md2>
           <p><font color="#808080">Дата народження</font></p>
           <v-text-field
@@ -42,6 +65,11 @@
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container>
+      <v-layout>
 
       </v-layout>
     </v-container>
