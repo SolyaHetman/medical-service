@@ -8,26 +8,49 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.FirstName + user.date.replace(/-/g,'')" 
+            v-model="user.LastName[0] + user.FirstName[0] + user.MiddleName[0] + user.BirthdayDate.replace(/-/g,'')" 
             readonly
           ></v-text-field>
         </v-flex>
         <v-flex md2 >
-          <p><font color="#808080">ПІБ</font></p>
+          <p><font color="#808080">Прізвище</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.SecondName"
+            v-model="user.LastName"
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+        <v-flex md2 >
+          <p><font color="#808080">Ім'я</font></p>
+          <v-text-field
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.FirstName"
+            :readonly="shouldDisable"
+          ></v-text-field>
+        </v-flex>
+        <v-flex md2 >
+          <p><font color="#808080">Побатькові</font></p>
+          <v-text-field
+            v-for="user in users"
+            :key="user.id"
+            v-model="user.MiddleName"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
+      </v-layout>
+    </v-container>
+    
+    <v-container>
+      <v-layout>
         <v-flex md2>
           <p><font color="#808080">Дата народження</font></p>
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.date"
+            v-model="user.BirthdayDate"
             prepend-icon ="event"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -38,11 +61,10 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.sex"
+            v-model="user.Sex"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-
       </v-layout>
     </v-container>
 
@@ -53,7 +75,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.homeland"
+            v-model="user.Homeland"
             :readonly="shouldDisable"
             prepend-icon ="place"
           ></v-text-field>
@@ -64,7 +86,7 @@
           <v-text-field
             v-for="user in users"
             :key="user.id"
-            v-model="user.city"
+            v-model="user.City"
             :readonly="shouldDisable"
             prepend-icon ="place"
           ></v-text-field>
@@ -77,16 +99,16 @@
       :key="user.id">
       <v-layout>
       
-        <v-flex md6>
-          <p><font color="#808080">Генетично ускладнений сімейний анамнез первинних імунодефіцитів</font></p>
+        <v-flex md4>
+          <p><font color="#808080">Генетично ускладнений сімейний анамнез ПІД</font></p>
           <v-text-field
-            v-if = '(user.radioYesNo != "Ні") && (user.radioYesNo != "Невідомо")'
+            v-if = '(user.FamilyTiesPid != "Ні") && (user.FamilyTiesPid != "Невідомо")'
             v-model="tmp"
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field
             v-else
-            v-model="user.radioYesNo"
+            v-model="user.FamilyTiesPid"
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
@@ -152,7 +174,6 @@
         </v-flex>
       </v-layout>
     </v-container> 
-    <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
           :value="alertShow"
@@ -162,10 +183,8 @@
           Дані збережено
         </v-alert>
       </v-flex>
-      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn> 
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-    <!-- <v-btn @click="add" to="/newpatient">Додати</v-btn> -->
     
     
 
@@ -239,7 +258,6 @@ import axios from 'axios';
         
         this.alertShow = true;
 
-        // console.log('HERE!!!!  '+ this.alertShow)
         setTimeout(() => {
           this.alertShow = false;
         }, 1500)

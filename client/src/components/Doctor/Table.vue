@@ -18,13 +18,13 @@
                     :search="search"
                 >
                 <template v-slot:items="props">
-                  <td>{{ props.item.pid + props.item.date.replace(/-/g,'')}}</td>
+                  <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
-                  <td>{{ props.item.first_diagnostic_pid_data }}</td>
-                  <td>{{ props.item.first_imunoqlobulin_injection_data_end_yes }}</td>
-                  <td>{{ props.item.actual_injection_way }}</td>
-                  <td>{{ props.item.dosa }}</td>
-                  <td>{{ props.item.imunoqlobulin_producer_select }}</td>
+                  <td>{{ props.item.FirstDiagnosisPidDate }}</td>
+                  <td>{{ props.item.EndImunoglobulinInjectionDate }}</td>
+                  <td>{{ props.item.ActualInjectionType }}</td>
+                  <td>{{ props.item.DoseYes }}</td>
+                  <td>{{ props.item.ProducerName }}</td>
                   <td class="text-center">
                     <v-btn flat icon color="#1976d2" :to="'/patientinfo/'+props.item.id">
                       <v-icon >
@@ -68,11 +68,11 @@ export default {
           value: 'register_number'
         },
         { text: 'Вік', value: 'age' },
-        { text: 'Дата встановлення діагнозу', value: 'first_diagnostic_pid_data', sortable: false },
-        { text: 'Остання дата введення імуноглобуліну', value: 'first_imunoqlobulin_injection_data_end_yes', sortable: false},
-        { text: 'Актуальний шлях введення імуноглобуліну', value: 'actual_injection_location', sortable: false},
-        { text: 'Доза(мг/кг)', value: 'dosa', sortable: false},
-        { text: 'Виробник', value: 'imunoqlobulin_producer_select', sortable: false},
+        { text: 'Дата встановлення діагнозу', value: 'FirstDiagnosisPidDate', sortable: false },
+        { text: 'Остання дата введення імуноглобуліну', value: 'EndImunoglobulinInjectionDate', sortable: false},
+        { text: 'Актуальний шлях введення імуноглобуліну', value: 'ActualInjectionType', sortable: false},
+        { text: 'Доза(мг/кг)', value: 'DoseYes', sortable: false},
+        { text: 'Виробник', value: 'ProducerName', sortable: false},
         { text: 'Переглянути', value: 'register_number', sortable: false },
       ],
       patients: []
@@ -90,7 +90,7 @@ export default {
         this.patients = response.data;
         
         res.forEach(user => {
-          let birthday = new Date (user.date);
+          let birthday = new Date (user.BirthdayDate);
           const ageDifMs = Date.now() - birthday.getTime();
           const ageDate = new Date(ageDifMs);
           const age = Math.abs(ageDate.getUTCFullYear() - 1970);
