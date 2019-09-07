@@ -96,6 +96,9 @@ export default {
           if (this.stemCellsGeneticTheraty.GeneticTherapy == 'Так') {
           this.stemCellsGeneticTheraty.GeneticTherapy = this.stemCellsGeneticTheraty.SeneticTherapyDate;
         }
+         delete this.stemCellsGeneticTheraty.stem_cells_transplantation_yes;
+         delete this.stemCellsGeneticTheraty.transplantation_data_yes;
+         delete this.stemCellsGeneticTheraty.SeneticTherapyDate;
         EventBus.$emit('completedForm', this.stemCellsGeneticTheraty,4);
       }
       

@@ -249,6 +249,7 @@ export default {
       if (this.generalData.radioYesNo == 'Так') {
         this.generalData.radioYesNo = this.generalData.numberESID;
       }
+      delete this.generalData.numberESID;
       EventBus.$emit('completedForm', this.generalData, 1);
     }
   }

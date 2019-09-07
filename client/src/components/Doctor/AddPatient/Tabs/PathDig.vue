@@ -208,6 +208,10 @@ export default {
         if (this.pathDagnosis.PidLabOnly == 'Інше'){
           this.pathDagnosis.PidLabOnly = this.pathDagnosis.pid_select_enter;
         }
+        delete this.pathDagnosis.symptoms_start_another;
+        delete this.pathDagnosis.first_diagnostic_pid_data_time;
+        delete this.pathDagnosis.pid_select;
+        delete this.pathDagnosis.pid_select_enter;
         // if (this.pathDagnosis.pid_lab_only == 'Так') {
         //   this.pathDagnosis.pid_lab_only = this.pathDagnosis.pid_select;
         //   if(this.pathDagnosis.pid_select == 'Інше' & this.pathDagnosis.pid_lab_only == 'Так'){
