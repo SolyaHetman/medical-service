@@ -70,12 +70,6 @@
 
     <v-container>
       <v-layout>
-
-      </v-layout>
-    </v-container>
-
-    <v-container>
-      <v-layout>
         <v-flex md4 >
           <p><font color="#808080">Місце народження</font></p>
           <v-text-field
