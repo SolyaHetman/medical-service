@@ -8,32 +8,25 @@
         <v-flex md4>
           <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
-            v-model="user.stem_cells_transplantation"
+            v-model="user.StemCellsTransplantation"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='user.transplantation_data=="Відомо"'>
+        <v-flex md2 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
           <p>
             <font color="#808080">
               Дата трансплантації
             </font>
           </p>
           <v-text-field
-            v-if='user.transplantation_data=="Відомо"'
-            v-model="user.transplantation_data_yes"
-            solo
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-else
-            v-model="user.transplantation_data"
+            v-model="user.TransplantationDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3 v-if='user.transplantation_data=="Відомо"'>
+        <v-flex md3 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
             v-model="user.CB14_soure"
@@ -42,25 +35,16 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='user.transplantation_data=="Відомо"'>
+        <v-flex md2 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-if='user.genetic_therapy=="Так"'
-            v-model="user.genetic_therapy_yes"
-            solo
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-else
-            v-model="user.genetic_therapy"
+            v-model="user.GeneticTherapy"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-
       </v-layout>
     </v-container>
-        <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
           :value="alertShow"
@@ -70,10 +54,9 @@
           Дані збережено
         </v-alert>
       </v-flex>
-      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-    <v-btn @click="add" to="/newpatient">Додати</v-btn> 
+    <v-btn to="/newpatient">Додати</v-btn> 
  </v-form>
 </template>
 

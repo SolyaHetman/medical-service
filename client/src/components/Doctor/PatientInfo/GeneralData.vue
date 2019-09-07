@@ -15,48 +15,31 @@
           >
           {{ n.title }}
           </v-tab>
-          <!-- Start Tab1 -->
           <v-tab-item>
             <v-card flat>
               <Tab1 />
             </v-card>
           </v-tab-item>
-          <!-- End Tab1 -->
-          <!-- Start Tab2 -->
           <v-tab-item>
             <v-card flat>
               <Tab2 />
             </v-card>
           </v-tab-item>
-          <!-- End Tab2 -->
-          <!-- Start Tab3 -->
           <v-tab-item>
             <v-card flat>
               <Tab3 />
             </v-card>
           </v-tab-item>
-          <!-- End Tab3 -->
-          <!-- Start Tab4 -->
           <v-tab-item>
             <v-card flat>
               <Tab4 />
             </v-card>
           </v-tab-item>
-          <!-- End Tab4 -->
-          <!-- Start Tab5 -->
           <v-tab-item>
             <v-card flat>
               <Tab5 />
             </v-card>
           </v-tab-item>
-          <!-- End Tab5 -->
-          <!-- Start Tab1 -->
-          <v-tab-item>
-            <v-card flat>
-              <reviewTab1 />
-            </v-card>
-          </v-tab-item>
-          <!-- End Tab1 -->
         </v-tabs>
       </v-flex>
     </v-layout>

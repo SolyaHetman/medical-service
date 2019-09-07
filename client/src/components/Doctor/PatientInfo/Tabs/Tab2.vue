@@ -2,13 +2,14 @@
   <v-form ref="form">
     <v-container
       v-for="user in users"
-      :key="user.id">
+      v-bind:key="user.id">
       <v-layout>
 
         <v-flex md4 >
-          <p><font color="#808080">Дата вперше встановленого клінічного діагнозу первинного імунодефіцину</font></p>
+          <br>
+          <p><font color="#808080">Дата вперше встановленого клінічного діагнозу ПІД</font></p>
           <v-text-field
-            v-model="user.first_diagnostic_pid_data"
+            v-model="user.FirstDiagnosisPidDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -21,20 +22,7 @@
           	</font>
           </p>
           <v-text-field
-            v-if='(user.pid_lab_only=="Так") && (user.pid_select =="Інше")'
-            v-model="user.pid_select_enter"
-            solo
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='(user.pid_lab_only=="Так") && (user.pid_select !="Інше")'
-            v-model="user.pid_select"
-            solo
-            :readonly="shouldDisable"
-          ></v-text-field>
-          <v-text-field
-            v-if='(user.pid_lab_only!="Так")'
-            v-model="user.pid_lab_only"
+            v-model="user.PidLabOnly"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -52,7 +40,7 @@
           	<font color="#808080">IgG</font>
           </p>
           <v-text-field
-            v-model="user.IgG"
+            v-model="user.Igg"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -61,7 +49,7 @@
         <v-flex md2>
           <p><font color="#808080">IgA</font></p>
           <v-text-field
-            v-model="user.IgA"
+            v-model="user.Iga"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -69,7 +57,7 @@
         <v-flex md2>
           <p><font color="#808080">IgM</font></p>
           <v-text-field
-            v-model="user.IgM"
+            v-model="user.Igm"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -77,7 +65,7 @@
         <v-flex md2>
           <p><font color="#808080">IgE</font></p>
           <v-text-field
-            v-model="user.IgE"
+            v-model="user.Ige"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -117,21 +105,20 @@
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field 
-            v-if='user.symptoms_start=="Перші симтоми невідомі"'
-            v-model="user.symptoms_start"
+            v-if='user.SymptomName=="Перші симтоми невідомі"'
+            v-model="user.SymptomName"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field 
-            v-if='user.symptoms_start=="Відсутність ПІД-асоційованих симптомів"'
-            v-model="user.symptoms_start"
+            v-if='user.SymptomName=="Відсутність ПІД-асоційованих симптомів"'
+            v-model="user.SymptomName"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
           :value="alertShow"
@@ -141,10 +128,8 @@
           Дані збережено
         </v-alert>
       </v-flex>
-      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn  v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-    <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 

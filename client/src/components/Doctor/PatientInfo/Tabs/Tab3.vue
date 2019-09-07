@@ -8,13 +8,13 @@
         <v-flex md5>
           <p><font color="#808080">Уражені гени</font></p>
           <v-text-field
-            v-model="user.damage_genes"
+            v-model="user.DamagedGenes"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md6 v-if="user.damage_genes == 'Генетичне дослідження не проводилось,мутації не виявлено'">
+        <v-flex md6 v-if="user.DamagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'">
           <p><font color="#808080">Додаткова інформація</font></p>
           <v-text-field
             v-model="user.mutations_no"
@@ -23,7 +23,7 @@
           ></v-text-field>
         </v-flex>
 
-        <v-flex md5 v-if="user.damage_genes == 'Генетичне дослідження не проводилось,мутації виявлено'">
+        <v-flex md5 v-if="user.DamagedGenes == 'Генетичне дослідження проводилось,мутації виявлено'">
           <p><font color="#808080">Додаткова інформація</font></p>
           <v-text-field
             v-model="user.mutations_yes"
@@ -46,7 +46,7 @@
             </font>
           </p>
           <v-text-field
-            v-model="user.genetic_research_data"
+            v-model="user.GeneticResearchDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -54,7 +54,7 @@
         <v-flex md4>
           <p><font color="#808080">Метод секвенування</font></p>
           <v-text-field
-            v-model="user.sequencing_method"
+            v-model="user.SequencingMethod"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -70,7 +70,7 @@
         <v-flex md4>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
           <v-text-field
-            v-model="user.research_lab"
+            v-model="user.LaboratoryName"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -82,7 +82,7 @@
             </font>
           </p>
           <v-text-field
-            v-model="user.genetic_research_reason"
+            v-model="user.GeneticResearchReason"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -90,7 +90,6 @@
 
       </v-layout>
     </v-container>
-        <!-- Start Alert -->
       <v-flex xs12>
         <v-alert
           :value="alertShow"
@@ -100,10 +99,8 @@
           Дані збережено
         </v-alert>
       </v-flex>
-      <!-- End alert -->
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-    <v-btn @click="add" to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
 
