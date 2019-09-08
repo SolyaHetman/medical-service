@@ -1,8 +1,6 @@
 <template>
   <v-form ref="form">
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout > 
 
         <v-flex md3>
@@ -45,9 +43,6 @@
     </v-container>
 
     <v-container 
-      v-for=" user in users"
-      :key="user.id"
-      
       v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
       <v-layout>
         <v-flex md3 v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
@@ -99,8 +94,6 @@
     </v-container>
 
     <v-container 
-      v-for="user in users"
-      :key="user.id"
       v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
       <v-layout>
         <v-flex md2>
@@ -150,7 +143,7 @@
         </v-alert>
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
    <v-btn  to="/newpatient">Додати</v-btn>
  </v-form>
 </template>
@@ -162,7 +155,7 @@
     data(){
       return{
         alertShow: false,
-        users: [],
+        user: [],
         shouldDisable: true
       }
     },
@@ -177,10 +170,7 @@
           id: this.$route.params.user
         }
       })
-      .then(function(res){
-        self.users = res.data;
-        console.log('Data :', res.data);
-      })
+      .then(res => this.user = res.data[0])
       .catch(function(error){
         console.log('Error :', error)
       })

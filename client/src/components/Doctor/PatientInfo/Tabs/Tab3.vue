@@ -1,8 +1,6 @@
 <template>
   <v-form ref="form">
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
 
         <v-flex md5>
@@ -35,9 +33,7 @@
       </v-layout>
     </v-container>
 
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
         <v-flex md4>
           <p>
@@ -63,9 +59,7 @@
       </v-layout>
     </v-container>
 
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
         <v-flex md4>
           <p><font color="#808080">Лабораторія,яка проводила генетичні дослідження</font></p>
@@ -100,7 +94,7 @@
         </v-alert>
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
  </v-form>
 </template>
 
@@ -111,7 +105,7 @@
     data(){
       return{
         alertShow: false,
-        users: [],
+        user: [],
         shouldDisable: true
       }
     },
@@ -126,10 +120,7 @@
           id: this.$route.params.user
         }
       })
-      .then(function(res){
-        self.users = res.data;
-        console.log('Data :', res.data);
-      })
+      .then(res => this.user = res.data[0])
       .catch(function(error){
         console.log('Error :', error)
       })

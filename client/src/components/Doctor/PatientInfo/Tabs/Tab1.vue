@@ -6,17 +6,14 @@
         <v-flex md2 >
           <p><font color="#808080">Номер реєстрації</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.LastName[0] + user.FirstName[0] + user.MiddleName[0] + user.BirthdayDate.replace(/-/g,'')" 
+            
             readonly
           ></v-text-field>
         </v-flex>
         <v-flex md2 >
           <p><font color="#808080">Прізвище</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.LastName"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -24,8 +21,6 @@
         <v-flex md2 >
           <p><font color="#808080">Ім'я</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.FirstName"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -33,8 +28,6 @@
         <v-flex md2 >
           <p><font color="#808080">Побатькові</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.MiddleName"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -48,8 +41,6 @@
         <v-flex md2>
           <p><font color="#808080">Дата народження</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.BirthdayDate"
             prepend-icon ="event"
             :readonly="shouldDisable"
@@ -59,8 +50,6 @@
         <v-flex md2>
           <p><font color="#808080">Стать</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.Sex"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -73,8 +62,6 @@
         <v-flex md4 >
           <p><font color="#808080">Місце народження</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.Homeland"
             :readonly="shouldDisable"
             prepend-icon ="place"
@@ -84,8 +71,6 @@
         <v-flex md4>
           <p><font color="#808080">Місце теперішнього проживання</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.City"
             :readonly="shouldDisable"
             prepend-icon ="place"
@@ -94,9 +79,7 @@
       </v-layout>
     </v-container>
 
-    <v-container 
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
       
         <v-flex md4>
@@ -116,8 +99,6 @@
         <v-flex md4>
           <p><font color="#808080">Згода пацієнта на використання особистої інформації</font></p>
           <v-text-field
-            v-for="user in users"
-            :key="user.id"
             v-model="user.radiosAgreement"
             :readonly="shouldDisable"
           ></v-text-field>
@@ -126,9 +107,7 @@
       </v-layout>
     </v-container>
 
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
         
         <v-flex md4 v-if = '(user.radioYesNo != "Ні") && (user.radioYesNo != "Невідомо")'>
@@ -184,7 +163,7 @@
         </v-alert>
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn> 
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
     
     
 
@@ -211,7 +190,7 @@ import axios from 'axios';
         //   (v) => !!v || 'Name is required',
         //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         // ],
-        users: [],
+        user: [],
         tmp: "Так",
         father: "ESID батька: ",
         mother: "ESID матері: ",
@@ -233,10 +212,7 @@ import axios from 'axios';
           id: this.$route.params.user
         }
       })
-      .then(function(res){
-        self.users = res.data;
-        console.log('Data :', res.data);
-      })
+      .then(res => this.user = res.data[0])
       .catch(function(error){
         console.log('Error :', error)
       })

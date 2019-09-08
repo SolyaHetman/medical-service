@@ -1,8 +1,6 @@
 <template>
   <v-form ref="form">
-    <v-container
-      v-for="user in users"
-      v-bind:key="user.id">
+    <v-container>
       <v-layout>
 
         <v-flex md4 >
@@ -30,9 +28,7 @@
       </v-layout>
     </v-container>
 
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
 
         <v-flex md2>
@@ -73,9 +69,7 @@
       </v-layout>
     </v-container>
 
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
        <v-flex md8>
           <p><font color="#808080">Перші ПІД-асоційовані симтоми</font></p>
@@ -129,7 +123,7 @@
         </v-alert>
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
-    <v-btn  v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
  </v-form>
 </template>
 
@@ -140,7 +134,7 @@
     data(){
       return{
         alertShow: false,
-        users: [],
+        user: [],
         infection: "Інфекції почалися ",
         dysregulation: "Дисрегуляція імунної відповіді почалася ",
         malignancy: "Малігнізація (онконастороженість) почалася ",
@@ -160,10 +154,7 @@
           id: this.$route.params.user
         }
       })
-      .then(function(res){
-        self.users = res.data;
-        console.log('Data :', res.data);
-      })
+      .then(res => this.user = res.data[0])
       .catch(function(error){
         console.log('Error :', error)
       })
