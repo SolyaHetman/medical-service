@@ -1,44 +1,42 @@
 <template>
   <v-form ref="form">
-    <v-container
-      v-for="user in users"
-      :key="user.id">
+    <v-container>
       <v-layout>
 
         <v-flex md4>
           <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
-            v-model="user.StemCellsTransplantation"
+            v-model="patient.StemCellsTransplantation"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p>
             <font color="#808080">
               Дата трансплантації
             </font>
           </p>
           <v-text-field
-            v-model="user.TransplantationDate"
+            v-model="patient.TransplantationDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md3 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
-            v-model="user.CB14_soure"
+            v-model="patient.CB14_soure"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='user.StemCellsTransplantation!="Ні" && user.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-model="user.GeneticTherapy"
+            v-model="patient.GeneticTherapy"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -55,7 +53,7 @@
         </v-alert>
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
-    <v-btn v-for="user in users" :key="user.id" @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="submit(patient)" v-show="!shouldDisable">Зберегти</v-btn>
     <v-btn to="/newpatient">Додати</v-btn> 
  </v-form>
 </template>
@@ -67,7 +65,7 @@ import axios from 'axios';
     data(){
       return{
         alertShow: false,
-        users: [],
+        patient: {},
         shouldDisable: true
       }
     },
@@ -75,26 +73,21 @@ import axios from 'axios';
       console.log(this.$route.params.user);
     },
     mounted() {
-      var self = this;
+      let self = this;
       const id = this.$route.params.user;
       axios.get('http://localhost:3000/users',{
         params: {
           id: this.$route.params.user
         }
       })
-      .then(function(res){
-        self.users = res.data;
-        console.log('Data :', res.data);
-      })
-      .catch(function(error){
-        console.log('Error :', error)
-      })
+      .then(res => this.patient = res.data[0])
+      .catch(error => console.log('Error :', error))
     },
     methods: {
       edit() {
       this.shouldDisable = false
       },
-      submit(user){
+      submit(user) {
         this.shouldDisable = true;
         console.log('edit: ', user),
         axios.put(`http://localhost:3000/users/${user.id}`,user)
