@@ -6,7 +6,7 @@
         <v-flex md2 >
           <p><font color="#808080">Номер реєстрації</font></p>
           <v-text-field
-            v-model="user.LastName[0] + user.FirstName[0] + user.MiddleName[0] + user.BirthdayDate.replace(/-/g,'')" 
+            v-model="pid" 
             
             readonly
           ></v-text-field>
@@ -191,6 +191,7 @@ import axios from 'axios';
         //   (v) => v && v.length <= 20 || 'Name must be less than 20 characters'
         // ],
         user: [],
+        pid: '',
         tmp: "Так",
         father: "ESID батька: ",
         mother: "ESID матері: ",
@@ -212,7 +213,7 @@ import axios from 'axios';
           id: this.$route.params.user
         }
       })
-      .then(res => this.user = res.data[0])
+      .then(res => {this.user = res.data[0], this.pid = res.data[0].LastName[0] + res.data[0].FirstName[0] + res.data[0].MiddleName[0] + res.data[0].BirthdayDate.replace(/-/g,'')})
       .catch(function(error){
         console.log('Error :', error)
       })
