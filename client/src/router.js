@@ -9,6 +9,8 @@ import DoctorRegion from './views/Doctor/DoctorRegion.vue'
 import DoctorCentre from './views/Doctor/DoctorCentre.vue'
 import MainDoctor from './views/Doctor/MainDoctor.vue'
 import RegionInformation from './views/Doctor/RegionInformation.vue'
+import AddNewInf from './views/Doctor/AddNewInf'
+import AddNewInf1 from './views/Doctor/AddNewInf1'
 
 Vue.use(Router)
 
@@ -58,6 +60,15 @@ export default new Router({
             name: 'regionInformation',
             component: RegionInformation
         },
-
+        {
+            path: '/addNewInf',
+            name: 'addNewInf',
+            component: AddNewInf
+        },
+        {
+            path: '/addNewInf1',
+            name: 'addNewInf1',
+            component: AddNewInf1
+        }
     ]
 })
