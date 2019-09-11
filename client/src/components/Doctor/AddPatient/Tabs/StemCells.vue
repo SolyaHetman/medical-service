@@ -114,16 +114,10 @@ export default {
 
         this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
         this.stemCellsGeneticTheraty = {};
-        // this.result.stemCellsGeneticTheraty2 = this.stemCellsGeneticTheraty2;
-        // console.log(result)
-        // this.stemCellsGeneticTheraty2 = Object.assign([], this.stemCellsGeneticTheraty);
-        // var stemCellsGeneticTheraty = {};
-        // var stemCellsGeneticTheraty2 = [];
-        // let result = [];
-        // result = [this.stemCellsGeneticTheraty2];
+
         let payload = {
            stemCellsGeneticTheraty2: this.stemCellsGeneticTheraty2
-       };
+        };
         EventBus.$emit('completedForm', payload, 4);
       }
       

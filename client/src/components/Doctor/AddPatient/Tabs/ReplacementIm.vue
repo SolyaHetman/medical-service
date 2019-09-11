@@ -165,6 +165,7 @@ export default {
     data(){
         return{
           alertShow:false, 
+          replacementImunoqlobulinTherary2:[],
           replacementImunoqlobulinTherary:{
             RITTillToday: null, 
             EndImunoglobulinInjectionDate: null, 
@@ -223,6 +224,13 @@ export default {
         delete this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
         delete this.replacementImunoqlobulinTherary.injection_interval_other;
 
+        this.replacementImunoqlobulinTherary2.push(this.replacementImunoqlobulinTherary);
+        this.replacementImunoqlobulinTherary= {};
+
+        let payload = {
+           replacementImunoqlobulinTherary2: this.replacementImunoqlobulinTherary2
+        };
+
         this.$swal({
     		  title: 'Чи бажаєте ви ввести ще дані про пацієнта?',
           showCancelButton: true,
@@ -233,11 +241,11 @@ export default {
         }).then((result) => {
           if(result.value) {
             
-            EventBus.$emit('completedForm', this.replacementImunoqlobulinTherary,5);
+            EventBus.$emit('completedForm',payload,5);
             this.replacementImunoqlobulinTherary = {}
            
           } else {
-            EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
+            EventBus.$emit('postToDB',payload,5);
             this.alertShow = true;
             setTimeout(() => {
               this.alertShow = false;
