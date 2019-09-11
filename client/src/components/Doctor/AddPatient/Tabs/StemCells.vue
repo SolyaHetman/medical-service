@@ -66,7 +66,10 @@ import EventBus from '@/event-bus';
 export default {
     data(){
         return{
-            stemCellsGeneticTheraty2: [],  
+            result:{
+                 stemCellsGeneticTheraty2:[],
+            },
+            stemCellsGeneticTheraty2:[],
             stemCellsGeneticTheraty:
               {
                 StemCellsTransplantation: null,
@@ -78,7 +81,9 @@ export default {
              },
             dataRules: [
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
-                ],       
+                ], 
+                
+                   
         }
     },
     methods: {
@@ -109,9 +114,18 @@ export default {
         //         GeneticTherapy: this.stemCellsGeneticTheraty.GeneticTherapy, 
         //  }
         // ]
-        this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
+
+        this.stemCellsGeneticTheraty2.push({...this.stemCellsGeneticTheraty});
         this.stemCellsGeneticTheraty = {};
-        EventBus.$emit('completedForm',[this.stemCellsGeneticTheraty2],4);
+        // this.result.stemCellsGeneticTheraty2 = this.stemCellsGeneticTheraty2;
+        // console.log(result)
+        // this.stemCellsGeneticTheraty2 = Object.assign([], this.stemCellsGeneticTheraty);
+        // var stemCellsGeneticTheraty = {};
+        // var stemCellsGeneticTheraty2 = [];
+        let result = [];
+        result = [this.stemCellsGeneticTheraty2];
+
+        EventBus.$emit('completedForm', result,4);
       }
       
     }
