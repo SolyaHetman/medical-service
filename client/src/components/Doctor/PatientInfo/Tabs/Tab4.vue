@@ -6,37 +6,37 @@
         <v-flex md4>
           <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
-            v-model="patient['0']['0'].StemCellsTransplantation"
+            v-model="patient.stemCellsGeneticTheraty2['0'].StemCellsTransplantation"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Ні" && patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Невідомо"'>
           <p>
             <font color="#808080">
               Дата трансплантації
             </font>
           </p>
           <v-text-field
-            v-model="patient['0']['0'].TransplantationDate"
+            v-model="patient.stemCellsGeneticTheraty2['0'].TransplantationDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md3 v-if='patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Ні" && patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
-            v-model="patient['0']['0'].CB14_soure"
+            v-model="patient.stemCellsGeneticTheraty2['0'].CB14_soure"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Ні" && patient.stemCellsGeneticTheraty2["0"].StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-model="patient['0']['0'].GeneticTherapy"
+            v-model="patient.stemCellsGeneticTheraty2['0'].GeneticTherapy"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
