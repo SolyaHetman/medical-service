@@ -1,11 +1,13 @@
 {
     "users": [{
-        "0": [{
-            "StemCellsTransplantation": "01-09-2009",
-            "TransplantationDate": "23-02-2000",
-            "CB14_soure": "Периферична кров",
-            "GeneticTherapy": "09-04-2000"
-        }],
+        "0": [
+            {
+              "StemCellsTransplantation": "23-03-2000",
+              "TransplantationDate": "Невідомо",
+              "CB14_soure": "Периферична кров",
+              "GeneticTherapy": "Ні"
+            }
+        ],
         "LastName": "Solo",
         "FirstName": "Solo",
         "MiddleName": "Solo",

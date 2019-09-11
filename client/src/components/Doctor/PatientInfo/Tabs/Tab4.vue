@@ -6,37 +6,37 @@
         <v-flex md4>
           <p><font color="#808080">Трансплантація стовбурових клітин</font></p>
           <v-text-field
-            v-model="patient.StemCellsTransplantation"
+            v-model="patient['0']['0'].StemCellsTransplantation"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p>
             <font color="#808080">
               Дата трансплантації
             </font>
           </p>
           <v-text-field
-            v-model="patient.TransplantationDate"
+            v-model="patient['0']['0'].TransplantationDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md3 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Джерело CD34 стовбурових  клітин</font></p>
           <v-text-field
-            v-model="patient.CB14_soure"
+            v-model="patient['0']['0'].CB14_soure"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md2 v-if='patient.StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
+        <v-flex md2 v-if='patient["0"]["0"].StemCellsTransplantation!="Ні" && patient.StemCellsTransplantation!="Невідомо"'>
           <p><font color="#808080">Генна терапія</font></p>
           <v-text-field
-            v-model="patient.GeneticTherapy"
+            v-model="patient['0']['0'].GeneticTherapy"
             solo
             :readonly="shouldDisable"
           ></v-text-field>

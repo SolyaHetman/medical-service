@@ -21,7 +21,7 @@
           ></v-text-field>
           <v-text-field
             v-else
-            v-model="user.ProducerName"
+            v-model="user.ProducerYesNo"
             solo
             :readonly="shouldDisable"
           ></v-text-field>

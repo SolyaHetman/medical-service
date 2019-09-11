@@ -154,7 +154,7 @@
           id: this.$route.params.user
         }
       })
-      .then(res => this.user = res.data[0])
+      .then(res => {this.user = res.data[0], console.log(this.user)})
       .catch(function(error){
         console.log('Error :', error)
       })
