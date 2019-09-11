@@ -54,7 +54,7 @@
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn @click="submit(patient)" v-show="!shouldDisable">Зберегти</v-btn>
-    <v-btn to="/newpatient">Додати</v-btn> 
+    <v-btn to="/addNewInf">Додати</v-btn> 
  </v-form>
 </template>
 
