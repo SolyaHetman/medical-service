@@ -6,35 +6,35 @@
         <v-flex md3>
           <p><font color="#808080">Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</font></p>
           <v-text-field
-            v-model="user.RITTillToday"
+            v-model="user.replacementImunoqlobulinTherary2['0'].RITTillToday"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
-        <v-flex md3 v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
+        <v-flex md3 v-if='(user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Так") || (user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Нерегулярно")'>
           <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт</font></p>
           <v-text-field
-            v-if='user.ProducerYesNo=="Відомо"'
-            v-model="user.ProducerName"
+            v-if='user.replacementImunoqlobulinTherary2["0"].ProducerYesNo=="Відомо"'
+            v-model="user.replacementImunoqlobulinTherary2['0'].ProducerName"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field
             v-else
-            v-model="user.ProducerYesNo"
+            v-model="user.replacementImunoqlobulinTherary2['0'].ProducerYesNo"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
         </v-flex>
 
-        <v-flex md3 v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
+        <v-flex md3 v-if='(user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Так") || (user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Нерегулярно")'>
           <p>
             <font color="#808080">
               Кінцева дата введення замісної імуноглобулінотерапії:
             </font>
           </p>
           <v-text-field
-            v-model="user.EndImunoglobulinInjectionDate"
+            v-model="user.replacementImunoqlobulinTherary2['0'].EndImunoglobulinInjectionDate"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -43,12 +43,12 @@
     </v-container>
 
     <v-container 
-      v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
+      v-if='(user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Так") || (user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Нерегулярно")'>
       <v-layout>
-        <v-flex md3 v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
+        <v-flex md3 v-if='(user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Так") || (user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Нерегулярно")'>
           <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
           <v-text-field
-            v-model="user.ActualInjectionType"
+            v-model="user.replacementImunoqlobulinTherary2['0'].ActualInjectionType"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -61,7 +61,7 @@
             </font>
           </p>
           <v-text-field
-            v-model="user.ActualInjectionLocation"
+            v-model="user.replacementImunoqlobulinTherary2['0'].ActualInjectionLocation"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -70,14 +70,14 @@
         <v-flex md2>
           <p><font color="#808080"><br>Доза</font></p>
           <v-text-field
-            v-if='user.Dose=="Відомо"'
-            v-model="user.DoseYes"
+            v-if='user.replacementImunoqlobulinTherary2["0"].Dose=="Відомо"'
+            v-model="user.replacementImunoqlobulinTherary2['0'].DoseYes"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field
             v-else
-            v-model="user.Dose"
+            v-model="user.replacementImunoqlobulinTherary2['0'].Dose"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -85,7 +85,7 @@
         <v-flex md2>
           <p><font color="#808080"><br>Інтервал між введенями</font></p>
           <v-text-field
-            v-model="user.InjectionInterval"
+            v-model="user.replacementImunoqlobulinTherary2['0'].InjectionInterval"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -94,18 +94,18 @@
     </v-container>
 
     <v-container 
-      v-if='(user.RITTillToday=="Так") || (user.RITTillToday=="Нерегулярно")'>
+      v-if='(user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Так") || (user.replacementImunoqlobulinTherary2["0"].RITTillToday=="Нерегулярно")'>
       <v-layout>
         <v-flex md2>
           <p><font color="#808080">Зафіксовані небажані явища</font></p>
           <v-text-field
-            v-if='(user.recorded_phenomenal=="Так") && (user.recorded_phenomenal_select=="Інше,вказати")'
-            v-model="user.recorded_phenomenal_select_enter"
+            v-if='(user.replacementImunoqlobulinTherary2["0"].recorded_phenomenal=="Так") && (user.replacementImunoqlobulinTherary2["0"].recorded_phenomenal_select=="Інше,вказати")'
+            v-model="user.replacementImunoqlobulinTherary2['0'].recorded_phenomenal_select_enter"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field
-            v-model="user.RecordedPhenomena"
+            v-model="user.replacementImunoqlobulinTherary2['0'].RecordedPhenomena"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
@@ -118,14 +118,14 @@
             </font>
           </p>
           <v-text-field
-            v-if='user.PatientWeight=="Відомо"'
-            v-model="user.PatientWeightYes"
+            v-if='user.replacementImunoqlobulinTherary2["0"].PatientWeight=="Відомо"'
+            v-model="user.replacementImunoqlobulinTherary2['0'].PatientWeightYes"
             solo
             :readonly="shouldDisable"
           ></v-text-field>
           <v-text-field
             v-else
-            v-model="user.PatientWeight"
+            v-model="user.replacementImunoqlobulinTherary2['0'].PatientWeight"
             solo
             :readonly="shouldDisable"
           ></v-text-field>

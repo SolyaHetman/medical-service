@@ -24,10 +24,10 @@
                   <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
                   <td>{{ props.item.FirstDiagnosisPidDate }}</td>
-                  <td>{{ props.item.EndImunoglobulinInjectionDate }}</td>
-                  <td>{{ props.item.ActualInjectionType }}</td>
-                  <td>{{ props.item.DoseYes }}</td>
-                  <td>{{ props.item.ProducerName }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].EndImunoglobulinInjectionDate }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].ActualInjectionType }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].DoseYes }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].ProducerName }}</td>
                   <td class="text-center">
                     <v-btn flat icon color="#1976d2" :to="'/patientinfo/'+props.item.id">
                       <v-icon >
