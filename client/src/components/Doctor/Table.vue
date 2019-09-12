@@ -19,7 +19,7 @@
                 >
                 <template v-slot:items="props">
                   <td class="text-center"> 
-                    <v-checkbox input-value="true" color="red"></v-checkbox>
+                    <v-checkbox input-value="true" color="#1976d2"></v-checkbox>
                   </td>
                   <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
