@@ -107,6 +107,7 @@ export default {
         this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
         this.stemCellsGeneticTheraty = {};
 
+        
         let payload = {
            stemCellsGeneticTheraty2: this.stemCellsGeneticTheraty2
         };

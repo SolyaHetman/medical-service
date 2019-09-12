@@ -1,74 +1,76 @@
-{
-  "users": [
-    {
-      "LastName": "LOLA",
-      "FirstName": "LOLA",
-      "MiddleName": "LOLA",
-      "BirthdayDate": "23-03-2000",
-      "Homeland": "LOLA",
-      "City": "LOLA",
-      "Sex": "Жіноча",
-      "radioYesNo": null,
-      "radiosAgreement": "Згода лише на науковий аналіз",
-      "FamilyTiesPid": "Так",
-      "FamilyTypeMember": [
-        "Мати"
-      ],
-      "fatherESID": null,
-      "motherESID": "soslslsl",
-      "sisterESID": null,
-      "brotherESID": null,
-      "womenESID": null,
-      "menESID": null,
-      "FirstDiagnosisPidDate": "Невідомо",
-      "PidLabOnly": "Невідомо",
-      "SymptomName": [
-        "Перші симтоми невідомі"
-      ],
-      "infection": null,
-      "dysregulation": null,
-      "malignancy": null,
-      "manifestations": null,
-      "symptoms_start_another_data": null,
-      "Igg": "3",
-      "Iga": "1",
-      "Igm": "3",
-      "Ige": "7",
-      "DamagedGenes": "Історія генетичних досліджень невідома",
-      "GeneticResearchDate": "23-03-2000",
-      "SequencingMethod": "Екзом/геном секвенування",
-      "LaboratoryName": "Генетична лабораторія медичного університету, Дебрецин Угорщина",
-      "GeneticResearchReason": "Сімейний скринінг",
-      "mutations_no": null,
-      "mutations_yes": null,
-      "stemCellsGeneticTheraty2": [
-        {
-          "StemCellsTransplantation": "SOLOS",
-          "TransplantationDate": "23-03-2000",
-          "CB14_soure": "Периферична кров",
-          "GeneticTherapy": "23-03-2000"
-        }
-      ],
-      "replacementImunoqlobulinTherary2": [
-        {
-          "RITTillToday": "Так",
-          "EndImunoglobulinInjectionDate": "23-03-2000",
-          "ProducerName": "Біофарма",
-          "ProducerYesNo": "Відомо",
-          "Igg": "112",
-          "imunoqlobulin_producer_select": null,
-          "imunoqlobulin_producer_select_enter": null,
-          "ActualInjectionType": "Підшкірно",
-          "ActualInjectionLocation": "Вдома",
-          "Dose": "Відомо",
-          "DoseYes": "23",
-          "InjectionInterval": "Кожні 14 днів",
-          "PatientWeight": "Відомо",
-          "PatientWeightYes": "23",
-          "RecordedPhenomena": "Ні"
-        }
-      ],
-      "id": 3
-    }
-  ]
-}
+  {
+      "users": [{
+          "LastName": "LOLA",
+          "FirstName": "LOLA",
+          "MiddleName": "LOLA",
+          "BirthdayDate": "23-03-2000",
+          "Homeland": "LOLA",
+          "City": "LOLA",
+          "Sex": "Жіноча",
+          "radioYesNo": null,
+          "radiosAgreement": "Згода лише на науковий аналіз",
+          "FamilyTiesPid": "Так",
+          "FamilyTypeMember": [
+              "Мати"
+          ],
+          "fatherESID": null,
+          "motherESID": "soslslsl",
+          "sisterESID": null,
+          "brotherESID": null,
+          "womenESID": null,
+          "menESID": null,
+          "FirstDiagnosisPidDate": "Невідомо",
+          "PidLabOnly": "Невідомо",
+          "SymptomName": [
+              "Перші симтоми невідомі"
+          ],
+          "infection": null,
+          "dysregulation": null,
+          "malignancy": null,
+          "manifestations": null,
+          "symptoms_start_another_data": null,
+          "Igg": "3",
+          "Iga": "1",
+          "Igm": "3",
+          "Ige": "7",
+          "DamagedGenes": "Історія генетичних досліджень невідома",
+          "GeneticResearchDate": "23-03-2000",
+          "SequencingMethod": "Екзом/геном секвенування",
+          "LaboratoryName": "Генетична лабораторія медичного університету, Дебрецин Угорщина",
+          "GeneticResearchReason": "Сімейний скринінг",
+          "mutations_no": null,
+          "mutations_yes": null,
+          "stemCellsGeneticTheraty2": [{
+                  "StemCellsTransplantation": "SOLOS",
+                  "TransplantationDate": "23-03-2000",
+                  "CB14_soure": "Периферична кров",
+                  "GeneticTherapy": "23-03-2000"
+              },
+              {
+                  "StemCellsTransplantation": "Loasad",
+                  "TransplantationDate": "23-03-2000",
+                  "CB14_soure": "Периферична кров",
+                  "GeneticTherapy": "23-03-2000"
+              }
+          ],
+          "replacementImunoqlobulinTherary2": [{
+              "RITTillToday": "Так",
+              "EndImunoglobulinInjectionDate": "23-03-2000",
+              "ProducerName": "Біофарма",
+              "ProducerYesNo": "Відомо",
+              "Igg": "112",
+              "imunoqlobulin_producer_select": null,
+              "imunoqlobulin_producer_select_enter": null,
+              "ActualInjectionType": "Підшкірно",
+              "ActualInjectionLocation": "Вдома",
+              "Dose": "Відомо",
+              "DoseYes": "23",
+              "InjectionInterval": "Кожні 14 днів",
+              "PatientWeight": "Відомо",
+              "PatientWeightYes": "23",
+              "RecordedPhenomena": "Ні"
+          }],
+          "id": 3
+      }]
+  }
+  s
