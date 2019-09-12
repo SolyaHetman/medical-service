@@ -45,6 +45,12 @@
                 "TransplantationDate": "23-03-2000",
                 "CB14_soure": "Периферична кров",
                 "GeneticTherapy": "23-03-2000"
+            },
+            {
+                "StemCellsTransplantation": "Loasad",
+                "TransplantationDate": "23-03-2000",
+                "CB14_soure": "Периферична кров",
+                "GeneticTherapy": "23-03-2000"
             }],
             "replacementImunoqlobulinTherary2": [{
                 "RITTillToday": "Так",
