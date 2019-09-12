@@ -61,12 +61,12 @@ export default new Router({
             component: RegionInformation
         },
         {
-            path: '/addNewInf',
+            path: '/addNewInf/:user',
             name: 'addNewInf',
             component: AddNewInf
         },
         {
-            path: '/addNewInf1',
+            path: '/addNewInf1/:user',
             name: 'addNewInf1',
             component: AddNewInf1
         }

@@ -104,14 +104,6 @@ export default {
          delete this.stemCellsGeneticTheraty.transplantation_data_yes;
          delete this.stemCellsGeneticTheraty.SeneticTherapyDate;
 
-        //  let stemCellsGeneticTheraty2 = [{
-        //         StemCellsTransplantation: this.stemCellsGeneticTheraty.StemCellsTransplantation,
-        //         TransplantationDate: this.stemCellsGeneticTheraty.TransplantationDate,
-        //         CB14_soure: this.stemCellsGeneticTheraty.CB14_soure,
-        //         GeneticTherapy: this.stemCellsGeneticTheraty.GeneticTherapy, 
-        //  }
-        // ]
-
         this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
         this.stemCellsGeneticTheraty = {};
 

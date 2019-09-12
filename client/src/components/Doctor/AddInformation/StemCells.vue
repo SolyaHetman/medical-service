@@ -5,7 +5,7 @@
 
         <v-flex xs12 md4>
           <p>Чи була трасплатнація стовбурових клітин? </p>   
-          <v-radio-group v-model=" stemCellsGeneticTheraty.StemCellsTransplantation" :mandatory="false">
+          <v-radio-group v-model="stemCellsGeneticTheraty.StemCellsTransplantation" :mandatory="false">
             <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
             <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
@@ -18,7 +18,7 @@
         </v-flex>
         <v-flex md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
           <p>Дата трансплантації</p>   
-          <v-radio-group v-model=" stemCellsGeneticTheraty.TransplantationDate" :mandatory="false">
+          <v-radio-group v-model="stemCellsGeneticTheraty.TransplantationDate" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
             <v-text-field v-if="stemCellsGeneticTheraty.TransplantationDate == 'Відомо'"
@@ -31,7 +31,7 @@
         </v-flex>
         <v-flex md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
           <p>Джерело CD34 стовбурових  клітин</p>   
-          <v-radio-group v-model=" stemCellsGeneticTheraty.CB14_soure" :mandatory="false">
+          <v-radio-group v-model="stemCellsGeneticTheraty.CB14_soure" :mandatory="false">
             <v-radio color="#1976d2" label="Кістковий мозок" value="Кістковий мозок"></v-radio>
             <v-radio color="#1976d2" label="Периферична кров" value="Периферична кров"></v-radio>
             <v-radio color="#1976d2" label="Пуповинна кров" value="Пуповинна кров"></v-radio>
@@ -40,7 +40,7 @@
         </v-flex>
         <v-flex  md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
               <p>Генна терапія</p>   
-              <v-radio-group v-model=" stemCellsGeneticTheraty.GeneticTherapy" :mandatory="false">
+              <v-radio-group v-model="stemCellsGeneticTheraty.GeneticTherapy" :mandatory="false">
                 <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
                 <v-radio color="#1976d2" label="Ні" value="Ні"></v-radio>
                 <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
@@ -65,9 +65,12 @@
 </style>
 
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
+            user: {},
+            stemCellsGeneticTheraty2:[],
             stemCellsGeneticTheraty:{
                 StemCellsTransplantation: null,
                 stem_cells_transplantation_yes: null,
@@ -80,6 +83,20 @@ export default {
                   (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
                 ],          
         }
+    },
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      let self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(res => this.user = res.data[0], console.log(this.user))
+      .catch(error => console.log('Error :', error))
     },
     methods: {
       submit () {
@@ -101,10 +118,30 @@ export default {
          delete this.stemCellsGeneticTheraty.stem_cells_transplantation_yes;
          delete this.stemCellsGeneticTheraty.transplantation_data_yes;
          delete this.stemCellsGeneticTheraty.SeneticTherapyDate;
-        // put
+        
+        this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
+        this.stemCellsGeneticTheraty = {};
+
+        let payload = {
+           stemCellsGeneticTheraty2: this.stemCellsGeneticTheraty2
+        };
+      //  axios.post(`http://localhost:3000/users/${user.id}`,user)
+        // tempObj = Object.assign(tempObj, payLoad);
+        // const url = 'http://localhost:3000/users/${user.id}`';
+        axios.post('http://localhost:3000/users/${user.id}`', payLoad)
+          .then(res =>console.log('Saved'))
+          .catch(err => console.log(err))
+    
+      //   .then(response => {
+      //     console.log(response);
+      //   })
+      //   .catch(error => {
+      //     console.log(err);
+      //   });
       }
       
     }
     
 }
 </script>
+
