@@ -42,6 +42,7 @@
           ></v-text-field>
         </v-flex>
       </v-layout>
+      <hr>
     </v-container>
       <v-flex xs12>
         <v-alert

@@ -133,6 +133,7 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <hr>
   </v-container>
       <v-flex xs12>
         <v-alert
