@@ -6,8 +6,7 @@
         <v-flex md2 >
           <p><font color="#808080">Номер реєстрації</font></p>
           <v-text-field
-            v-model="pid" 
-            
+            v-model="pid"
             readonly
           ></v-text-field>
         </v-flex>

@@ -92,14 +92,14 @@ export default {
       axios.get(`http://localhost:3000/users`).then((response) => {
         let res = response.data;
         this.patients = response.data;
-        
+
         res.forEach(user => {
-          let birthday = new Date (user.BirthdayDate);
+          let correct_date =user.BirthdayDate.slice(6,11) + "-" + user.BirthdayDate.slice(3, 5) + '-' + user.BirthdayDate.slice(0,2)
+          let birthday = new Date (correct_date);
           const ageDifMs = Date.now() - birthday.getTime();
           const ageDate = new Date(ageDifMs);
           const age = Math.abs(ageDate.getUTCFullYear() - 1970);
           user = Object.assign(user, { age: age.toString() })
-          console.log(user, { age: age.toString() })
         })
 
       })
