@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form"  @submit.prevent="savePatient">
+  <v-form ref="form"  @submit.prevent="savePatient(user)">
     <v-container>
       <v-layout>
         <v-flex xs12 md4>
@@ -164,6 +164,7 @@ export default {
     data(){
         return{
           alertShow:false, 
+          user:{},
           replacementImunoqlobulinTherary:{
             RITTillToday: null, 
             EndImunoglobulinInjectionDate: null, 
@@ -192,12 +193,26 @@ export default {
                 ], 
         }
     },
+    created() {
+      console.log(this.$route.params.user);
+    },
+    mounted() {
+      let self = this;
+      const id = this.$route.params.user;
+      axios.get('http://localhost:3000/users',{
+        params: {
+          id: this.$route.params.user
+        }
+      })
+      .then(res => this.user = res.data[0])
+      .catch(error => console.log('Error :', error))
+    },
     methods: {
 
       submit () {
         this.$refs.form()
       },
-      savePatient: function () {
+      savePatient: function (user) {
         if (this.replacementImunoqlobulinTherary.EndImunoglobulinInjectionDate == 'Відомо') {
           this.replacementImunoqlobulinTherary.EndImunoglobulinInjectionDate = this.replacementImunoqlobulinTherary.first_imunoqlobulin_injection_data_end_yes;
         }
@@ -221,34 +236,15 @@ export default {
         delete this.replacementImunoqlobulinTherary.recorded_phenomenal_select;
         delete this.replacementImunoqlobulinTherary.recorded_phenomenal_select_enter;
         delete this.replacementImunoqlobulinTherary.injection_interval_other;
-        // put metod
 
+        this.user.replacementImunoqlobulinTherary2.push(this.replacementImunoqlobulinTherary);
 
+        console.log('add: ', user),
+        axios.put(`http://localhost:3000/users/${user.id}`,user)
+          .then(res =>console.log('Saved'))
+          .catch(err => console.log(err))
 
-
-        // this.$swal({
-    		//   title: 'Чи бажаєте ви ввести ще дані про пацієнта?',
-        //   showCancelButton: true,
-        //   confirmButtonText: 'ТАК',
-        //   cancelButtonText: 'НІ',
-        //   showCloseButton: true,
-        //   showLoaderOnConfirm: true,
-        // }).then((result) => {
-        //   if(result.value) {
-            
-        //     EventBus.$emit('completedForm', this.replacementImunoqlobulinTherary,5);
-        //     this.replacementImunoqlobulinTherary = {}
-           
-        //   } else {
-           
-        //     this.alertShow = true;
-        //     setTimeout(() => {
-        //       this.alertShow = false;
-        //     }, 3000)
-        //   }
-        // })
-        // EventBus.$emit('postToDB', this.replacementImunoqlobulinTherary,5);
-      },
+      }
     }
     
 }

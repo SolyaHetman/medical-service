@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" @submit.prevent="savePatient">
+  <v-form ref="form" @submit.prevent="savePatient(user)">
     <v-container class="container">
       <v-layout>
 
@@ -70,7 +70,6 @@ export default {
     data(){
         return{
             user: {},
-            stemCellsGeneticTheraty2:[],
             stemCellsGeneticTheraty:{
                 StemCellsTransplantation: null,
                 stem_cells_transplantation_yes: null,
@@ -95,7 +94,7 @@ export default {
           id: this.$route.params.user
         }
       })
-      .then(res => this.user = res.data[0], console.log(this.user))
+      .then(res => this.user = res.data[0])
       .catch(error => console.log('Error :', error))
     },
     methods: {
@@ -105,7 +104,7 @@ export default {
       save (date) {
         this.$refs.menu.save(date)
       },
-      savePatient: function () {
+      savePatient: function (user) {
         if (this.stemCellsGeneticTheraty.StemCellsTransplantation == 'Так') {
           this.stemCellsGeneticTheraty.StemCellsTransplantation = this.stemCellsGeneticTheraty.stem_cells_transplantation_yes;
         }
@@ -119,25 +118,14 @@ export default {
          delete this.stemCellsGeneticTheraty.transplantation_data_yes;
          delete this.stemCellsGeneticTheraty.SeneticTherapyDate;
         
-        this.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty);
-        this.stemCellsGeneticTheraty = {};
 
-        let payload = {
-           stemCellsGeneticTheraty2: this.stemCellsGeneticTheraty2
-        };
-      //  axios.post(`http://localhost:3000/users/${user.id}`,user)
-        // tempObj = Object.assign(tempObj, payLoad);
-        // const url = 'http://localhost:3000/users/${user.id}`';
-        axios.post('http://localhost:3000/users/${user.id}`', payLoad)
+        this.user.stemCellsGeneticTheraty2.push(this.stemCellsGeneticTheraty)
+
+        console.log('add: ', user),
+        axios.put(`http://localhost:3000/users/${user.id}`,user)
           .then(res =>console.log('Saved'))
           .catch(err => console.log(err))
-    
-      //   .then(response => {
-      //     console.log(response);
-      //   })
-      //   .catch(error => {
-      //     console.log(err);
-      //   });
+
       }
       
     }
