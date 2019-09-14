@@ -91,7 +91,7 @@ import Tab5 from "@/components/Doctor/RegionPatient/Tabs/Tab5.vue"
             title:'Шлях до діагнозу',
           },
           {
-            title:'Діагноз первинного імунодефіциту',
+            title:'Діагноз ПІД',
           },
           {
             title:'Стовбурові клітини',
