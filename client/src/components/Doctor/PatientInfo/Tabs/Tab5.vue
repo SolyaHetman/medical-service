@@ -146,6 +146,7 @@
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
+    <v-btn @click="back" v-show="!shouldDisable">Зберегти</v-btn>
    <v-btn  :to="'/addNewInf1/'+ user.id">Додати</v-btn>
  </v-form>
 </template>

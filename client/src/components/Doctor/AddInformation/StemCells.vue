@@ -54,6 +54,7 @@
             </v-flex>
       </v-layout>
       <v-btn type="submit">Зберегти</v-btn>
+      <v-btn :to="'/patientinfo/'+ user.id">Назад</v-btn>
     </v-container>        
 
   </v-form>
@@ -69,6 +70,8 @@ import axios from 'axios'
 export default {
     data(){
         return{
+            alertShow: false,
+            shouldDisable: true,
             user: {},
             stemCellsGeneticTheraty:{
                 StemCellsTransplantation: null,
