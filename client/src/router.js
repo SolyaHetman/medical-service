@@ -11,6 +11,7 @@ import MainDoctor from './views/Doctor/MainDoctor.vue'
 import RegionInformation from './views/Doctor/RegionInformation.vue'
 import AddNewInf from './views/Doctor/AddNewInf'
 import AddNewInf1 from './views/Doctor/AddNewInf1'
+import CenterInfo from './views/Doctor/CenterInfo'
 
 Vue.use(Router)
 
@@ -69,6 +70,11 @@ export default new Router({
             path: '/addNewInf1/:user',
             name: 'addNewInf1',
             component: AddNewInf1
+        },
+        {
+            path: '/centerinfo/:user',
+            name: 'centerInfo',
+            component: CenterInfo
         }
     ]
 })
