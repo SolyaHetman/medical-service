@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import Tab1 from "@/components/Doctor/CenerInfo/Tabs/Tab1.vue"
+import Tab1 from "@/components/Doctor/CenterInfo/Tabs/Tab1.vue"
 import Tab2 from "@/components/Doctor/RegionPatient/Tabs/Tab2.vue"
 import Tab3 from "@/components/Doctor/RegionPatient/Tabs/Tab3.vue"
 import Tab4 from "@/components/Doctor/RegionPatient/Tabs/Tab4.vue"
