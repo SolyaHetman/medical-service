@@ -7,7 +7,7 @@
           <p><font color="#808080">Лікар</font></p>
           <v-text-field
             v-model='doctor' 
-            :readonly="shouldDisable"
+            readonly
             label="Лікар1"
             single-line
           ></v-text-field>
@@ -142,17 +142,6 @@
         </v-flex>
       </v-layout>
     </v-container> 
-      <v-flex xs12>
-        <v-alert
-          :value="alertShow"
-          type="success"        
-          color='#1976d2'
-        >
-          Дані збережено
-        </v-alert>
-      </v-flex>
-    <v-btn @click="edit">Змінити лікаря</v-btn> 
-    <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>  
  </v-form>
 </template>
 
@@ -205,21 +194,6 @@ import axios from 'axios';
       .catch(function(error){
         console.log('Error :', error)
       })
-    },
-    methods: {
-      edit() {
-      this.shouldDisable = false
-      },
-      submit(user){
-        this.shouldDisable = true;
-         // TODO: change doctor
-        
-        this.alertShow = true;
-
-        setTimeout(() => {
-          this.alertShow = false;
-        }, 1500)
-      }
     },
   }
 </script>

@@ -20,11 +20,11 @@
                 <template v-slot:items="props">
                   <td>{{ props.item.LastName[0] + props.item.FirstName[0] + props.item.MiddleName[0] + props.item.BirthdayDate.replace(/-/g,'')}}</td>
                   <td>{{ props.item.age }}</td>
-                  <td>{{ props.item.FirstDiagnosisPidDate }}</td>
-                  <td>{{ props.item.EndImunoglobulinInjectionDate }}</td>
-                  <td>{{ props.item.ActualInjectionType }}</td>
-                  <td>{{ props.item.DoseYes }}</td>
-                  <td>{{ props.item.ProducerName }}</td>
+                   <td>{{ props.item.FirstDiagnosisPidDate }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].EndImunoglobulinInjectionDate }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].ActualInjectionType }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].DoseYes }}</td>
+                  <td>{{ props.item.replacementImunoqlobulinTherary2['0'].ProducerName }}</td>
                   <td>Лікар1</td>
                   <td>Центр1</td>
                   <td class="text-center">
@@ -94,12 +94,12 @@ export default {
         this.patients = response.data;
         
         res.forEach(user => {
-          let birthday = new Date (user.date);
+          let correct_date =user.BirthdayDate.slice(6,11) + "-" + user.BirthdayDate.slice(3, 5) + '-' + user.BirthdayDate.slice(0,2)
+          let birthday = new Date (correct_date);
           const ageDifMs = Date.now() - birthday.getTime();
           const ageDate = new Date(ageDifMs);
           const age = Math.abs(ageDate.getUTCFullYear() - 1970);
           user = Object.assign(user, { age: age.toString() })
-          console.log(user, { age: age.toString() })
         })
 
       })
