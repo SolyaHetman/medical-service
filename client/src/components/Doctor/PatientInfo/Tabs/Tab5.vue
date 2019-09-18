@@ -1,18 +1,55 @@
 <template>
-  <v-form ref="form">
-    <v-container v-for="info in user.replacementImunoqlobulinTherary2">
-      <v-container>
+  <v-form ref="form" >
+    <v-container  v-for="info in user.replacementImunoqlobulinTherary2" >
         <v-layout > 
-
-          <v-flex md3>
+          <!-- <v-flex md2>
             <p><font color="#808080">Чи отримує пацієнт на сьогоднішній день замісну імуноглобулінотерапію?</font></p>
             <v-text-field
               v-model="info.RITTillToday"
               solo
               :readonly="shouldDisable"
             ></v-text-field>
+          </v-flex> -->
+
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+            <p>
+              <font color="#808080">
+                Кінцева дата введення замісної імуноглобулінотерапії:
+              </font>
+            </p>
+            <v-text-field
+              v-model="info.EndImunoglobulinInjectionDate"
+              solo
+              :readonly="shouldDisable"
+            ></v-text-field>
           </v-flex>
-          <v-flex md3 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+
+          <v-flex md2 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+            <p><font color="#808080"><br> <br>Доза</font></p>
+            <v-text-field
+              v-if='info.Dose=="Відомо"'
+              v-model="info.DoseYes"
+              solo
+              :readonly="shouldDisable"
+            ></v-text-field>
+            <v-text-field
+              v-else
+              v-model="info.Dose"
+              solo
+              :readonly="shouldDisable"
+            ></v-text-field>
+          </v-flex>
+
+          <v-flex md2 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+            <p><font color="#808080"><br>Рівень IgA</font></p>
+            <v-text-field
+              v-model="info.Igg"
+              solo
+              :readonly="shouldDisable"
+            ></v-text-field>
+          </v-flex>
+
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
             <p><font color="#808080">Виробник імуноглобулінів, які отримує пацієнт</font></p>
             <v-text-field
               v-if='info.ProducerYesNo=="Відомо"'
@@ -28,25 +65,8 @@
             ></v-text-field>
           </v-flex>
 
-          <v-flex md3 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
-            <p>
-              <font color="#808080">
-                Кінцева дата введення замісної імуноглобулінотерапії:
-              </font>
-            </p>
-            <v-text-field
-              v-model="info.EndImunoglobulinInjectionDate"
-              solo
-              :readonly="shouldDisable"
-            ></v-text-field>
-          </v-flex>
-        </v-layout>
-      </v-container>
-
-      <v-container 
-        v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
-        <v-layout>
-          <v-flex md3 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+  
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
             <p><font color="#808080">Актуальний шлях введення імуноглобуліну</font></p>
             <v-text-field
               v-model="info.ActualInjectionType"
@@ -55,7 +75,8 @@
             ></v-text-field>
           </v-flex>
 
-          <v-flex md3>
+        
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
             <p>
               <font color="#808080">
                 Актуальне місце введення імуноглобуліну
@@ -68,22 +89,8 @@
             ></v-text-field>
           </v-flex>
 
-          <v-flex md2>
-            <p><font color="#808080"><br>Доза</font></p>
-            <v-text-field
-              v-if='info.Dose=="Відомо"'
-              v-model="info.DoseYes"
-              solo
-              :readonly="shouldDisable"
-            ></v-text-field>
-            <v-text-field
-              v-else
-              v-model="info.Dose"
-              solo
-              :readonly="shouldDisable"
-            ></v-text-field>
-          </v-flex>
-          <v-flex md2>
+          
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
             <p><font color="#808080"><br>Інтервал між введенями</font></p>
             <v-text-field
               v-model="info.InjectionInterval"
@@ -91,14 +98,8 @@
               :readonly="shouldDisable"
             ></v-text-field>
           </v-flex>
-        </v-layout>
-      </v-container>
-
-      <v-container 
-        v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
-        <v-layout>
-          <v-flex md2>
-            <p><font color="#808080">Зафіксовані небажані явища</font></p>
+          <v-flex md5 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
+            <p><font color="#808080"><br> Зафіксовані небажані явища</font></p>
             <v-text-field
               v-if='(info.recorded_phenomenal=="Так") && (info.recorded_phenomenal_select=="Інше,вказати")'
               v-model="info.recorded_phenomenal_select_enter"
@@ -112,7 +113,7 @@
             ></v-text-field>
            </v-flex>
 
-           <v-flex md2>
+           <v-flex md2 v-if='(info.RITTillToday=="Так") || (info.RITTillToday=="Нерегулярно")'>
             <p>
               <font color="#808080"><br>
                  Актуальна вага
@@ -132,8 +133,7 @@
             ></v-text-field>
           </v-flex>
         </v-layout>
-      </v-container>
-      <hr>
+      <hr style="background:red">
   </v-container>
       <v-flex xs12>
         <v-alert
@@ -146,10 +146,16 @@
       </v-flex>
     <v-btn @click="edit">Редагувати</v-btn>
     <v-btn @click="submit(user)" v-show="!shouldDisable">Зберегти</v-btn>
-    <v-btn @click="back" v-show="!shouldDisable">Зберегти</v-btn>
+    <!-- <v-btn @click="back" v-show="!shouldDisable">Зберегти</v-btn> -->
    <v-btn  :to="'/addNewInf1/'+ user.id">Додати</v-btn>
  </v-form>
 </template>
+
+<style >
+  hr{
+    border: 1px solid #1976d2;
+  }
+</style>
 
 <script>
   import axios from 'axios';

@@ -207,6 +207,7 @@ export default {
       valid: false,
       menu: null,
       date: null,
+      
       nameRules: [
         (v) => !!v || 'Заповніть дані',
         (v) => v && v.length <= 20 || 'Name must be less than 20 characters',
@@ -251,6 +252,8 @@ export default {
       }
       delete this.generalData.numberESID;
       EventBus.$emit('completedForm', this.generalData, 1);
+  
+      // console.log(data)
     }
   }
 }

@@ -11,7 +11,7 @@
             <v-radio color="#1976d2" label="Нерегулярно" value="Нерегулярно"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex md3 v-if="(replacementImunoqlobulinTherary.RITTillToday == 'Так') || (replacementImunoqlobulinTherary.RITTillToday == 'Нерегулярно')">
+        <v-flex md3 >
           <p>Кінцева дата введення замісної імуноглобулінотерапії:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.EndImunoglobulinInjectionDate" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -24,7 +24,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4 v-if="(replacementImunoqlobulinTherary.RITTillToday == 'Так') || (replacementImunoqlobulinTherary.RITTillToday == 'Нерегулярно')"> 
+        <v-flex md4> 
           <p>Виробник імуноглобулінів, які отримує пацієнт:</p>   
           <v-radio-group v-model="replacementImunoqlobulinTherary.ProducerYesNo" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -45,7 +45,7 @@
     </v-layout>
     </v-container>   
 
-    <v-container v-if="(replacementImunoqlobulinTherary.RITTillToday == 'Так') || (replacementImunoqlobulinTherary.RITTillToday == 'Нерегулярно')">
+    <v-container >
       <v-layout>
           <v-flex xs12 md4>
           <p>Актуальний шлях введення імуноглобуліну:</p>   
@@ -89,7 +89,7 @@
       </v-layout>
     </v-container>   
 
-      <v-container v-if="(replacementImunoqlobulinTherary.RITTillToday == 'Так') || (replacementImunoqlobulinTherary.RITTillToday == 'Нерегулярно')">
+      <v-container>
         <v-layout>
           <v-flex xs12 md4>
             <p>Інтервал між введенями:</p>   
@@ -139,20 +139,15 @@
         </v-flex>
       </v-layout>
       <v-btn type="alertDisplay">Зберегти</v-btn>
-    </v-container>  
-    <v-layout row>
-      <v-flex xs12>
-        <v-alert
+       <v-btn :to="'/patientinfo/'+ user.id">Назад</v-btn>
+       <v-alert
           :value="alertShow"
           type="success"        
           color='#1976d2'
         >
           Дані збережено
         </v-alert>
-      </v-flex>
-    </v-layout>    
-    
-    
+    </v-container>      
   </v-form>
   
 </template>
@@ -244,6 +239,10 @@ export default {
           .then(res =>console.log('Saved'))
           .catch(err => console.log(err))
 
+        this.alertShow = true;
+            setTimeout(() => {
+              this.alertShow = false;
+            }, 3000)
       }
     }
     

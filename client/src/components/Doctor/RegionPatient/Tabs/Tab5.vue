@@ -83,6 +83,16 @@
               :readonly="shouldDisable"
             ></v-text-field>
           </v-flex>
+
+           <v-flex md2>
+            <p><font color="#808080"><br>Igg</font></p>
+            <v-text-field
+              v-model="info.Igg"
+              solo
+              :readonly="shouldDisable"
+            ></v-text-field>
+          </v-flex>
+
           <v-flex md2>
             <p><font color="#808080"><br>Інтервал між введенями</font></p>
             <v-text-field

@@ -90,20 +90,20 @@
             },
             {
                 "RITTillToday": "Так",
-                "EndImunoglobulinInjectionDate": null,
+                "EndImunoglobulinInjectionDate": "23-03-2000",
                 "ProducerName": null,
-                "ProducerYesNo": null,
-                "Igg": null,
+                "ProducerYesNo": "Невідомо",
+                "Igg": "12",
                 "imunoqlobulin_producer_select": null,
                 "imunoqlobulin_producer_select_enter": null,
-                "ActualInjectionType": null,
-                "ActualInjectionLocation": null,
-                "Dose": null,
-                "DoseYes": null,
-                "InjectionInterval": null,
-                "PatientWeight": null,
+                "ActualInjectionType": "Дом`язово",
+                "ActualInjectionLocation": "Стаціонарно",
+                "Dose": "Відомо",
+                "DoseYes": "1",
+                "InjectionInterval": "Кожні 14 днів",
+                "PatientWeight": "56",
                 "PatientWeightYes": null,
-                "RecordedPhenomena": null
+                "RecordedPhenomena": "Ні"
             }
         ],
         "id": 3

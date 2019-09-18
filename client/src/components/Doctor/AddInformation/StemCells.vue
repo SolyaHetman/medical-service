@@ -16,7 +16,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
+        <v-flex md4>
           <p>Дата трансплантації</p>   
           <v-radio-group v-model="stemCellsGeneticTheraty.TransplantationDate" :mandatory="false">
             <v-radio color="#1976d2" label="Відомо" value="Відомо"></v-radio>
@@ -29,7 +29,7 @@
             ></v-text-field>
           </v-radio-group>
         </v-flex>
-        <v-flex md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
+        <v-flex md4 >
           <p>Джерело CD34 стовбурових  клітин</p>   
           <v-radio-group v-model="stemCellsGeneticTheraty.CB14_soure" :mandatory="false">
             <v-radio color="#1976d2" label="Кістковий мозок" value="Кістковий мозок"></v-radio>
@@ -38,7 +38,7 @@
             <v-radio color="#1976d2" label="Невідомо" value="Невідомо"></v-radio>
           </v-radio-group>
         </v-flex>
-        <v-flex  md4 v-if="stemCellsGeneticTheraty.StemCellsTransplantation == 'Так'">
+        <v-flex  md4 >
               <p>Генна терапія</p>   
               <v-radio-group v-model="stemCellsGeneticTheraty.GeneticTherapy" :mandatory="false">
                 <v-radio color="#1976d2" label="Так" value="Так"></v-radio>
@@ -53,11 +53,19 @@
               </v-radio-group>
             </v-flex>
       </v-layout>
-      <v-btn type="submit">Зберегти</v-btn>
+      <v-btn  type="alertDisplay">Зберегти</v-btn>
       <v-btn :to="'/patientinfo/'+ user.id">Назад</v-btn>
+      <v-alert
+          :value="alertShow"
+          type="success"        
+          color='#1976d2'
+        >
+          Дані збережено
+        </v-alert>
     </v-container>        
-
   </v-form>
+
+
 </template>
 <style>
     .v-container{
@@ -128,7 +136,11 @@ export default {
         axios.put(`http://localhost:3000/users/${user.id}`,user)
           .then(res =>console.log('Saved'))
           .catch(err => console.log(err))
-
+          
+        this.alertShow = true;
+            setTimeout(() => {
+              this.alertShow = false;
+            }, 3000)
       }
       
     }

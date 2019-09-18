@@ -130,15 +130,24 @@
             <v-text-field 
                 v-model= pathDagnosis.Igg
                 label="Рівень IgG(г/л)"
+                v-on:keyup="keyUp1"
+                :color="overDefault"
             ></v-text-field>
+            <small v-if="overDefault == 'error' && pathDagnosis.Igg" :color="overDefault" style="color:red">Відхилено від норми</small>
             <v-text-field 
                 v-model= pathDagnosis.Iga
                 label="Рівень IgA(г/л)"
+                v-on:keyup="keyUp2"              
+                :color="overDefault1"
             ></v-text-field>
+            <small v-if="overDefault1 == 'error' && pathDagnosis.Iga" :color="overDefault1" style="color:red">Відхилено від норми</small>
             <v-text-field 
                 v-model= pathDagnosis.Igm
                 label="Рівень IgM(г/л)"
+                v-on:keyup="keyUp3"
+                :color="overDefault2"
             ></v-text-field>
+            <small v-if="overDefault2 == 'error' && pathDagnosis.Igm" :color="overDefault2" style="color:red">Відхилено від норми</small>
             <v-text-field 
                 v-model= pathDagnosis.Ige
                 label="Рівень IgE(мо/мл)"
@@ -159,8 +168,18 @@ import axios from 'axios';
 import EventBus from '@/event-bus';
 
 export default {
+  props: {
+    birthday: {
+      type: String
+    }
+  },
     data(){
       return {
+        result:{},
+        testBirthday: null,
+        overDefault: 'error',
+        overDefault1: 'error',
+        overDefault2: 'error',
         pathDagnosis: {
           FirstDiagnosisPidDate: null,
           first_diagnostic_pid_data_time: null,
@@ -181,9 +200,108 @@ export default {
           (v) => /^(\d{1,2})-(\d{1,2})-(\d{4})$/.test(v) || 'Введіть ДД-ММ-РР'
         ],
         items: ['Лімфопенія', 'Нейтропенія', 'Тромбоцитопенія', 'Анемія','Монцитопенія','Підвищений рівень IgE','Гіпогамаглобулінемія','Інше'],
+        oneToFive: {
+          iggLow: 3.5,
+          iggHigh: 12.4,
+          igmLow: 0.43,
+          igmHigh: 2.1,
+          igaLow: 0.15,
+          igaHigh: 1.6,
+        },
+        sixToTen: {
+          iggLow: 6,
+          iggHigh: 15.7,
+          igmLow: 0.5,
+          igmHigh: 2.4,
+          igaLow: 0.3,
+          igaHigh: 2.3,
+        },
+        older:{
+          iggLow: 6.4,
+          iggHigh: 13.5,
+          igmLow: 0.56,
+          igmHigh: 3.5,
+          igaLow: 0.7,
+          igaHigh: 3.1,
+        }
+      }
+    },
+    watch: {
+      birthday: function () {
+        let correct_date = this.birthday.slice(6,11) + "-" + this.birthday.slice(3, 5) + '-' + this.birthday.slice(0,2)
+        let birthday = new Date (correct_date);
+        const ageDifMs = Date.now() - birthday.getTime();
+        const ageDate = new Date(ageDifMs);
+        const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+        this.testBirthday = age;
       }
     },
     methods: {
+      keyUp1() {
+        if (this.testBirthday >= 1 && this.testBirthday <= 5) {
+          if (this.pathDagnosis.Igg < this.oneToFive.iggLow || this.pathDagnosis.Igg > this.oneToFive.iggHigh) {
+            this.overDefault = 'error';
+          } else {
+            this.overDefault = 'success';
+          }
+        } else if (this.testBirthday >= 11){
+           if (this.pathDagnosis.Igg < this.older.iggLow || this.pathDagnosis.Igg > this.older.iggHigh) {
+            this.overDefault = 'error';
+          } else {
+            this.overDefault = 'success';
+          }
+        }else if (this.testBirthday >= 6 && this.testBirthday <= 10){
+           if (this.pathDagnosis.Igg < this.sixToTen.iggLow || this.pathDagnosis.Igg > this.sixToTen.iggHigh) {
+            this.overDefault = 'error';
+          } else {
+            this.overDefault = 'success';
+          }
+        }
+      },
+      keyUp2(){
+         if (this.testBirthday >= 1 && this.testBirthday <= 5) {
+          if (this.pathDagnosis.Iga < this.oneToFive.igaLow || this.pathDagnosis.Iga > this.oneToFive.igaHigh) {
+            this.overDefault1 = 'error';
+          } else {
+            this.overDefault1 = 'success';
+          }
+        }else if (this.testBirthday >= 11){
+           if (this.pathDagnosis.Iga < this.older.igaLow || this.pathDagnosis.Iga > this.older.igaHigh) {
+            this.overDefault1 = 'error';
+          } else {
+            this.overDefault1 = 'success';
+          }
+        }
+        else if (this.testBirthday >= 6 && this.testBirthday <= 10){
+           if (this.pathDagnosis.Iga < this.sixToTen.igaLow || this.pathDagnosis.Iga > this.sixToTen.igaHigh) {
+            this.overDefault = 'error';
+          } else {
+            this.overDefault = 'success';
+          }
+        }  
+      },
+      keyUp3(){
+         if (this.testBirthday >= 1 && this.testBirthday <= 5) {
+          if (this.pathDagnosis.Igm < this.oneToFive.igmLow || this.pathDagnosis.Igm > this.oneToFive.igmHigh) {
+            this.overDefault2 = 'error';
+          } else {
+            this.overDefault2 = 'success';
+          }
+        }else if (this.testBirthday >= 11){
+           if (this.pathDagnosis.Igm < this.older.igmLow || this.pathDagnosis.Igm > this.older.igmHigh) {
+            this.overDefault2 = 'error';
+          } else {
+            this.overDefault2 = 'success';
+          }
+        }
+        else if (this.testBirthday >= 6 && this.testBirthday <= 10){
+           if (this.pathDagnosis.Igm < this.sixToTen.igmLow || this.pathDagnosis.Igm > this.sixToTen.igmHigh) {
+            this.overDefault = 'error';
+          } else {
+            this.overDefault = 'success';
+          }
+        } 
+      },
       submit () {
         this.$refs.form()
       },
@@ -212,14 +330,8 @@ export default {
         delete this.pathDagnosis.first_diagnostic_pid_data_time;
         delete this.pathDagnosis.pid_select;
         delete this.pathDagnosis.pid_select_enter;
-        // if (this.pathDagnosis.pid_lab_only == 'Так') {
-        //   this.pathDagnosis.pid_lab_only = this.pathDagnosis.pid_select;
-        //   if(this.pathDagnosis.pid_select == 'Інше' & this.pathDagnosis.pid_lab_only == 'Так'){
-        //   this.pathDagnosis.pid_select = this.this.pathDagnosis.pid_select
-        //   }
-        // }
-        this.$delete(this.pathDagnosis, 'first_diagnostic_pid_data_time')
-        EventBus.$emit('completedForm', this.pathDagnosis,2);
+        this.$delete(this.pathDagnosis, 'first_diagnostic_pid_data_time')    
+        EventBus.$emit('completedForm', this.pathDagnosis, 2);
       }
     }
     

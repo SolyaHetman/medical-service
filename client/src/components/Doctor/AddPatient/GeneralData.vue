@@ -26,7 +26,7 @@
           <!-- Start Tab2 -->
           <v-tab-item>
             <v-card flat>
-              <PathDig />
+              <PathDig :birthday="birthday"/>
             </v-card>
           </v-tab-item>
           <!-- End Tab2 -->
@@ -89,7 +89,9 @@ import axios from 'axios'
           {title:'Діагноз ПІД'},
           {title:'Стовбурові клітини/генна терапія'},
           {title:'Замісна імуноглобулінотерапія'},
-        ]
+        ],
+        testdata: 'test data',  
+        birthday: null,      
       }
     },
     created () {
@@ -97,9 +99,11 @@ import axios from 'axios'
       let that = this;
       EventBus.$on('completedForm', function (payLoad, tabNum) {
         tempObj = Object.assign(tempObj, payLoad);
+        that.birthday = tempObj.BirthdayDate;
         return that.activeTab = tabNum;
       });
-    
+      
+      
       EventBus.$on('postToDB', function (payLoad) {
         tempObj = Object.assign(tempObj, payLoad);
         const url = 'http://localhost:3000/users';
@@ -107,6 +111,7 @@ import axios from 'axios'
           .then(res =>console.log('Saved'))
           .catch(err => console.log(err))
       });
+   
     },
     watch: {
       activeTab: function() {

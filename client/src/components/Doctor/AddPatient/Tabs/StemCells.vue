@@ -54,7 +54,17 @@
             </v-flex>
       </v-layout>
     </v-container>        
-
+ <!-- <v-layout row>
+      <v-flex xs12>
+        <v-alert
+          :value="alertShow"
+          type="success"        
+          color='#1976d2'
+        >
+          Дані збережено
+        </v-alert>
+      </v-flex>
+    </v-layout>     -->
     <v-btn type="submit">Далі</v-btn>
   </v-form>
 </template>

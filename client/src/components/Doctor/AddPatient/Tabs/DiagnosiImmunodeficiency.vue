@@ -6,8 +6,8 @@
         <v-flex xs12 md5>
           <p>Уражені гени</p>   
           <v-radio-group v-model=" pidDiagnosis.DamagedGenes" :mandatory="false">
-            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось" value="Генетичне дослідження не проводилось"></v-radio>
             <v-radio color="#1976d2" label="Історія генетичних досліджень невідома" value="Історія генетичних досліджень невідома"></v-radio>
+            <v-radio color="#1976d2" label="Генетичне дослідження не проводилось" value="Генетичне дослідження не проводилось"></v-radio>
             <v-radio color="#1976d2" label="Генетичне дослідження проводилось,мутації не виявлено" value="Генетичне дослідження проводилось,мутації не виявлено"></v-radio>
             <v-text-field v-if="pidDiagnosis.DamagedGenes == 'Генетичне дослідження проводилось,мутації не виявлено'"
               v-model= pidDiagnosis.mutations_no
